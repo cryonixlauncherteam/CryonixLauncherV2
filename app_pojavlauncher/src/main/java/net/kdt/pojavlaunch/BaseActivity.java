@@ -3,8 +3,6 @@ package net.kdt.pojavlaunch;
 import android.content.*;
 import android.content.res.Configuration;
 import android.os.*;
-import android.view.View;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.*;
 import net.kdt.pojavlaunch.utils.*;
@@ -12,8 +10,6 @@ import net.kdt.pojavlaunch.utils.*;
 import static net.kdt.pojavlaunch.prefs.LauncherPreferences.PREF_IGNORE_NOTCH;
 
 public abstract class BaseActivity extends AppCompatActivity {
-
-    private boolean jellyAnimationPlayed;
 
     @Override
     protected void attachBaseContext(Context newBase) {
@@ -50,15 +46,8 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onPostResume();
         Tools.setInsetsMode(this, setFullscreen(), shouldIgnoreNotch());
         Tools.getDisplayMetrics(this);
-        playJellyEntranceIfNeeded();
     }
 
-    private void playJellyEntranceIfNeeded() {
-        if (jellyAnimationPlayed) return;
-        jellyAnimationPlayed = true;
-        View content = findViewById(android.R.id.content);
-        JellyAnimations.animateScreen(content);
-    }
 
     @Override
     public void onMultiWindowModeChanged(boolean isInMultiWindowMode) {
