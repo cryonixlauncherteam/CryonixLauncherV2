@@ -794,8 +794,8 @@ public final class Tools {
         //TODO handle custom animations
         fragmentActivity.getSupportFragmentManager().beginTransaction()
                 .setReorderingAllowed(true)
-                .setCustomAnimations(R.anim.cryonix_jelly_in, R.anim.cryonix_jelly_out,
-                        R.anim.cryonix_spring_in, R.anim.cryonix_spring_out)
+                .setCustomAnimations(R.anim.motion_jelly_in, R.anim.motion_jelly_out,
+                        R.anim.motion_jelly_in, R.anim.motion_jelly_out)
                 .addToBackStack(fragmentClass.getName())
                 .replace(R.id.container_fragment, fragmentClass, bundle, fragmentTag).commit();
     }
