@@ -137,15 +137,6 @@ public class MainMenuFragment extends Fragment {
             });
         }
 
-        View aiAssistCard = view.findViewById(R.id.ai_assist_card);
-        if (aiAssistCard != null) {
-            applyJellyTouch(aiAssistCard);
-            aiAssistCard.setOnClickListener(v -> {
-                Tools.jellyClick(v);
-                Tools.swapFragment(requireActivity(), AiAssistFragment.class, AiAssistFragment.TAG, null);
-            });
-        }
-
         View profileChip = view.findViewById(R.id.profile_chip);
         if (profileChip != null) {
             applyJellyTouch(profileChip);
@@ -292,9 +283,6 @@ public class MainMenuFragment extends Fragment {
                 (ViewGroup) view.findViewById(R.id.instances_header), 55L, 260L);
         net.kdt.pojavlaunch.utils.JellyAnimations.stagger(
                 (ViewGroup) view.findViewById(R.id.profile_panel), 55L, 250L);
-        net.kdt.pojavlaunch.utils.JellyAnimations.stagger(
-                (ViewGroup) view.findViewById(R.id.ai_assist_card), 65L, 260L);
-
 
     }
 
