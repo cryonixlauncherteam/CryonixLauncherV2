@@ -163,16 +163,11 @@ public class MainMenuFragment extends Fragment {
             });
         }
 
+        // Keep the home account chip visually empty; account selection is handled
+        // by the chip itself and the persisted account remains available to launch.
         TextView profileName = view.findViewById(R.id.profile_name);
         if (profileName != null) {
-            try {
-                net.kdt.pojavlaunch.authenticator.accounts.Account current =
-                        net.kdt.pojavlaunch.authenticator.accounts.Accounts.getCurrent();
-                if (current != null && current.username != null && !current.username.isEmpty()) {
-                    profileName.setText(current.username);
-                }
-            } catch (Throwable ignored) {
-            }
+            profileName.setText("");
         }
 
         if (mEditProfileButton != null && mVersionSpinner != null) {
