@@ -119,6 +119,36 @@ jobs:
           name: app-debug-noruntime
           path: out/app-debug-noruntime.apk
 
+      - name: Publish Cryonix Launcher V3 release
+        if: github.ref == 'refs/heads/arena/01a0f7a1-cryonixlauncherv2'
+        uses: softprops/action-gh-release@v3
+        with:
+          tag_name: v3.0.0
+          name: Cryonix Launcher V3
+          prerelease: false
+          generate_release_notes: false
+          body: |
+            # Cryonix Launcher V3
+
+            Cryonix Launcher V3 is the current mobile-focused Minecraft launcher build.
+
+            ## Highlights
+            - Cryonix Launcher V3 interface and branding
+            - Stable Cryonix launcher colour palette
+            - Cryonix notification and background-task icons
+            - Account management and launcher instance management
+            - Discord account-linking foundation
+            - Mobile renderer runtime packaging, including MobileGlues and Krypton/NG-GL4ES libraries
+            - Existing launcher backend and Minecraft services preserved
+
+            ## APK
+            This release includes the current runtime APK built by GitHub Actions.
+
+            **Build commit:** ${{ github.sha }}
+          files: |
+            out/cryonixlauncher_runtime.apk
+            out/cryonixlauncher_runtime.md5
+
       - name: Release Nightly APK
         if: github.repository_owner == 'MojoLauncher' && github.ref_name == 'v3_openjdk'
         uses: softprops/action-gh-release@v3
