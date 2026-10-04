@@ -1,26 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Cryonix AI Assist: offline setup guide chatbot -->
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/cryonix_screen_bg"
+    android:background="@color/background_app"
     android:orientation="vertical"
-    android:clipToPadding="false">
+    android:paddingStart="@dimen/_14sdp"
+    android:paddingEnd="@dimen/_14sdp">
 
-    <!-- Header card -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_14sdp"
-        android:layout_marginTop="@dimen/_12sdp"
-        android:layout_marginEnd="@dimen/_14sdp"
-        android:background="@drawable/cryonix_card"
+        android:layout_height="@dimen/_58sdp"
         android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="@dimen/_12sdp">
+        android:orientation="horizontal">
 
         <ImageButton
             android:id="@+id/ai_assist_back"
@@ -31,120 +23,171 @@
             android:padding="@dimen/_10sdp"
             android:src="@drawable/ic_launcher_chevron_left" />
 
-        <ImageView
-            android:layout_width="@dimen/_40sdp"
-            android:layout_height="@dimen/_40sdp"
-            android:layout_marginStart="@dimen/_8sdp"
-            android:background="@drawable/launcher_icon_tile"
-            android:padding="@dimen/_8sdp"
-            android:contentDescription="AI Assist"
-            android:src="@drawable/ic_clean_ai"
-            app:tint="@color/accent_blue" />
-
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
             android:layout_weight="1"
-            android:layout_marginStart="@dimen/_12sdp"
             android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-medium"
-                android:text="Cryonix AI Assist"
+                android:text="Crash AI"
                 android:textColor="@color/primary_text"
-                android:textSize="@dimen/_16ssp" />
+                android:textSize="@dimen/_18ssp"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_2sdp"
-                android:text="Cryonix Launcher V2 • Setup assistant"
+                android:text="Error analysis • logs • practical fixes"
                 android:textColor="@color/secondary_text"
                 android:textSize="@dimen/_11ssp" />
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/ai_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/cryonix_chat_chip"
+            android:paddingStart="@dimen/_10sdp"
+            android:paddingEnd="@dimen/_10sdp"
+            android:paddingTop="@dimen/_6sdp"
+            android:paddingBottom="@dimen/_6sdp"
+            android:text="LOCAL DIAGNOSTIC"
+            android:textColor="@color/accent_blue"
+            android:textSize="@dimen/_9ssp" />
     </LinearLayout>
 
-    <!-- Messages -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_112sdp"
+        android:layout_marginBottom="@dimen/_8sdp"
+        android:background="@drawable/cryonix_card"
+        android:orientation="vertical"
+        android:padding="@dimen/_10sdp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Detected error"
+            android:textColor="@color/accent_blue"
+            android:textSize="@dimen/_10ssp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/ai_error_summary"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:maxLines="4"
+            android:text="Waiting for a crash report…"
+            android:textColor="@color/primary_text"
+            android:textSize="@dimen/_12ssp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_106sdp"
+        android:layout_marginBottom="@dimen/_8sdp"
+        android:background="@drawable/cryonix_card"
+        android:orientation="vertical"
+        android:padding="@dimen/_10sdp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Crash / launcher log"
+            android:textColor="@color/accent_blue"
+            android:textSize="@dimen/_10ssp"
+            android:textStyle="bold" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:layout_weight="1"
+            android:fillViewport="true"
+            android:scrollbars="vertical">
+
+            <TextView
+                android:id="@+id/ai_log_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="monospace"
+                android:text="No crash log loaded."
+                android:textColor="@color/secondary_text"
+                android:textSize="@dimen/_9ssp" />
+        </ScrollView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_42sdp"
+        android:layout_marginBottom="@dimen/_8sdp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/ai_analyze_log_button"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:layout_weight="1"
+            android:background="@drawable/launcher_btn_play"
+            android:gravity="center"
+            android:text="Analyze crash"
+            android:textColor="#071225"
+            android:textSize="@dimen/_11ssp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/ai_copy_log"
+            android:layout_width="@dimen/_92sdp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:background="@drawable/launcher_action_button"
+            android:gravity="center"
+            android:text="Copy log"
+            android:textColor="@color/accent_blue"
+            android:textSize="@dimen/_11ssp" />
+
+        <TextView
+            android:id="@+id/ai_restart"
+            android:layout_width="@dimen/_92sdp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:background="@drawable/launcher_action_button"
+            android:gravity="center"
+            android:text="Restart"
+            android:textColor="@color/accent_blue"
+            android:textSize="@dimen/_11ssp" />
+    </LinearLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/ai_message_list"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:layout_marginStart="@dimen/_14sdp"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:layout_marginEnd="@dimen/_14sdp"
-        android:layout_marginBottom="@dimen/_10sdp"
         android:clipToPadding="false"
         android:overScrollMode="never"
         android:scrollbars="none"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/item_ai_message" />
 
-    <!-- Quick topic chips -->
-    <HorizontalScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_14sdp"
-        android:layout_marginEnd="@dimen/_14sdp"
-        android:overScrollMode="never"
-        android:scrollbars="none">
-
-        <LinearLayout
-            android:id="@+id/ai_chip_container"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingBottom="@dimen/_6sdp" />
-    </HorizontalScrollView>
-
-    <!-- Crash tools -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_14sdp"
-        android:layout_marginEnd="@dimen/_14sdp"
-        android:layout_marginBottom="@dimen/_6sdp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/ai_analyze_log_button"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/_38sdp"
-            android:layout_marginEnd="@dimen/_5sdp"
-            android:layout_weight="1"
-            android:background="@drawable/launcher_action_button"
-            android:gravity="center"
-            android:paddingHorizontal="@dimen/_8sdp"
-            android:text="🔍  Analyze latest log"
-            android:textColor="#BBD0F4"
-            android:textSize="@dimen/_11ssp" />
-
-        <TextView
-            android:id="@+id/ai_clear_button"
-            android:layout_width="@dimen/_90sdp"
-            android:layout_height="@dimen/_38sdp"
-            android:background="@drawable/launcher_action_button"
-            android:gravity="center"
-            android:text="Clear chat"
-            android:textColor="#7F98BE"
-            android:textSize="@dimen/_11ssp" />
-    </LinearLayout>
-
-    <!-- Input bar -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_14sdp"
-        android:layout_marginEnd="@dimen/_14sdp"
-        android:layout_marginBottom="@dimen/_12sdp"
+        android:layout_marginTop="@dimen/_6sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
         android:background="@drawable/cryonix_card"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:paddingStart="@dimen/_12sdp"
-        android:paddingEnd="@dimen/_8sdp"
-        android:paddingVertical="@dimen/_6sdp">
+        android:paddingStart="@dimen/_10sdp"
+        android:paddingEnd="@dimen/_6sdp"
+        android:paddingVertical="@dimen/_5sdp">
 
         <EditText
             android:id="@+id/ai_input"
@@ -152,22 +195,39 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@android:color/transparent"
-            android:hint="Paste a crash/error or ask how to fix it…"
+            android:hint="Paste another error or ask about this crash…"
             android:imeOptions="flagNoExtractUi|actionSend"
             android:inputType="textMultiLine"
-            android:maxLines="3"
+            android:maxLines="2"
             android:textColor="@color/primary_text"
-            android:textColorHint="#5E769C"
-            android:textSize="@dimen/_14ssp" />
+            android:textColorHint="@color/secondary_text"
+            android:textSize="@dimen/_12ssp" />
 
         <ImageButton
             android:id="@+id/ai_send_button"
             android:layout_width="@dimen/_42sdp"
             android:layout_height="@dimen/_42sdp"
-            android:background="@drawable/launcher_sidebar_home_bg"
-            android:contentDescription="Send"
-            android:padding="@dimen/_11sdp"
+            android:background="@drawable/launcher_btn_play_circle"
+            android:contentDescription="Analyze"
+            android:padding="@dimen/_10sdp"
             android:src="@drawable/ic_cryonix_send"
             app:tint="@android:color/white" />
     </LinearLayout>
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:id="@+id/ai_chip_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </HorizontalScrollView>
+
+    <TextView
+        android:id="@+id/ai_clear_button"
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        android:visibility="gone" />
 </LinearLayout>
