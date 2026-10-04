@@ -41,17 +41,7 @@
             android:summary="@string/preference_misc_description"
             android:fragment="net.kdt.pojavlaunch.prefs.screens.LauncherPreferenceMiscellaneousFragment"
             android:icon="@drawable/ic_px_alt_sliders"
-            />
-
-
-        <Preference
-            android:key="discord_screen_setting"
-            android:title="@string/preference_discord_title"
-            android:summary="@string/preference_discord_description"
-            android:fragment="net.kdt.pojavlaunch.fragments.DiscordIntegrationFragment"
-            android:icon="@drawable/ic_px_bell" />
-
-        <Preference
+            />        <Preference
             android:key="experimental_screen_setting"
             android:title="@string/preference_experimental_title"
             android:summary="@string/preference_experimental_description"
