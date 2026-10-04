@@ -4,8 +4,8 @@
     <color name="control_button_pressed_color">#33000000</color>
 
     <color name="minebutton_color">#456B8C</color>
-    <color name="accent_blue">#70C6E8</color>
-    <color name="accent_purple">#70C6E8</color>
+    <color name="accent_blue">#456B8C</color>
+    <color name="accent_purple">#456B8C</color>
     <color name="background_app">#0B1118</color>
     <color name="divider">#2E4357</color>
     <color name="background_overlay">#16212C</color>
@@ -16,6 +16,6 @@
     <color name="primary_text">#F1F5F7</color>
     <color name="secondary_text">#91A2B2</color>
     <color name="cryonix_error">#FF7474</color>
-    <color name="cryonix_field_stroke">#354047</color>
+    <color name="cryonix_field_stroke">#2E4357</color>
     <color name="cryonix_row_fill">#121C25</color>
 </resources>
