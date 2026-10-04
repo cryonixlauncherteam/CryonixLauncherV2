@@ -306,7 +306,7 @@ public class MainMenuFragment extends Fragment {
             sidebarInfo.setOnClickListener(v -> {
                 net.kdt.pojavlaunch.utils.JellyAnimations.popIn(v, 0L, 220L);
                 Toast.makeText(requireContext(),
-                        "Cryonix Launcher Only", Toast.LENGTH_SHORT).show();
+                        "Cryonix Launcher V3", Toast.LENGTH_SHORT).show();
             });
         }
     }
