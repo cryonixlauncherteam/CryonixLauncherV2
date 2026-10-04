@@ -532,5 +532,7 @@
         <item>Emerald</item>
         <item>Violet</item>
     </string-array>
+    <string name="preference_discord_title">Discord</string>
+    <string name="preference_discord_description">Connect Discord and show Cryonix Launcher as your Rich Presence</string>
 
 </resources>
