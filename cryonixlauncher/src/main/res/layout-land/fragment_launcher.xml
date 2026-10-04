@@ -106,7 +106,7 @@
             android:contentDescription="Cursor customization"
             android:padding="9dp"
             android:src="@drawable/ic_sidebar_pointer"
-            app:tint="#6B88B4" />
+            app:tint="@android:color/white" />
 
         <Space
             android:layout_width="1dp"
@@ -121,7 +121,7 @@
             android:contentDescription="Controls"
             android:padding="9dp"
             android:src="@drawable/ic_clean_gamepad"
-            app:tint="#6B88B4" />
+            app:tint="@android:color/white" />
 
         <Space
             android:layout_width="1dp"
@@ -136,7 +136,7 @@
             android:contentDescription="Info"
             android:padding="9dp"
             android:src="@drawable/ic_sidebar_info"
-            app:tint="#6B88B4" />
+            app:tint="@android:color/white" />
 
         <Space
             android:layout_width="1dp"
@@ -151,7 +151,7 @@
             android:contentDescription="Settings"
             android:padding="9dp"
             android:src="@drawable/ic_sidebar_sliders"
-            app:tint="#6B88B4" />
+            app:tint="@android:color/white" />
     </LinearLayout>
 
     <!-- MAIN CENTER CONTENT -->
@@ -187,7 +187,7 @@
                     android:contentDescription="Instances"
                     android:padding="6dp"
                     android:src="@drawable/ic_launcher_cube"
-                    app:tint="#8BA3CB" />
+                    app:tint="@android:color/white" />
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -233,7 +233,7 @@
                     android:contentDescription="Previous"
                     android:padding="4dp"
                     android:src="@drawable/ic_launcher_chevron_left"
-                    app:tint="#8BA3CB" />
+                    app:tint="@android:color/white" />
 
                 <ImageButton
                     android:id="@+id/btn_next_instance"
@@ -244,7 +244,7 @@
                     android:contentDescription="Next"
                     android:padding="4dp"
                     android:src="@drawable/ic_launcher_chevron_right"
-                    app:tint="#8BA3CB" />
+                    app:tint="@android:color/white" />
 
                 <ImageButton
                     android:id="@+id/btn_add_instance_panel"
@@ -368,7 +368,7 @@
                 android:contentDescription="Options"
                 android:padding="4dp"
                 android:src="@drawable/ic_launcher_more"
-                app:tint="#5E789E" />
+                app:tint="@android:color/white" />
         </LinearLayout>
 
         <TextView
