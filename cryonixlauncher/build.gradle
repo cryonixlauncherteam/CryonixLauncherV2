@@ -50,7 +50,7 @@ configurations {
 }
 
 android {
-    namespace 'git.artdeell.mojo'
+    namespace 'git.neko.cryonixlauncher'
 
     compileSdk = 36
 
@@ -80,14 +80,14 @@ android {
     }
 
     defaultConfig {
-        applicationId "git.artdeell.mjlaunch"
+        applicationId "git.neko.cryonixlauncher"
         minSdkVersion 23
         targetSdkVersion 36
         versionCode getDateSeconds()
         versionName getVersionName()
         multiDexEnabled false //important
         resValue 'string', 'curseforge_api_key', getCFApiKey()
-        resValue 'string', 'group_id', 'git.artdeell'
+        resValue 'string', 'group_id', 'git.neko'
     }
 
     flavorDimensions  = ["runtime"]
@@ -110,8 +110,8 @@ android {
             shrinkResources false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.customDebug
-            resValue 'string', 'application_package', 'git.artdeell.mjlaunch.debug'
-            resValue 'string', 'storageProviderAuthorities', 'git.artdeell.mjlaunch.scoped.gamefolder.debug'
+            resValue 'string', 'application_package', 'git.neko.cryonixlauncher.debug'
+            resValue 'string', 'storageProviderAuthorities', 'git.neko.cryonixlauncher.scoped.gamefolder.debug'
         }
         proguard {
             initWith debug
@@ -131,8 +131,8 @@ android {
             // defaultConfig already set
             // multiDexEnabled = true
             // debuggable = true
-            resValue 'string', 'storageProviderAuthorities', 'git.artdeell.mjlaunch.scoped.gamefolder'
-            resValue 'string', 'application_package', 'git.artdeell.mjlaunch'
+            resValue 'string', 'storageProviderAuthorities', 'git.neko.cryonixlauncher.scoped.gamefolder'
+            resValue 'string', 'application_package', 'git.neko.cryonixlauncher'
         }
         gplay {
             initWith release
