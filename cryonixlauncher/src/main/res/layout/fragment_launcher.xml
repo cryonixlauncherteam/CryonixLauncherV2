@@ -34,20 +34,7 @@
             android:contentDescription="Home"
             android:padding="9dp"
             android:src="@drawable/ic_px_home" 
-            app:tint="@android:color/white"/>
-
-        <ImageButton
-            android:id="@+id/sidebar_ai_assist"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginBottom="4dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="Cursor"
-            android:padding="12dp"
-            android:src="@drawable/ic_px_mouse" 
-            app:tint="@android:color/white"/>
-
-        <Button
+            app:tint="@android:color/white"/><Button
             android:id="@+id/custom_control_button"
             android:layout_width="40dp"
             android:layout_height="40dp"
