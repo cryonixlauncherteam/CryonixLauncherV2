@@ -63,6 +63,7 @@ import net.kdt.pojavlaunch.prefs.LauncherPreferences;
 import net.kdt.pojavlaunch.utils.FileUtils;
 import net.kdt.pojavlaunch.utils.GLInfoUtils;
 import net.kdt.pojavlaunch.utils.JellyAnimations;
+import net.kdt.pojavlaunch.utils.CryonixThemeManager;
 import net.kdt.pojavlaunch.value.DependentLibrary;
 import net.kdt.pojavlaunch.value.LibraryArtifact;
 
@@ -452,6 +453,7 @@ public final class Tools {
                 .setPositiveButton(android.R.string.ok, null)
                 .create();
         dialog.show();
+        CryonixThemeManager.applyDialog(dialog);
         if (dialog.getWindow() != null) JellyAnimations.animateDialog(dialog.getWindow().getDecorView());
     }
 
@@ -462,6 +464,7 @@ public final class Tools {
                 .setPositiveButton(android.R.string.ok, null)
                 .create();
         dialog.show();
+        CryonixThemeManager.applyDialog(dialog);
         if (dialog.getWindow() != null) JellyAnimations.animateDialog(dialog.getWindow().getDecorView());
     }
 
