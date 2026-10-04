@@ -32,6 +32,8 @@ import git.artdeell.mojo.R;
 import net.kdt.pojavlaunch.CustomControlsActivity;
 import net.kdt.pojavlaunch.LauncherActivity;
 import net.kdt.pojavlaunch.Tools;
+import net.kdt.pojavlaunch.authenticator.accounts.Account;
+import net.kdt.pojavlaunch.authenticator.accounts.Accounts;
 import net.kdt.pojavlaunch.contracts.OpenDocumentWithExtension;
 import net.kdt.pojavlaunch.extra.ExtraConstants;
 import net.kdt.pojavlaunch.extra.ExtraCore;
@@ -163,12 +165,9 @@ public class MainMenuFragment extends Fragment {
             });
         }
 
-        // Keep the home account chip visually empty; account selection is handled
-        // by the chip itself and the persisted account remains available to launch.
-        TextView profileName = view.findViewById(R.id.profile_name);
-        if (profileName != null) {
-            profileName.setText("");
-        }
+        // Show the persisted account in the home chip. If no account is selected,
+        // keep the chip empty instead of displaying a fake/default username.
+        updateAccountChip(view);
 
         if (mEditProfileButton != null && mVersionSpinner != null) {
             mEditProfileButton.setOnClickListener(v -> mVersionSpinner.openProfileEditor(requireActivity()));
@@ -370,7 +369,25 @@ public class MainMenuFragment extends Fragment {
     public void onResume() {
         super.onResume();
         ExtraCore.setValue(ExtraConstants.REFRESH_ACCOUNT_SPINNER, true);
+        updateAccountChip(getView());
         reloadInstances();
+    }
+
+    private void updateAccountChip(View root) {
+        if (root == null) return;
+        TextView profileName = root.findViewById(R.id.profile_name);
+        if (profileName == null) return;
+
+        try {
+            Account current = Accounts.getCurrent();
+            if (current != null && current.username != null && !current.username.trim().isEmpty()) {
+                profileName.setText(current.username.trim());
+            } else {
+                profileName.setText("");
+            }
+        } catch (Throwable ignored) {
+            profileName.setText("");
+        }
     }
 
     private void reloadInstances() {
