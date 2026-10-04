@@ -50,6 +50,40 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '17'
+      - name: Prepare Cryonix renderer native libraries
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p cryonixlauncher/src/main/jniLibs
+          for abi in arm64-v8a armeabi-v7a x86 x86_64; do
+            mkdir -p "cryonixlauncher/src/main/jniLibs/$abi"
+          done
+
+          # MobileGlues official V2.0.0 release. The APK contains the real
+          # per-ABI libmobileglues.so binaries; extract them without renaming.
+          curl -L --fail --retry 3 -o /tmp/MobileGlues.apk \\
+            https://github.com/MobileGL-Dev/MobileGlues-release/releases/download/V2.0.0/MobileGlues_2.0.0.apk
+          for abi in arm64-v8a armeabi-v7a x86 x86_64; do
+            unzip -p /tmp/MobileGlues.apk "lib/$abi/libmobileglues.so" > "cryonixlauncher/src/main/jniLibs/$abi/libmobileglues.so"
+            test -s "cryonixlauncher/src/main/jniLibs/$abi/libmobileglues.so"
+          done
+
+          # Krypton Wrapper / NG-GL4ES is built from its upstream source so
+          # Cryonix gets genuine per-ABI libng_gl4es.so binaries.
+          git clone --depth 1 --recurse-submodules https://github.com/FCL-Team/NG-GL4ES.git /tmp/NG-GL4ES
+          cd /tmp/NG-GL4ES
+          chmod +x gradlew
+          ./gradlew assembleRelease
+          unzip -q build/outputs/aar/NG-GL4ES-release.aar -d /tmp/ng-gl4es-aar
+          for abi in arm64-v8a armeabi-v7a x86 x86_64; do
+            cp "/tmp/ng-gl4es-aar/jni/$abi/libng_gl4es.so" \\
+              "$GITHUB_WORKSPACE/cryonixlauncher/src/main/jniLibs/$abi/libng_gl4es.so"
+            test -s "$GITHUB_WORKSPACE/cryonixlauncher/src/main/jniLibs/$abi/libng_gl4es.so"
+          done
+
+          echo "Cryonix renderer libraries:"
+          find "$GITHUB_WORKSPACE/cryonixlauncher/src/main/jniLibs" -type f -name '*.so' -printf '%p %s bytes\\n' | sort
+
       - name: Create out directory
         run: mkdir out
       - name: Build Publishing .aab
@@ -63,7 +97,7 @@ jobs:
         run: |
           # Build the launcher
           gradle :app_pojavlauncher:assembleFullDebug
-          mv cryonixlauncher/build/outputs/apk/full/debug/app_pojavlauncher-full-debug.apk out/app-debug-full.apk
+          mv cryonixlauncher/build/outputs/apk/full/debug/app_pojavlauncher-full-debug.apk out/cryonixlauncher_runtime.apk
 
       - name: Build Debug .apk (No runtime)
         run: |
@@ -76,14 +110,14 @@ jobs:
           mv cryonixlauncher/build/outputs/apk/full/pubRelease/app_pojavlauncher-full-pubRelease.apk out/MojoLauncher-release.apk
       - name: Gen md5sums
         run: |
-          md5sum out/app-debug-full.apk > out/app-debug-full.md5
+          md5sum out/cryonixlauncher_runtime.apk > out/cryonixlauncher_runtime.md5
           md5sum out/app-debug-noruntime.apk > out/app-debug-noruntime.md5
 
       - name: Upload Debug APK
         uses: actions/upload-artifact@v4
         with:
-          name: app-debug
-          path: out/app-debug-full.apk
+          name: cryonixlauncher_runtime
+          path: out/cryonixlauncher_runtime.apk
 
       - name: Upload Debug APK (No runtime)
         uses: actions/upload-artifact@v4
