@@ -18,4 +18,10 @@
     <color name="cryonix_error">#FF7474</color>
     <color name="cryonix_field_stroke">#2E4357</color>
     <color name="cryonix_row_fill">#121C25</color>
+    <color name="launcher_accent">#456B8C</color>
+    <color name="launcher_surface">#121C25</color>
+    <color name="launcher_surface_alt">#16212C</color>
+    <color name="launcher_divider">#2E4357</color>
+    <color name="launcher_muted">#91A2B2</color>
+    <color name="launcher_icon">#FFFFFF</color>
 </resources>
