@@ -20,7 +20,7 @@ import java.security.SecureRandom;
 
 public final class DiscordRichPresenceManager {
     private static final String PREFS = "cryonix_discord";
-    public static final String APPLICATION_ID = "1556190507640692796";
+    public static final String APPLICATION_ID = "1556312152409903177";
     public static final String REDIRECT_URI = "discord-" + APPLICATION_ID + ":/authorize/callback";
 
     private static final String KEY_ENABLED = "rich_presence_enabled";
