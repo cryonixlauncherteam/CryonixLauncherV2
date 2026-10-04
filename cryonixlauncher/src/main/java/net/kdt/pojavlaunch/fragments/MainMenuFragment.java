@@ -292,6 +292,29 @@ public class MainMenuFragment extends Fragment {
             }
             return false;
         });
+
+        // Reference-video entrance choreography: sidebar, header, cards and panel
+        // enter independently instead of the whole home screen popping together.
+        net.kdt.pojavlaunch.utils.JellyAnimations.stagger(
+                (ViewGroup) view.findViewById(R.id.home_sidebar), 70L, 300L);
+        net.kdt.pojavlaunch.utils.JellyAnimations.stagger(
+                (ViewGroup) view.findViewById(R.id.home_header), 55L, 260L);
+        net.kdt.pojavlaunch.utils.JellyAnimations.stagger(
+                (ViewGroup) view.findViewById(R.id.instances_header), 55L, 260L);
+        net.kdt.pojavlaunch.utils.JellyAnimations.stagger(
+                (ViewGroup) view.findViewById(R.id.profile_panel), 55L, 250L);
+        net.kdt.pojavlaunch.utils.JellyAnimations.stagger(
+                (ViewGroup) view.findViewById(R.id.ai_assist_card), 65L, 260L);
+
+        View sidebarInfo = view.findViewById(R.id.sidebar_info);
+        if (sidebarInfo != null) {
+            applyJellyTouch(sidebarInfo);
+            sidebarInfo.setOnClickListener(v -> {
+                net.kdt.pojavlaunch.utils.JellyAnimations.popIn(v, 0L, 220L);
+                Toast.makeText(requireContext(),
+                        "Cryonix Launcher V3", Toast.LENGTH_SHORT).show();
+            });
+        }
     }
 
 
@@ -445,6 +468,11 @@ public class MainMenuFragment extends Fragment {
             DisplayInstance instance = mList.get(bindingPos);
             vh.name.setText(instance.name);
             vh.version.setText(instance.versionId != null ? instance.versionId : "");
+
+            // Every instance card gets its own entrance timing.
+            vh.itemView.post(() ->
+                    net.kdt.pojavlaunch.utils.JellyAnimations.popIn(
+                            vh.itemView, Math.min(bindingPos * 95L, 380L), 300L));
 
             boolean isSelected = bindingPos == mSelectedIndex;
             vh.itemView.setBackgroundResource(isSelected ? R.drawable.launcher_card_border_bg : R.drawable.launcher_card_flat);
