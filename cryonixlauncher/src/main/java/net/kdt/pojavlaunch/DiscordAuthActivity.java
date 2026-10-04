@@ -25,7 +25,7 @@ public class DiscordAuthActivity extends Activity {
     private void handleIntent(Intent intent) {
         Uri uri = intent == null ? null : intent.getData();
         if (uri == null || !DiscordRichPresenceManager.REDIRECT_URI.equals(
-                uri.getScheme() + "://" + uri.getHost() + uri.getPath())) {
+                uri.getScheme() + ":" + uri.getPath())) {
             finish();
             return;
         }
