@@ -131,7 +131,7 @@
         android:layout_marginBottom="@dimen/_8sdp"
         android:orientation="horizontal">
 
-        <TextView
+        <Button
             android:id="@+id/ai_analyze_log_button"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -142,9 +142,10 @@
             android:text="Analyze crash"
             android:textColor="#071225"
             android:textSize="@dimen/_11ssp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textAllCaps="false" />
 
-        <TextView
+        <Button
             android:id="@+id/ai_copy_log"
             android:layout_width="@dimen/_92sdp"
             android:layout_height="match_parent"
@@ -153,9 +154,10 @@
             android:gravity="center"
             android:text="Copy log"
             android:textColor="@color/accent_blue"
-            android:textSize="@dimen/_11ssp" />
+            android:textSize="@dimen/_11ssp"
+            android:textAllCaps="false" />
 
-        <TextView
+        <Button
             android:id="@+id/ai_restart"
             android:layout_width="@dimen/_92sdp"
             android:layout_height="match_parent"
@@ -164,7 +166,8 @@
             android:gravity="center"
             android:text="Restart"
             android:textColor="@color/accent_blue"
-            android:textSize="@dimen/_11ssp" />
+            android:textSize="@dimen/_11ssp"
+            android:textAllCaps="false" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
