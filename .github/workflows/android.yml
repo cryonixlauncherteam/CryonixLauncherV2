@@ -91,7 +91,7 @@ jobs:
         run: |
           # Build the launcher
           gradle :app_pojavlauncher:assembleFullDebug
-          mv cryonixlauncher/build/outputs/apk/full/debug/app_pojavlauncher-full-debug.apk out/cryonixlauncher_runtime.apk
+          mv cryonixlauncher/build/outputs/apk/full/debug/app_pojavlauncher-full-debug.apk out/cryonixlauncher-arm-x64.apk
 
       - name: Build Debug .apk (No runtime)
         run: |
@@ -104,14 +104,14 @@ jobs:
           mv cryonixlauncher/build/outputs/apk/full/pubRelease/app_pojavlauncher-full-pubRelease.apk out/MojoLauncher-release.apk
       - name: Gen md5sums
         run: |
-          md5sum out/cryonixlauncher_runtime.apk > out/cryonixlauncher_runtime.md5
+          md5sum out/cryonixlauncher-arm-x64.apk > out/cryonixlauncher-arm-x64.md5
           md5sum out/app-debug-noruntime.apk > out/app-debug-noruntime.md5
 
       - name: Upload Debug APK
         uses: actions/upload-artifact@v4
         with:
-          name: cryonixlauncher_runtime
-          path: out/cryonixlauncher_runtime.apk
+          name: cryonixlauncher-arm-x64
+          path: out/cryonixlauncher-arm-x64.apk
 
       - name: Upload Debug APK (No runtime)
         uses: actions/upload-artifact@v4
@@ -146,8 +146,8 @@ jobs:
 
             **Build commit:** ${{ github.sha }}
           files: |
-            out/cryonixlauncher_runtime.apk
-            out/cryonixlauncher_runtime.md5
+            out/cryonixlauncher-arm-x64.apk
+            out/cryonixlauncher-arm-x64.md5
 
       - name: Release Nightly APK
         if: github.repository_owner == 'MojoLauncher' && github.ref_name == 'v3_openjdk'
@@ -163,6 +163,7 @@ jobs:
             out/MojoLauncher-release.apk
 
       - name: Upload AAB
+        if: github.repository_owner == 'MojoLauncher' && github.ref_name == 'v3_openjdk'
         uses: actions/upload-artifact@v4
         with:
           name: app-release-aab
