@@ -797,17 +797,17 @@ public final class Tools {
         //TODO handle custom animations
         fragmentActivity.getSupportFragmentManager().beginTransaction()
                 .setReorderingAllowed(true)
-                .setCustomAnimations(R.animator.cryonix_bounce, R.animator.cryonix_bounce,
-                        R.animator.cryonix_bounce, R.animator.cryonix_bounce)
+                .setCustomAnimations(R.anim.bounce_enter, R.anim.bounce_exit,
+                        R.anim.bounce_pop_enter, R.anim.bounce_pop_exit)
                 .addToBackStack(fragmentClass.getName())
                 .replace(R.id.container_fragment, fragmentClass, bundle, fragmentTag).commit();
     }
 
-    /** Play the Cryonix jelly squish effect on a tapped view (buttons, chips). */
+    /** Play the Cryonix bounce press effect on a tapped view (buttons, chips). */
     public static void jellyClick(View v) {
         if (v == null) return;
         try {
-            android.animation.Animator animator = android.animation.AnimatorInflater.loadAnimator(v.getContext(), R.animator.cryonix_bounce);
+            android.animation.Animator animator = android.animation.AnimatorInflater.loadAnimator(v.getContext(), R.animator.bounce_pop);
             animator.setTarget(v);
             animator.start();
         } catch (Throwable ignored) {
