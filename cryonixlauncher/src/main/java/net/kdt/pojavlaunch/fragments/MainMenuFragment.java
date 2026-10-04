@@ -300,50 +300,119 @@ public class MainMenuFragment extends Fragment {
 
 
     private void showAccountManager() {
-        final android.widget.LinearLayout list = new android.widget.LinearLayout(requireContext());
-        list.setOrientation(android.widget.LinearLayout.VERTICAL);
-        list.setPadding(20, 4, 20, 4);
+        final android.app.Dialog dialog = new android.app.Dialog(requireContext());
+        dialog.requestWindowFeature(android.view.Window.FEATURE_NO_TITLE);
+
+        final int dp = (int) (requireContext().getResources().getDisplayMetrics().density + 0.5f);
+
+        final android.widget.LinearLayout root = new android.widget.LinearLayout(requireContext());
+        root.setOrientation(android.widget.LinearLayout.VERTICAL);
+        root.setPadding(18 * dp, 14 * dp, 18 * dp, 14 * dp);
+
+        android.graphics.drawable.GradientDrawable background =
+                new android.graphics.drawable.GradientDrawable();
+        background.setColor(android.graphics.Color.rgb(8, 14, 22));
+        background.setCornerRadius(18 * dp);
+        background.setStroke(Math.max(1, dp), android.graphics.Color.rgb(39, 91, 145));
+        root.setBackground(background);
+
+        final TextView title = new TextView(requireContext());
+        title.setText("Accounts");
+        title.setTextColor(android.graphics.Color.rgb(242, 244, 247));
+        title.setTextSize(18);
+        title.setTypeface(android.graphics.Typeface.DEFAULT, android.graphics.Typeface.BOLD);
+        root.addView(title, new android.widget.LinearLayout.LayoutParams(
+                android.widget.LinearLayout.LayoutParams.MATCH_PARENT,
+                android.widget.LinearLayout.LayoutParams.WRAP_CONTENT));
+
+        final TextView subtitle = new TextView(requireContext());
+        subtitle.setText("Saved accounts");
+        subtitle.setTextColor(android.graphics.Color.rgb(125, 137, 151));
+        subtitle.setTextSize(11);
+        subtitle.setPadding(0, 2 * dp, 0, 8 * dp);
+        root.addView(subtitle, new android.widget.LinearLayout.LayoutParams(
+                android.widget.LinearLayout.LayoutParams.MATCH_PARENT,
+                android.widget.LinearLayout.LayoutParams.WRAP_CONTENT));
 
         final android.widget.ScrollView scroll = new android.widget.ScrollView(requireContext());
+        scroll.setOverScrollMode(View.OVER_SCROLL_NEVER);
+        final android.widget.LinearLayout list = new android.widget.LinearLayout(requireContext());
+        list.setOrientation(android.widget.LinearLayout.VERTICAL);
         scroll.addView(list);
+        root.addView(scroll, new android.widget.LinearLayout.LayoutParams(
+                android.widget.LinearLayout.LayoutParams.MATCH_PARENT, 0, 1f));
 
-        final AlertDialog dialog = new AlertDialog.Builder(requireContext())
-                .setTitle("Accounts")
-                .setMessage("Hold the account chip to manage saved accounts.")
-                .setView(scroll)
-                .setNegativeButton(R.string.global_no, null)
-                .create();
+        final TextView close = new TextView(requireContext());
+        close.setText("Close");
+        close.setGravity(android.view.Gravity.CENTER);
+        close.setTextColor(android.graphics.Color.rgb(185, 203, 225));
+        close.setTextSize(12);
+        close.setPadding(10 * dp, 10 * dp, 10 * dp, 2 * dp);
+        close.setClickable(true);
+        close.setOnClickListener(v -> dialog.dismiss());
+        root.addView(close, new android.widget.LinearLayout.LayoutParams(
+                android.widget.LinearLayout.LayoutParams.MATCH_PARENT,
+                android.widget.LinearLayout.LayoutParams.WRAP_CONTENT));
+
+        dialog.setContentView(root);
+        dialog.setOnShowListener(d -> {
+            android.view.Window window = dialog.getWindow();
+            if (window != null) {
+                window.setBackgroundDrawableResource(android.R.color.transparent);
+                android.view.WindowManager.LayoutParams lp = window.getAttributes();
+                int screenWidth = requireContext().getResources().getDisplayMetrics().widthPixels;
+                int maxWidth = 420 * dp;
+                lp.width = Math.min(maxWidth, (int) (screenWidth * 0.58f));
+                lp.height = android.view.WindowManager.LayoutParams.WRAP_CONTENT;
+                lp.dimAmount = 0.68f;
+                window.setAttributes(lp);
+                window.addFlags(android.view.WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+            }
+            net.kdt.pojavlaunch.utils.JellyAnimations.animateDialog(root);
+        });
 
         try {
             Accounts loaded = Accounts.load();
             if (loaded.accounts.isEmpty()) {
                 TextView empty = new TextView(requireContext());
                 empty.setText("No saved accounts");
-                empty.setTextColor(android.graphics.Color.LTGRAY);
-                empty.setTextSize(13);
-                empty.setPadding(8, 18, 8, 18);
+                empty.setTextColor(android.graphics.Color.rgb(155, 164, 174));
+                empty.setTextSize(12);
+                empty.setPadding(8 * dp, 16 * dp, 8 * dp, 16 * dp);
                 list.addView(empty);
             } else {
+                long delay = 60L;
                 for (Account account : loaded.accounts) {
                     android.widget.LinearLayout row = new android.widget.LinearLayout(requireContext());
                     row.setOrientation(android.widget.LinearLayout.HORIZONTAL);
                     row.setGravity(android.view.Gravity.CENTER_VERTICAL);
-                    row.setPadding(8, 8, 4, 8);
-                    row.setBackgroundResource(R.drawable.launcher_action_button);
+                    row.setPadding(12 * dp, 7 * dp, 6 * dp, 7 * dp);
+
+                    android.graphics.drawable.GradientDrawable rowBg =
+                            new android.graphics.drawable.GradientDrawable();
+                    rowBg.setColor(android.graphics.Color.rgb(14, 22, 32));
+                    rowBg.setCornerRadius(12 * dp);
+                    rowBg.setStroke(Math.max(1, dp), android.graphics.Color.rgb(31, 45, 61));
+                    row.setBackground(rowBg);
 
                     TextView name = new TextView(requireContext());
                     name.setText(account.username == null ? "Unknown account" : account.username);
-                    name.setTextColor(android.graphics.Color.WHITE);
-                    name.setTextSize(14);
+                    name.setTextColor(android.graphics.Color.rgb(225, 229, 234));
+                    name.setTextSize(13);
                     name.setSingleLine(true);
                     name.setEllipsize(android.text.TextUtils.TruncateAt.END);
-                    row.addView(name, new android.widget.LinearLayout.LayoutParams(0, android.widget.LinearLayout.LayoutParams.WRAP_CONTENT, 1f));
+                    row.addView(name, new android.widget.LinearLayout.LayoutParams(
+                            0, android.widget.LinearLayout.LayoutParams.WRAP_CONTENT, 1f));
 
                     Button delete = new Button(requireContext());
                     delete.setText("Delete");
                     delete.setTextSize(10);
-                    delete.setTextColor(android.graphics.Color.WHITE);
+                    delete.setTextColor(android.graphics.Color.rgb(205, 211, 218));
                     delete.setAllCaps(false);
+                    delete.setMinHeight(0);
+                    delete.setMinWidth(0);
+                    delete.setPadding(10 * dp, 0, 10 * dp, 0);
+                    delete.setBackgroundColor(android.graphics.Color.TRANSPARENT);
                     delete.setOnClickListener(v -> {
                         new AlertDialog.Builder(requireContext())
                                 .setTitle("Delete account?")
@@ -366,8 +435,8 @@ public class MainMenuFragment extends Fragment {
                                         Accounts.delete(account);
                                         updateAccountChip(getView());
                                         ExtraCore.setValue(ExtraConstants.REFRESH_ACCOUNT_SPINNER, true);
-                                        showAccountManager();
                                         dialog.dismiss();
+                                        root.postDelayed(this::showAccountManager, 120L);
                                     } catch (Exception e) {
                                         Toast.makeText(requireContext(), "Failed to delete account", Toast.LENGTH_SHORT).show();
                                     }
@@ -377,27 +446,33 @@ public class MainMenuFragment extends Fragment {
                     });
                     net.kdt.pojavlaunch.utils.JellyAnimations.pressFeedback(delete);
                     row.addView(delete, new android.widget.LinearLayout.LayoutParams(
-                            android.widget.LinearLayout.LayoutParams.WRAP_CONTENT,
-                            42));
-                    list.addView(row, new android.widget.LinearLayout.LayoutParams(
-                            android.widget.LinearLayout.LayoutParams.MATCH_PARENT, 52));
-                    android.view.ViewGroup.MarginLayoutParams lp = (android.view.ViewGroup.MarginLayoutParams) row.getLayoutParams();
-                    lp.bottomMargin = 6;
-                    row.setLayoutParams(lp);
+                            android.widget.LinearLayout.LayoutParams.WRAP_CONTENT, 34 * dp));
+
+                    android.widget.LinearLayout.LayoutParams rowLp =
+                            new android.widget.LinearLayout.LayoutParams(
+                                    android.widget.LinearLayout.LayoutParams.MATCH_PARENT, 48 * dp);
+                    rowLp.bottomMargin = 6 * dp;
+                    list.addView(row, rowLp);
+
+                    row.setAlpha(0f);
+                    row.animate()
+                            .alpha(1f)
+                            .setStartDelay(delay)
+                            .setDuration(220L)
+                            .setInterpolator(new android.view.animation.DecelerateInterpolator())
+                            .start();
+                    delay += 42L;
                 }
             }
         } catch (Exception e) {
             TextView error = new TextView(requireContext());
             error.setText("Unable to load saved accounts");
-            error.setTextColor(android.graphics.Color.LTGRAY);
-            error.setPadding(8, 18, 8, 18);
+            error.setTextColor(android.graphics.Color.rgb(155, 164, 174));
+            error.setTextSize(12);
+            error.setPadding(8 * dp, 16 * dp, 8 * dp, 16 * dp);
             list.addView(error);
         }
 
-        dialog.setOnShowListener(d -> {
-            View root = dialog.getWindow() == null ? null : dialog.getWindow().getDecorView();
-            if (root != null) net.kdt.pojavlaunch.utils.JellyAnimations.animateDialog(root);
-        });
         dialog.show();
     }
 
