@@ -33,7 +33,7 @@
             android:fontFamily="sans-serif-black"
             android:letterSpacing="0.03"
             android:text="CRYONIX LAUNCHER V3"
-            android:textColor="@android:color/white"
+            android:textColor="@color/launcher_icon"
             android:textSize="20sp" />
     </LinearLayout>
 
@@ -64,7 +64,7 @@
             android:layout_marginStart="8dp"
             android:fontFamily="sans-serif-medium"
             android:text="nemosteikwzh"
-            android:textColor="@android:color/white"
+            android:textColor="@color/launcher_icon"
             android:textSize="13sp" />
     </LinearLayout>
 
@@ -91,7 +91,7 @@
             android:contentDescription="Home"
             android:padding="7dp"
             android:src="@drawable/ic_clean_home"
-            app:tint="@android:color/white" />
+            app:tint="@color/launcher_icon" />
 
         <ImageButton
             android:id="@+id/custom_control_button"
@@ -101,7 +101,7 @@
             android:contentDescription="Controls"
             android:padding="7dp"
             android:src="@drawable/ic_clean_gamepad"
-            app:tint="@android:color/white" />
+            app:tint="@color/launcher_icon" />
 
         <ImageButton
             android:id="@+id/sidebar_cursor_customization"
@@ -111,7 +111,7 @@
             android:contentDescription="Cursor customization"
             android:padding="7dp"
             android:src="@drawable/ic_sidebar_cursor"
-            app:tint="@android:color/white" />
+            app:tint="@color/launcher_icon" />
 
         <ImageButton
             android:id="@+id/install_jar_button"
@@ -121,7 +121,7 @@
             android:contentDescription="Info"
             android:padding="7dp"
             android:src="@drawable/ic_sidebar_info"
-            app:tint="@android:color/white" />
+            app:tint="@color/launcher_icon" />
 
         <ImageButton
             android:id="@+id/sidebar_settings"
@@ -131,7 +131,7 @@
             android:contentDescription="Settings"
             android:padding="7dp"
             android:src="@drawable/ic_sidebar_sliders"
-            app:tint="@android:color/white" />
+            app:tint="@color/launcher_icon" />
     </LinearLayout>
 
     <!-- MAIN CENTER CONTENT -->
@@ -167,7 +167,7 @@
                     android:contentDescription="Instances"
                     android:padding="6dp"
                     android:src="@drawable/ic_launcher_cube"
-                    app:tint="@android:color/white" />
+                    app:tint="@color/launcher_icon" />
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -182,14 +182,14 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-black"
                         android:text="Instances"
-                        android:textColor="@android:color/white"
+                        android:textColor="@color/launcher_icon"
                         android:textSize="18sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="instances"
-                        android:textColor="#5E789E"
+                        android:textColor="@color/launcher_muted"
                         android:textSize="11sp" />
                 </LinearLayout>
 
@@ -202,7 +202,7 @@
                     android:paddingHorizontal="10dp"
                     android:paddingVertical="4dp"
                     android:text="2/2"
-                    android:textColor="#8BA3CB"
+                    android:textColor="@color/launcher_muted"
                     android:textSize="12sp" />
 
                 <ImageButton
@@ -213,7 +213,7 @@
                     android:contentDescription="Previous"
                     android:padding="4dp"
                     android:src="@drawable/ic_launcher_chevron_left"
-                    app:tint="@android:color/white" />
+                    app:tint="@color/launcher_icon" />
 
                 <ImageButton
                     android:id="@+id/btn_next_instance"
@@ -224,7 +224,7 @@
                     android:contentDescription="Next"
                     android:padding="4dp"
                     android:src="@drawable/ic_launcher_chevron_right"
-                    app:tint="@android:color/white" />
+                    app:tint="@color/launcher_icon" />
 
                 <ImageButton
                     android:id="@+id/btn_add_instance_panel"
@@ -235,7 +235,7 @@
                     android:contentDescription="Add Instance"
                     android:padding="8dp"
                     android:src="@drawable/ic_add"
-                    app:tint="@android:color/white" />
+                    app:tint="@color/launcher_icon" />
             </LinearLayout>
 
             <!-- RECYCLER VIEW FOR INSTANCES -->
@@ -290,7 +290,7 @@
                 android:fontFamily="sans-serif-bold"
                 android:singleLine="true"
                 android:text="Fabric"
-                android:textColor="@android:color/white"
+                android:textColor="@color/launcher_icon"
                 android:textSize="16sp" />
 
             <ImageButton
@@ -301,7 +301,7 @@
                 android:contentDescription="Options"
                 android:padding="4dp"
                 android:src="@drawable/ic_launcher_more"
-                app:tint="@android:color/white" />
+                app:tint="@color/launcher_icon" />
         </LinearLayout>
 
         <TextView
@@ -310,7 +310,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
             android:text="fabric-loader-0.19.5-26.3"
-            android:textColor="#5E789E"
+            android:textColor="@color/launcher_muted"
             android:textSize="11sp" />
 
         <LinearLayout
@@ -329,7 +329,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:text="Ready"
-                android:textColor="#00D6A0"
+                android:textColor="@color/launcher_accent"
                 android:textSize="11sp" />
         </LinearLayout>
 
@@ -342,7 +342,7 @@
             android:fontFamily="sans-serif-black"
             android:stateListAnimator="@null"
             android:text="▶  Launch"
-            android:textColor="#07101E"
+            android:textColor="@color/background_app"
             android:textSize="15sp" />
 
         <LinearLayout
@@ -361,7 +361,7 @@
                 android:paddingStart="12dp"
                 android:paddingEnd="12dp"
                 android:text="Edit"
-                android:textColor="#BBD0F4"
+                android:textColor="@color/launcher_muted"
                 android:textSize="11sp" />
 
             <Button
@@ -375,7 +375,7 @@
                 android:paddingStart="10dp"
                 android:paddingEnd="10dp"
                 android:text="Duplicate"
-                android:textColor="#BBD0F4"
+                android:textColor="@color/launcher_muted"
                 android:textSize="11sp" />
         </LinearLayout>
 
@@ -395,7 +395,7 @@
                 android:paddingStart="12dp"
                 android:paddingEnd="12dp"
                 android:text="Delete"
-                android:textColor="#BBD0F4"
+                android:textColor="@color/launcher_muted"
                 android:textSize="11sp" />
 
             <Button
@@ -409,7 +409,7 @@
                 android:paddingStart="8dp"
                 android:paddingEnd="8dp"
                 android:text="Open folder"
-                android:textColor="#BBD0F4"
+                android:textColor="@color/launcher_muted"
                 android:textSize="11sp" />
         </LinearLayout>
     </LinearLayout>
