@@ -61,8 +61,7 @@ jobs:
 
           # MobileGlues official V2.0.0 release. The APK contains the real
           # per-ABI libmobileglues.so binaries; extract them without renaming.
-          curl -L --fail --retry 3 -o /tmp/MobileGlues.apk \\
-            https://github.com/MobileGL-Dev/MobileGlues-release/releases/download/V2.0.0/MobileGlues_2.0.0.apk
+          curl -L --fail --retry 3 -o /tmp/MobileGlues.apk https://github.com/MobileGL-Dev/MobileGlues-release/releases/download/V2.0.0/MobileGlues_2.0.0.apk
           for abi in arm64-v8a armeabi-v7a x86 x86_64; do
             unzip -p /tmp/MobileGlues.apk "lib/$abi/libmobileglues.so" > "cryonixlauncher/src/main/jniLibs/$abi/libmobileglues.so"
             test -s "cryonixlauncher/src/main/jniLibs/$abi/libmobileglues.so"
@@ -73,6 +72,8 @@ jobs:
           git clone --depth 1 --recurse-submodules https://github.com/FCL-Team/NG-GL4ES.git /tmp/NG-GL4ES
           cd /tmp/NG-GL4ES
           chmod +x gradlew
+          yes | sdkmanager --licenses >/dev/null 2>&1 || true
+          sdkmanager "ndk;27.2.12479018"
           ./gradlew assembleRelease
           unzip -q build/outputs/aar/NG-GL4ES-release.aar -d /tmp/ng-gl4es-aar
           for abi in arm64-v8a armeabi-v7a x86 x86_64; do
