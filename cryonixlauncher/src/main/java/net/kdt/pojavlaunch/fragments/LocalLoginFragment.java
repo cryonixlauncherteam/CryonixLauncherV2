@@ -14,6 +14,7 @@ import net.kdt.pojavlaunch.Tools;
 import net.kdt.pojavlaunch.utils.JellyAnimations;
 import net.kdt.pojavlaunch.extra.ExtraConstants;
 import net.kdt.pojavlaunch.extra.ExtraCore;
+import net.kdt.pojavlaunch.authenticator.accounts.Accounts;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -43,10 +44,41 @@ public class LocalLoginFragment extends Fragment {
                 return;
             }
 
-            ExtraCore.setValue(ExtraConstants.MOJANG_LOGIN_TODO, new String[]{
-                    mUsernameEditText.getText().toString(), "" });
+            final String username = mUsernameEditText.getText().toString().trim();
+            try {
+                // A local account must be persisted and selected before returning home.
+                // The old flow only populated a temporary extra, so launching immediately
+                // afterwards saw no saved account and opened account creation again.
+                Accounts accountStore = Accounts.load();
+                net.kdt.pojavlaunch.authenticator.accounts.Account account = null;
+                for (net.kdt.pojavlaunch.authenticator.accounts.Account existing : accountStore.accounts) {
+                    if (existing.isLocal() && username.equals(existing.username)) {
+                        account = existing;
+                        break;
+                    }
+                }
 
-            Tools.swapFragment(requireActivity(), MainMenuFragment.class, MainMenuFragment.TAG, null);
+                if (account == null) {
+                    final String finalUsername = username;
+                    account = Accounts.create(created -> {
+                        created.username = finalUsername;
+                        created.accessToken = "0";
+                        created.refreshToken = "0";
+                        created.profileId = java.util.UUID.randomUUID().toString();
+                        created.isMicrosoft = false;
+                    });
+                }
+
+                Accounts.setCurrent(account);
+                ExtraCore.setValue(ExtraConstants.MOJANG_LOGIN_TODO, new String[]{
+                        username, "" });
+                ExtraCore.setValue(ExtraConstants.REFRESH_ACCOUNT_SPINNER, true);
+                Tools.swapFragment(requireActivity(), MainMenuFragment.class, MainMenuFragment.TAG, null);
+            } catch (Exception e) {
+                Tools.dialog(requireContext(),
+                        "Account could not be saved",
+                        "Cryonix could not save the local account. Please try again.");
+            }
         });
     }
 
