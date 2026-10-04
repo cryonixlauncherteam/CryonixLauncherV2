@@ -4,127 +4,190 @@
     android:id="@+id/about_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#07101E"
-    android:padding="18dp">
+    android:background="#050A12"
+    android:padding="22dp">
 
     <ImageButton
         android:id="@+id/about_back"
-        android:layout_width="42dp"
-        android:layout_height="42dp"
+        android:layout_width="46dp"
+        android:layout_height="46dp"
         android:background="@drawable/launcher_action_button"
         android:contentDescription="Back"
-        android:padding="10dp"
+        android:padding="11dp"
         android:src="@drawable/ic_launcher_chevron_left"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:tint="#BBD0F4" />
+        app:tint="#D5D9E0" />
 
-    <LinearLayout
-        android:id="@+id/about_content"
+    <ScrollView
+        android:id="@+id/about_scroll"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="18dp"
-        android:layout_marginEnd="18dp"
-        android:orientation="vertical"
-        android:gravity="center_vertical"
+        android:fillViewport="true"
+        android:overScrollMode="never"
+        android:scrollbars="none"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent">
 
-        <ImageView
-            android:layout_width="72dp"
-            android:layout_height="72dp"
-            android:layout_gravity="center_horizontal"
-            android:background="@drawable/launcher_icon_tile"
-            android:contentDescription="Cryonix Launcher"
-            android:padding="10dp"
-            android:src="@drawable/cryonixlauncher" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="12dp"
-            android:fontFamily="sans-serif-black"
-            android:text="Cryonix Launcher V3"
-            android:textColor="@android:color/white"
-            android:textSize="25sp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="3dp"
-            android:text="About Cryonix Launcher"
-            android:textColor="#6B88B4"
-            android:textSize="12sp" />
-
         <LinearLayout
+            android:id="@+id/about_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/launcher_card_flat"
+            android:layout_marginStart="54dp"
+            android:layout_marginEnd="54dp"
             android:orientation="vertical"
-            android:padding="18dp">
+            android:gravity="center_horizontal"
+            android:paddingTop="8dp"
+            android:paddingBottom="30dp">
+
+            <ImageView
+                android:id="@+id/about_logo"
+                android:layout_width="86dp"
+                android:layout_height="86dp"
+                android:background="@drawable/launcher_icon_tile"
+                android:contentDescription="Cryonix Launcher"
+                android:padding="12dp"
+                android:src="@drawable/cryonixlauncher" />
 
             <TextView
+                android:id="@+id/about_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-bold"
-                android:text="How it was made"
-                android:textColor="@android:color/white"
-                android:textSize="17sp" />
+                android:layout_marginTop="14dp"
+                android:fontFamily="sans-serif-black"
+                android:letterSpacing="0.03"
+                android:text="CRYONIX LAUNCHER V3"
+                android:textColor="#F1F3F5"
+                android:textSize="31sp" />
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:lineSpacingExtra="3dp"
-                android:text="Cryonix Launcher is built as a mobile Minecraft launcher with a custom Cryonix interface. The launcher UI is implemented around the existing Android launcher framework, with Kotlin/Java components and native C/C++ support where required. The project focuses on a clean landscape experience, instance management, account support and mobile-friendly game launching."
-                android:textColor="#9FB4D3"
-                android:textSize="12sp" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="15dp"
-                android:background="#1D2B40" />
-
-            <TextView
+                android:id="@+id/about_subtitle"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="13dp"
-                android:fontFamily="sans-serif-bold"
-                android:text="Development team"
-                android:textColor="@android:color/white"
-                android:textSize="15sp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="7dp"
-                android:text="Developer  •  NekoStrikeSG"
-                android:textColor="#BBD0F4"
-                android:textSize="13sp" />
-
-            <TextView
-                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="Back-end Developer  •  Raze"
-                android:textColor="#BBD0F4"
+                android:text="About • Architecture • Credits"
+                android:textColor="#8F9AA8"
                 android:textSize="13sp" />
-        </LinearLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="12dp"
-            android:text="Built for mobile Minecraft • Cryonix Launcher"
-            android:textColor="#526987"
-            android:textSize="10sp" />
-    </LinearLayout>
+            <LinearLayout
+                android:id="@+id/about_fork_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="26dp"
+                android:background="@drawable/launcher_card_flat"
+                android:orientation="vertical"
+                android:padding="22dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-bold"
+                    android:text="What is Cryonix Launcher?"
+                    android:textColor="#F1F3F5"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:lineSpacingExtra="5dp"
+                    android:text="Cryonix Launcher is a mobile-focused Minecraft launcher fork built on the Boardwalk / Mojo Launcher lineage. The project keeps the launcher foundation and extends it with the Cryonix interface, instance workflow, account handling and mobile-focused features."
+                    android:textColor="#B5BDC8"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/about_backend_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:background="@drawable/launcher_card_flat"
+                android:orientation="vertical"
+                android:padding="22dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-bold"
+                    android:text="Backend & services"
+                    android:textColor="#F1F3F5"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:lineSpacingExtra="5dp"
+                    android:text="Cryonix uses backend and service components from the Boardwalk / Mojo launcher ecosystem rather than replacing the underlying mobile Minecraft launch stack. Cryonix-specific work is focused on the UI, launcher flow and integration around those services."
+                    android:textColor="#B5BDC8"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="The backend is intentionally kept separate from the visual Cryonix layer."
+                    android:textColor="#7E8997"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/about_team_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:background="@drawable/launcher_card_flat"
+                android:orientation="vertical"
+                android:padding="22dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-bold"
+                    android:text="Cryonix development team"
+                    android:textColor="#F1F3F5"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="Developer  •  NekoStrikeSG"
+                    android:textColor="#D5D9E0"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Back-end Developer  •  Raze"
+                    android:textColor="#D5D9E0"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:lineSpacingExtra="4dp"
+                    android:text="Cryonix-specific UI, launcher integration and presentation are maintained as the project evolves."
+                    android:textColor="#8F9AA8"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/about_notice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:gravity="center"
+                android:lineSpacingExtra="3dp"
+                android:text="Credits: Boardwalk / Mojo Launcher lineage and its contributors. Cryonix Launcher is a separate project with its own interface and branding."
+                android:textColor="#6F7A88"
+                android:textSize="11sp" />
+
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
