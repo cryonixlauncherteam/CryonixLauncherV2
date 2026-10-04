@@ -30,7 +30,7 @@
             android:padding="@dimen/_8sdp"
             android:scaleType="centerInside"
             android:src="@drawable/ic_px_arrow_left"
-            app:tint="@color/accent_blue" />
+            app:tint="@android:color/white" />
 
         <ImageView
             android:layout_width="@dimen/_44sdp"
@@ -40,7 +40,7 @@
             android:contentDescription="Settings"
             android:padding="@dimen/_9sdp"
             android:src="@drawable/ic_px_sliders"
-            app:tint="@color/accent_blue" />
+            app:tint="@android:color/white" />
 
         <LinearLayout
             android:layout_width="0dp"
