@@ -271,54 +271,6 @@
                 tools:listitem="@layout/item_instance" />
         </LinearLayout>
 
-        <!-- AI ASSISTANT CARD -->
-        <LinearLayout
-            android:id="@+id/ai_assist_card"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/launcher_card_flat"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:padding="10dp">
-
-            <ImageView
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:background="@drawable/launcher_btn_play_circle"
-                android:contentDescription="AI Assistant"
-                android:padding="8dp"
-                android:src="@drawable/ic_clean_ai"
-                app:tint="@android:color/white" />
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-bold"
-                    android:text="Ai Assistant"
-                    android:textColor="@android:color/white"
-                    android:textSize="13sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="1dp"
-                    android:text="Follow AI Commands To setup Launcher properly!"
-                    android:textColor="#5E789E"
-                    android:textSize="10sp" />
-            </LinearLayout>
-        </LinearLayout>
-    </LinearLayout>
-
     <!-- RIGHT INSTANCE / PROFILE PANEL -->
     <LinearLayout
         android:id="@+id/profile_panel"
