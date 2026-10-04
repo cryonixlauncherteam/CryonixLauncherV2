@@ -139,14 +139,8 @@ public class AiAssistFragment extends Fragment {
             });
         }
 
-        String incomingError = getArguments() != null
-                ? getArguments().getString(ARG_ERROR_TEXT) : null;
-        if (incomingError != null && !incomingError.trim().isEmpty()) {
-            if (input != null) input.setText(incomingError);
-            addBotMessage(CryonixDiagnosticEngine.analyze(incomingError));
-        } else {
-            addBotMessage(CryonixBrain.greeting());
-        }
+        // Crash AI is entered from a real crash or can be opened with a saved latest log.
+        // loadCrashReport() owns the initial diagnostic message so the report is not duplicated.
     }
 
     private void buildChips(View view) {
