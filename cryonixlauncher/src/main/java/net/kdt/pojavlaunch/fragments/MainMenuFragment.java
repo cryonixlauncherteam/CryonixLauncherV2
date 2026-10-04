@@ -340,7 +340,7 @@ public class MainMenuFragment extends Fragment {
         list.setOrientation(android.widget.LinearLayout.VERTICAL);
         scroll.addView(list);
         root.addView(scroll, new android.widget.LinearLayout.LayoutParams(
-                android.widget.LinearLayout.LayoutParams.MATCH_PARENT, 0, 1f));
+                android.widget.LinearLayout.LayoutParams.MATCH_PARENT, 190 * dp));
 
         final TextView close = new TextView(requireContext());
         close.setText("Close");
