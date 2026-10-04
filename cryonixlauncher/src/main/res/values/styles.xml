@@ -6,6 +6,8 @@
         <item name="windowActionBar">false</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowBackground">@color/background_app</item>
+        <item name="android:colorBackground">@color/background_app</item>
+        <item name="android:popupMenuStyle">@style/CryonixPopupMenuStyle</item>
         <item name="colorAccent">@color/accent_blue</item>
         <item name="android:colorAccent">@color/accent_blue</item>
         <item name="android:fontFamily">sans-serif</item>
@@ -75,7 +77,7 @@
     <style name="ThickDivider">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/_1sdp</item>
-        <item name="android:background">#243D6B</item>
+        <item name="android:background">#354047</item>
     </style>
 
     <item name="dimension_tracker" type="id" />
@@ -109,4 +111,7 @@
         <item name="android:fontFamily">sans-serif-medium</item>
     </style>
 
+    <style name="CryonixPopupMenuStyle" parent="@style/Widget.AppCompat.PopupMenu">
+        <item name="android:popupBackground">@android:color/black</item>
+    </style>
 </resources>
