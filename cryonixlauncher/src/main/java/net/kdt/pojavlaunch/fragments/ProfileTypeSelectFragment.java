@@ -25,6 +25,9 @@ public class ProfileTypeSelectFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         JellyAnimations.animateScreen(view);
+        JellyAnimations.stagger((android.view.ViewGroup) view.findViewById(R.id.create_profile_header), 55L, 220L);
+        JellyAnimations.stagger((android.view.ViewGroup) view.findViewById(R.id.create_profile_options), 80L, 270L);
+        JellyAnimations.stagger((android.view.ViewGroup) view.findViewById(R.id.create_modded_grid), 60L, 230L);
         view.findViewById(R.id.vanilla_profile).setOnClickListener(v -> {
             try {
                 Instance instance = Instances.createDefaultInstance();
