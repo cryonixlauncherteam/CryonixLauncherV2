@@ -70,7 +70,6 @@ public class MainMenuFragment extends Fragment {
         Button mDiscordButton = view.findViewById(R.id.social_media_button);
         View mCustomControlButton = view.findViewById(R.id.custom_control_button);
         View mInstallJarButton = view.findViewById(R.id.install_jar_button);
-        View mCursorButton = view.findViewById(R.id.sidebar_ai_assist);
         View mShareLogsButton = view.findViewById(R.id.share_logs_button);
         View mOpenDirectoryButton = view.findViewById(R.id.open_files_button);
 
@@ -106,14 +105,6 @@ public class MainMenuFragment extends Fragment {
             mInstallJarButton.setOnClickListener(v -> {
                 Tools.jellyClick(v);
                 Tools.swapFragment(requireActivity(), AboutCryonixFragment.class, AboutCryonixFragment.TAG, null);
-            });
-        }
-
-        if (mCursorButton != null) {
-            applyJellyTouch(mCursorButton);
-            mCursorButton.setOnClickListener(v -> {
-                Tools.jellyClick(v);
-                Tools.swapFragment(requireActivity(), CursorCustomizationFragment.class, CursorCustomizationFragment.TAG, null);
             });
         }
 
