@@ -258,6 +258,7 @@
                 android:scrollbars="none"
                 tools:listitem="@layout/item_instance" />
         </LinearLayout>
+    </LinearLayout>
 
     <!-- RIGHT INSTANCE / PROFILE PANEL -->
     <LinearLayout
