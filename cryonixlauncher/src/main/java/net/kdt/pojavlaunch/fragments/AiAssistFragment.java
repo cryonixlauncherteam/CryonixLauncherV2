@@ -190,7 +190,7 @@ public class AiAssistFragment extends Fragment {
         }
     }
 
-    /** Bounce a newly added message bubble in with the jelly pop animation. */
+    /** Bounce a newly added message bubble in with the bounce animation. */
     private void animateRow(int index) {
         final RecyclerView list = messageList;
         if (list == null) {
@@ -203,7 +203,7 @@ public class AiAssistFragment extends Fragment {
             View row = list.getLayoutManager() != null ? list.getLayoutManager().findViewByPosition(index) : null;
             if (row != null) {
                 try {
-                    Animator animator = AnimatorInflater.loadAnimator(row.getContext(), R.animator.cryonix_bubble_in);
+                    Animator animator = AnimatorInflater.loadAnimator(row.getContext(), R.animator.cryonix_bounce);
                     animator.setTarget(row);
                     animator.start();
                 } catch (Throwable ignored) {
