@@ -42,6 +42,19 @@
         android:enableOnBackInvokedCallback="false"
         tools:ignore="UnusedAttribute">
         <activity
+            android:name="net.kdt.pojavlaunch.DiscordAuthActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:noHistory="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="discord-1556190507640692796" />
+            </intent-filter>
+        </activity>
+
+        <activity
             android:name="net.kdt.pojavlaunch.MissingStorageActivity"
             android:exported="false" />
 
