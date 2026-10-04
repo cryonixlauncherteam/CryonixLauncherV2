@@ -24,7 +24,7 @@ public final class CryonixThemeManager {
     private static final String KEY_THEME = "theme";
     // Cryonix Launcher uses one stable visual palette. Do not let an old/stale
     // theme preference change colours after the app is recreated.
-    private static final int DEFAULT_THEME = BLUE;
+    private static final int DEFAULT_THEME = 0;
     public static final int BLUE = 0;
     public static final int GRAPHITE = 1;
     public static final int EMERALD = 2;
