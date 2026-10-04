@@ -111,7 +111,7 @@ public class LauncherPreferenceFragment extends PreferenceFragmentCompat impleme
                     })
                     .setNegativeButton(android.R.string.cancel, null)
                     .create();
-            dialog.setOnShowListener(d -> CryonixThemeManager.apply(getActivity()));
+            dialog.setOnShowListener(d -> CryonixThemeManager.applyDialog(dialog));
             dialog.show();
             return true;
         });
