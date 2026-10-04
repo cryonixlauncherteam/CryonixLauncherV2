@@ -84,6 +84,11 @@ public class LauncherActivity extends BaseActivity {
                 mSidebarSettings.setBackgroundResource(isSettings ? R.drawable.launcher_sidebar_home_bg : 0);
                 mSidebarSettings.setColorFilter(isSettings ? 0xFFFFFFFF : 0xFF8A8A8A);
             }
+            // Home and Settings keep their existing visuals. Every other screen
+            // receives the new compact dark-blue Cryonix palette.
+            if (!isMain && !isSettings && f.getView() != null) {
+                net.kdt.pojavlaunch.utils.CryonixThemeManager.applyToView(f.getView());
+            }
         }
     };
 
