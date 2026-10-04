@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/discord_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/_14sdp"
+    android:background="@drawable/cryonix_screen_bg">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/cryonix_card"
+        android:gravity="center_vertical"
+        android:padding="@dimen/_10sdp">
+
+        <ImageButton
+            android:id="@+id/discord_back"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Back"
+            android:src="@drawable/ic_px_arrow_left"
+            android:padding="@dimen/_8sdp"
+            app:tint="@color/accent_blue" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Discord"
+                android:textColor="@color/primary_text"
+                android:textStyle="bold"
+                android:textSize="@dimen/_18ssp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Account linking and Rich Presence"
+                android:textColor="@color/secondary_text"
+                android:textSize="@dimen/_11ssp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/discord_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_12sdp"
+        android:background="@drawable/cryonix_card"
+        android:orientation="vertical"
+        android:padding="@dimen/_14sdp">
+
+        <TextView
+            android:id="@+id/discord_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Not connected"
+            android:textColor="@color/secondary_text"
+            android:textStyle="bold"
+            android:textSize="@dimen/_13ssp" />
+
+        <TextView
+            android:id="@+id/discord_account"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:text="Connect your Discord account to Cryonix Launcher"
+            android:textColor="@color/secondary_text"
+            android:textSize="@dimen/_11ssp" />
+
+        <Button
+            android:id="@+id/discord_connect"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_42sdp"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:text="Connect Discord"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/discord_disconnect"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_42sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:text="Disconnect Discord"
+            android:textAllCaps="false"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/discord_presence"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_42sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:text="Rich Presence: Off"
+            android:textAllCaps="false" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:text="When enabled, Discord can show that you are Playing Cryonix Launcher. This integration uses Discord's official mobile SDK/RPC; the launcher never asks for your Discord password."
+            android:textColor="@color/secondary_text"
+            android:textSize="@dimen/_10ssp" />
+    </LinearLayout>
+</LinearLayout>
