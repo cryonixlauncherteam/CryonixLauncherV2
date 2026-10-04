@@ -22,6 +22,9 @@ import androidx.core.view.ViewCompat;
 public final class CryonixThemeManager {
     private static final String PREFS = "cryonix_theme";
     private static final String KEY_THEME = "theme";
+    // Cryonix Launcher uses one stable visual palette. Do not let an old/stale
+    // theme preference change colours after the app is recreated.
+    private static final int DEFAULT_THEME = BLUE;
     public static final int BLUE = 0;
     public static final int GRAPHITE = 1;
     public static final int EMERALD = 2;
@@ -37,15 +40,15 @@ public final class CryonixThemeManager {
     private CryonixThemeManager() {}
 
     public static Theme current(Context context) {
-        int index = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
-                .getInt(KEY_THEME, BLUE);
-        if (index < 0 || index >= THEMES.length) index = BLUE;
-        return THEMES[index];
+        // Keep the launcher palette deterministic across process/activity restarts.
+        // Older builds stored selectable theme indexes; those values must not alter
+        // the current Cryonix Launcher UI unless a future theme picker explicitly
+        // opts back into them.
+        return THEMES[DEFAULT_THEME];
     }
 
     public static int currentIndex(Context context) {
-        return context.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
-                .getInt(KEY_THEME, BLUE);
+        return DEFAULT_THEME;
     }
 
     public static String currentName(Context context) {
@@ -53,9 +56,9 @@ public final class CryonixThemeManager {
     }
 
     public static void setTheme(Context context, int index) {
-        if (index < 0 || index >= THEMES.length) index = BLUE;
+        // Kept for API compatibility. Cryonix currently has a single fixed palette.
         context.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
-                .edit().putInt(KEY_THEME, index).apply();
+                .edit().putInt(KEY_THEME, DEFAULT_THEME).commit();
     }
 
     public static String[] names() {
