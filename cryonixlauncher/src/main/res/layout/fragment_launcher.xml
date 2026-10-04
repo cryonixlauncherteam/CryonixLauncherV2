@@ -34,7 +34,7 @@
             android:contentDescription="Home"
             android:padding="6dp"
             android:src="@drawable/ic_px_home"
-            app:tint="@android:color/white" />
+            app:tint="@color/launcher_icon" />
 
         <ImageButton
             android:id="@+id/custom_control_button"
@@ -45,7 +45,7 @@
             android:contentDescription="Controls"
             android:padding="6dp"
             android:src="@drawable/ic_px_gamepad"
-            app:tint="@android:color/white" />
+            app:tint="@color/launcher_icon" />
 
         <ImageButton
             android:id="@+id/sidebar_cursor_customization"
@@ -56,7 +56,7 @@
             android:contentDescription="Cursor customization"
             android:padding="6dp"
             android:src="@drawable/ic_sidebar_cursor"
-            app:tint="@android:color/white" />
+            app:tint="@color/launcher_icon" />
 
         <ImageButton
             android:id="@+id/sidebar_info"
@@ -67,7 +67,7 @@
             android:contentDescription="About"
             android:padding="6dp"
             android:src="@drawable/ic_px_letters"
-            app:tint="@android:color/white" />
+            app:tint="@color/launcher_icon" />
 
         <ImageButton
             android:id="@+id/sidebar_settings"
@@ -77,7 +77,7 @@
             android:contentDescription="Settings"
             android:padding="6dp"
             android:src="@drawable/ic_px_sliders"
-            app:tint="@android:color/white" />
+            app:tint="@color/launcher_icon" />
     </LinearLayout>
 
     <!-- Brand/header -->
@@ -105,7 +105,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="14dp"
             android:text="CRYONIX LAUNCHER V3"
-            android:textColor="@android:color/white"
+            android:textColor="@color/launcher_icon"
             android:textSize="24sp"
             android:textStyle="bold" />
     </LinearLayout>
@@ -140,7 +140,7 @@
             android:ellipsize="end"
             android:maxLines="1"
             android:text=""
-            android:textColor="@android:color/white"
+            android:textColor="@color/launcher_icon"
             android:textSize="14sp" />
     </LinearLayout>
 
@@ -183,7 +183,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="◈"
-                android:textColor="@android:color/white"
+                android:textColor="@color/launcher_icon"
                 android:textSize="26sp" />
 
             <LinearLayout
@@ -197,7 +197,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Instances"
-                    android:textColor="@android:color/white"
+                    android:textColor="@color/launcher_icon"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -205,7 +205,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="instances"
-                    android:textColor="#6F829D"
+                    android:textColor="@color/launcher_muted"
                     android:textSize="12sp" />
             </LinearLayout>
 
@@ -216,7 +216,7 @@
                 android:background="@drawable/launcher_card_flat"
                 android:gravity="center"
                 android:text="0/0"
-                android:textColor="@android:color/white"
+                android:textColor="@color/launcher_icon"
                 android:textSize="13sp" />
 
             <ImageButton
@@ -227,7 +227,7 @@
                 android:src="@drawable/ic_px_arrow_left"
                 android:contentDescription="Previous instance"
                 android:padding="9dp" 
-            app:tint="@android:color/white"/>
+            app:tint="@color/launcher_icon"/>
 
             <ImageButton
                 android:id="@+id/btn_next_instance"
@@ -237,7 +237,7 @@
                 android:src="@drawable/ic_px_chevron_right"
                 android:contentDescription="Next instance"
                 android:padding="9dp" 
-            app:tint="@android:color/white"/>
+            app:tint="@color/launcher_icon"/>
 
             <ImageButton
                 android:id="@+id/btn_add_instance_panel"
@@ -248,7 +248,7 @@
                 android:contentDescription="Add instance"
                 android:padding="11dp"
                 android:src="@drawable/ic_px_dynamic" 
-            app:tint="@android:color/white"/>
+            app:tint="@color/launcher_icon"/>
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
@@ -291,7 +291,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="Select an instance"
-            android:textColor="@android:color/white"
+            android:textColor="@color/launcher_icon"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -300,7 +300,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="—"
-            android:textColor="#6F829D"
+            android:textColor="@color/launcher_muted"
             android:textSize="12sp" />
 
         <Button
@@ -310,7 +310,7 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/launcher_btn_play"
             android:text="▶  Launch"
-            android:textColor="#071225"
+            android:textColor="@color/background_app"
             android:textSize="15sp"
             android:textStyle="bold" />
 
@@ -334,7 +334,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/launcher_card_flat"
                     android:text="✎  Edit"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@color/launcher_icon" />
 
                 <Button
                     android:id="@+id/side_duplicate"
@@ -344,7 +344,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/launcher_card_flat"
                     android:text="▣  Duplicate"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@color/launcher_icon" />
             </LinearLayout>
 
             <LinearLayout
@@ -361,7 +361,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/launcher_card_flat"
                     android:text="▢  Delete"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@color/launcher_icon" />
 
                 <Button
                     android:id="@+id/side_open_folder"
@@ -371,7 +371,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/launcher_card_flat"
                     android:text="□  Open folder"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@color/launcher_icon" />
             </LinearLayout>
         </LinearLayout>
 
@@ -384,7 +384,7 @@
             android:contentDescription="Instance menu"
             android:src="@drawable/ic_launcher_more"
             android:padding="9dp" 
-            app:tint="@android:color/white"/>
+            app:tint="@color/launcher_icon"/>
     </LinearLayout>
 
     <!-- Existing actions are retained as invisible compatibility hooks. -->
