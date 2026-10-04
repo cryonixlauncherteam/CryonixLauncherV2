@@ -2,7 +2,7 @@
   <img src="./cryonixlauncher/src/main/assets/cryonixlauncher.png" width="150" height="150" alt="CryonixLauncher V2 Logo">
 </p>
 
-<h1 align="center">CryonixLauncher V2</h1>
+<h1 align="center">CryonixLauncher</h1>
 
 <p align="center">
   <strong>A powerful Minecraft: Java Edition launcher for Android.</strong>
