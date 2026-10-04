@@ -110,7 +110,7 @@ public class DiscordIntegrationFragment extends Fragment {
                 .setTitle("Connect Discord")
                 .setMessage(
                         "Cryonix will use Discord's official mobile account-linking and Rich Presence integration. " +
-                        "The project still needs the Cryonix Discord Application ID and the official Discord Social SDK AAR. " +
+                        "The Cryonix Discord Application ID is configured. The project still needs the official Discord Social SDK AAR for the live Android connection. " +
                         "No Discord password or user token should ever be entered into the launcher.")
                 .setPositiveButton("OK", null)
                 .show();
