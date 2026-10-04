@@ -67,19 +67,12 @@ jobs:
             test -s "cryonixlauncher/src/main/jniLibs/$abi/libmobileglues.so"
           done
 
-          # Krypton Wrapper / NG-GL4ES is built from its upstream source so
-          # Cryonix gets genuine per-ABI libng_gl4es.so binaries.
-          git clone --depth 1 --recurse-submodules https://github.com/FCL-Team/NG-GL4ES.git /tmp/NG-GL4ES
-          cd /tmp/NG-GL4ES
-          chmod +x gradlew
-          yes | sdkmanager --licenses >/dev/null 2>&1 || true
-          sdkmanager "ndk;27.2.12479018"
-          ./gradlew assembleRelease
-          unzip -q build/outputs/aar/NG-GL4ES-release.aar -d /tmp/ng-gl4es-aar
+          # Krypton Wrapper / NG-GL4ES: use real native libraries
+          # shipped by the official PojavLauncher legacy release.
+          curl -L --fail --retry 3 -o /tmp/Pojavlauncher-release.apk https://github.com/TeamPojavLauncher/PojavLauncher/releases/download/pojav-legacy/Pojavlauncher-release.apk
           for abi in arm64-v8a armeabi-v7a x86 x86_64; do
-            cp "/tmp/ng-gl4es-aar/jni/$abi/libng_gl4es.so" \\
-              "$GITHUB_WORKSPACE/cryonixlauncher/src/main/jniLibs/$abi/libng_gl4es.so"
-            test -s "$GITHUB_WORKSPACE/cryonixlauncher/src/main/jniLibs/$abi/libng_gl4es.so"
+            unzip -p /tmp/Pojavlauncher-release.apk "lib/$abi/libng_gl4es.so" > "cryonixlauncher/src/main/jniLibs/$abi/libng_gl4es.so"
+            test -s "cryonixlauncher/src/main/jniLibs/$abi/libng_gl4es.so"
           done
 
           echo "Cryonix renderer libraries:"
