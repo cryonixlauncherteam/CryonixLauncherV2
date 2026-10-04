@@ -74,11 +74,17 @@ public final class CryonixThemeManager {
         applyView(dialog.getWindow().getDecorView(), theme, true);
     }
 
-    public static void apply(Activity activity) {
+    public static void applySystemBars(Activity activity) {
         if (activity == null) return;
         Theme theme = current(activity);
         activity.getWindow().setStatusBarColor(theme.statusBar);
         activity.getWindow().setNavigationBarColor(theme.background);
+    }
+
+    public static void apply(Activity activity) {
+        if (activity == null) return;
+        Theme theme = current(activity);
+        applySystemBars(activity);
         applyView(activity.getWindow().getDecorView(), theme, true);
     }
 
