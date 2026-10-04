@@ -75,6 +75,10 @@ public class InstanceEditorFragment extends Fragment implements CropperUtils.Cro
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         JellyAnimations.animateScreen(view);
+        JellyAnimations.stagger((android.view.ViewGroup) view.findViewById(R.id.editor_identity_row), 70L, 250L);
+        JellyAnimations.stagger((android.view.ViewGroup) view.findViewById(R.id.editor_runtime_row), 70L, 250L);
+        JellyAnimations.stagger((android.view.ViewGroup) view.findViewById(R.id.editor_options_row), 70L, 250L);
+        JellyAnimations.stagger((android.view.ViewGroup) view.findViewById(R.id.instance_editor_actions), 70L, 240L);
         bindViews(view);
 
         RendererCompatUtil.RenderersList renderersList = RendererCompatUtil.getCompatibleRenderers(view.getContext());
