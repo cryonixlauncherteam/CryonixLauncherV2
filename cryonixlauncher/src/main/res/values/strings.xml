@@ -522,4 +522,15 @@
     <string name="preference_metadata_clear_complete">Completed. Restart the launcher to apply the changes</string>
     <string name="preference_button_transparency">Buttons transparency</string>
     <string name="preference_button_transparency_summary">Changes on-screen buttons transparency</string>
+
+    <string name="preference_theme_title">Cryonix Theme</string>
+    <string name="preference_theme_summary">Choose the launcher accent and interface style</string>
+    <string name="theme_dialog_title">Cryonix Theme</string>
+    <string-array name="cryonix_theme_names">
+        <item>Cryonix Blue</item>
+        <item>Graphite</item>
+        <item>Emerald</item>
+        <item>Violet</item>
+    </string-array>
+
 </resources>
