@@ -6,7 +6,7 @@
     android:layout_width="232dp"
     android:layout_height="82dp"
     android:layout_marginEnd="8dp"
-    android:background="@drawable/launcher_card_flat"
+    android:background="@drawable/launcher_card_border_bg"
     android:padding="12dp">
 
     <ImageView
