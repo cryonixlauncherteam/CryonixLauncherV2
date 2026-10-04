@@ -9,6 +9,7 @@ import android.view.View;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import androidx.appcompat.app.AlertDialog;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
@@ -19,6 +20,7 @@ import androidx.preference.PreferenceFragmentCompat;
 
 import net.kdt.pojavlaunch.LauncherActivity;
 import net.kdt.pojavlaunch.utils.JellyAnimations;
+import net.kdt.pojavlaunch.utils.CryonixThemeManager;
 import git.artdeell.mojo.R;
 import net.kdt.pojavlaunch.prefs.LauncherPreferences;
 
@@ -88,7 +90,31 @@ public class LauncherPreferenceFragment extends PreferenceFragmentCompat impleme
     public void onCreatePreferences(Bundle b, String str) {
         mVisibilityUpdater = this::updateVisibility;
         addPreferencesFromResource(R.xml.pref_main);
+        setupThemePreference();
         setupNotificationRequestPreference();
+    }
+
+    private void setupThemePreference() {
+        Preference themePreference = requirePreference("cryonix_theme");
+        themePreference.setSummary(CryonixThemeManager.currentName(requireContext()));
+        themePreference.setOnPreferenceClickListener(preference -> {
+            final String[] names = CryonixThemeManager.names();
+            final int selected = CryonixThemeManager.currentIndex(requireContext());
+            AlertDialog dialog = new AlertDialog.Builder(requireContext())
+                    .setTitle(R.string.theme_dialog_title)
+                    .setSingleChoiceItems(names, selected, (d, which) -> {
+                        CryonixThemeManager.setTheme(requireContext(), which);
+                        d.dismiss();
+                        if (getActivity() != null) {
+                            getActivity().recreate();
+                        }
+                    })
+                    .setNegativeButton(android.R.string.cancel, null)
+                    .create();
+            dialog.setOnShowListener(d -> CryonixThemeManager.apply(getActivity()));
+            dialog.show();
+            return true;
+        });
     }
 
     private void updateVisibility(){
