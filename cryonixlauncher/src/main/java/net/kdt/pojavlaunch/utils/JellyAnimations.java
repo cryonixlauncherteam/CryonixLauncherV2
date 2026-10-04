@@ -73,9 +73,15 @@ public final class JellyAnimations {
                 .setInterpolator(EMPHASIZED_DECELERATE)
                 .start();
 
-        if (root instanceof ViewGroup) {
-            animateCascade((ViewGroup) root, 0L, 0);
-        }
+        // Keep the global reveal lightweight. Screen-specific stagger calls own
+        // their children; recursively animating here caused competing animators,
+        // skipped frames and the "stuck jelly" effect on complex layouts.
+        root.setTranslationY(4f);
+        root.animate()
+                .translationY(0f)
+                .setDuration(220L)
+                .setInterpolator(EMPHASIZED_DECELERATE)
+                .start();
 
         root.post(() -> attachTouchFeedback(root));
     }
