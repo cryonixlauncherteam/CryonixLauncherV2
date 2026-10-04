@@ -439,7 +439,7 @@ public final class Tools {
             Log.e(APP_NAME, "Unable to open Crash AI after game failure", launchError);
             if (ctx instanceof Activity) {
                 ((Activity) ctx).runOnUiThread(() ->
-                        dialog(ctx, R.string.global_error, "Game crashed. Crash AI could not be opened: "
+                        dialog(ctx, ctx.getString(R.string.global_error), "Game crashed. Crash AI could not be opened: "
                                 + launchError.getMessage()));
             }
         }
