@@ -50,7 +50,7 @@ configurations {
 }
 
 android {
-    namespace 'git.neko.cryonixlauncher'
+    namespace 'git.artdeell.mojo'
 
     compileSdk = 36
 
