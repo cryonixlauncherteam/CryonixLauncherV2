@@ -108,6 +108,15 @@ public class MainMenuFragment extends Fragment {
             });
         }
 
+        View sidebarCursorCustomization = view.findViewById(R.id.sidebar_cursor_customization);
+        if (sidebarCursorCustomization != null) {
+            applyJellyTouch(sidebarCursorCustomization);
+            sidebarCursorCustomization.setOnClickListener(v -> {
+                Tools.jellyClick(v);
+                Tools.swapFragment(requireActivity(), CursorCustomizationFragment.class, CursorCustomizationFragment.TAG, null);
+            });
+        }
+
         View sidebarHome = view.findViewById(R.id.sidebar_home);
         if (sidebarHome != null) {
             applyJellyTouch(sidebarHome);
