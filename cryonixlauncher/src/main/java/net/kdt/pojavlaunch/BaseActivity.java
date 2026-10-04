@@ -47,7 +47,14 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onPostResume();
         Tools.setInsetsMode(this, setFullscreen(), shouldIgnoreNotch());
         Tools.getDisplayMetrics(this);
-        CryonixThemeManager.apply(this);
+        // The launcher home has its own fixed Cryonix palette in XML. Do not run the
+        // generic theme walker over it: tinting drawable backgrounds on every
+        // resume made the home UI appear to change colour after reopening.
+        if (!(this instanceof LauncherActivity)) {
+            CryonixThemeManager.apply(this);
+        } else {
+            CryonixThemeManager.applySystemBars(this);
+        }
     }
 
 
