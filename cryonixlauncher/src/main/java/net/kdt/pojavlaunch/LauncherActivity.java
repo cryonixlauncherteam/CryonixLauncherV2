@@ -76,6 +76,13 @@ public class LauncherActivity extends BaseActivity {
         public void onFragmentResumed(@NonNull FragmentManager fm, @NonNull Fragment f) {
             boolean isMain = f instanceof MainMenuFragment;
             boolean isSettings = f instanceof LauncherPreferenceFragment;
+            // Preference sub-screens remain part of Settings and must keep the
+            // existing Settings UI exactly as it is.
+            Fragment settingsParent = f.getParentFragment();
+            while (!isSettings && settingsParent != null) {
+                isSettings = settingsParent instanceof LauncherPreferenceFragment;
+                settingsParent = settingsParent.getParentFragment();
+            }
             if (mSidebarHome != null) {
                 mSidebarHome.setBackgroundResource(isMain ? R.drawable.launcher_sidebar_home_bg : 0);
                 mSidebarHome.setColorFilter(isMain ? 0xFFFFFFFF : 0xFF8A8A8A);
