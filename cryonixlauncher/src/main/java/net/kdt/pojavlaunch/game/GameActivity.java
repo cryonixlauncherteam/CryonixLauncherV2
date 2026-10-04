@@ -69,6 +69,7 @@ import net.kdt.pojavlaunch.prefs.QuickSettingSideDialog;
 import net.kdt.pojavlaunch.services.GameService;
 import net.kdt.pojavlaunch.tasks.AsyncAssetManager;
 import net.kdt.pojavlaunch.utils.JREUtils;
+import net.kdt.pojavlaunch.utils.DiscordRichPresenceManager;
 import net.kdt.pojavlaunch.utils.MCOptionUtils;
 import net.kdt.pojavlaunch.authenticator.accounts.Account;
 import net.kdt.pojavlaunch.utils.RendererCompatUtil;
@@ -398,6 +399,7 @@ public class GameActivity extends BaseActivity implements ControlButtonMenuListe
         Logger.appendToLog("--------- Starting game with Launcher Debug!");
         Tools.printLauncherInfo(versionId, instance.getLaunchArgs(), renderer, this);
         JREUtils.redirectAndPrintJRELog();
+        DiscordRichPresenceManager.updatePresence(this, null, null);
         GameRunner.launchGame(this, account, instance, versionId, classpath, renderer);
         //Note that we actually stall in the above function, even if the game crashes. But let's be safe.
         Tools.runOnUiThread(()-> mServiceBinder.isActive = false);
