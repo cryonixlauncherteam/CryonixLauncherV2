@@ -203,7 +203,7 @@ public class AiAssistFragment extends Fragment {
             View row = list.getLayoutManager() != null ? list.getLayoutManager().findViewByPosition(index) : null;
             if (row != null) {
                 try {
-                    Animator animator = AnimatorInflater.loadAnimator(row.getContext(), R.animator.cryonix_bounce);
+                    Animator animator = AnimatorInflater.loadAnimator(row.getContext(), R.animator.bounce_pop);
                     animator.setTarget(row);
                     animator.start();
                 } catch (Throwable ignored) {
