@@ -47,6 +47,8 @@ public class AiAssistFragment extends Fragment {
     private ChatAdapter adapter;
     private EditText input;
     private RecyclerView messageList;
+    private TextView errorSummary;
+    private TextView logView;
     private int typingPosition = -1;
 
     public AiAssistFragment() {
@@ -79,6 +81,26 @@ public class AiAssistFragment extends Fragment {
             list.setAdapter(adapter);
         }
         this.input = view.findViewById(R.id.ai_input);
+        errorSummary = view.findViewById(R.id.ai_error_summary);
+        logView = view.findViewById(R.id.ai_log_view);
+
+        View copyLog = view.findViewById(R.id.ai_copy_log);
+        if (copyLog != null) {
+            copyLog.setOnClickListener(v -> {
+                Tools.jellyClick(v);
+                copyCurrentLog();
+            });
+        }
+
+        View restart = view.findViewById(R.id.ai_restart);
+        if (restart != null) {
+            restart.setOnClickListener(v -> {
+                Tools.jellyClick(v);
+                Tools.restartLauncherActivity(requireContext());
+            });
+        }
+
+        loadCrashReport();
 
         View analyzeLogButton = view.findViewById(R.id.ai_analyze_log_button);
         if (analyzeLogButton != null) {
@@ -212,9 +234,31 @@ public class AiAssistFragment extends Fragment {
         }, 40);
     }
 
+    private void loadCrashReport() {
+        String incoming = getArguments() != null
+                ? getArguments().getString(ARG_ERROR_TEXT) : null;
+        if (incoming != null && !incoming.trim().isEmpty()) {
+            if (errorSummary != null) errorSummary.setText(firstErrorLine(incoming));
+            if (logView != null) logView.setText(incoming);
+            addBotMessage(CryonixDiagnosticEngine.analyze(incoming));
+            return;
+        }
+
+        new Thread(() -> {
+            String log = readLatestLog();
+            String answer = CryonixDiagnosticEngine.analyze(log);
+            handler.post(() -> {
+                if (!isAdded()) return;
+                if (errorSummary != null) errorSummary.setText(firstErrorLine(log));
+                if (logView != null) logView.setText(log);
+                addBotMessage(answer);
+            });
+        }, "CryonixCrashLoader").start();
+    }
+
     private void analyzeLatestLog() {
-        addUserMessage("Analyze my latest launcher log");
-        addBotMessage("Reading latestlog.txt…");
+        addUserMessage("Analyze crash log");
+        addBotMessage("Analyzing the latest crash/log…");
         final int statusIndex = messages.size() - 1;
 
         new Thread(() -> {
@@ -222,6 +266,8 @@ public class AiAssistFragment extends Fragment {
             String answer = CryonixDiagnosticEngine.analyze(log);
             handler.post(() -> {
                 if (!isAdded()) return;
+                if (errorSummary != null) errorSummary.setText(firstErrorLine(log));
+                if (logView != null) logView.setText(log);
                 if (statusIndex >= 0 && statusIndex < messages.size()) {
                     messages.set(statusIndex, new AiMessage(false, answer));
                     if (adapter != null) {
@@ -231,6 +277,33 @@ public class AiAssistFragment extends Fragment {
                 }
             });
         }, "CryonixLogAnalyzer").start();
+    }
+
+    private String firstErrorLine(String text) {
+        if (text == null || text.trim().isEmpty()) return "No crash log found.";
+        String[] lines = text.replace("\r", "").split("\n");
+        for (String line : lines) {
+            String s = line.trim();
+            String lower = s.toLowerCase(java.util.Locale.ROOT);
+            if (lower.contains("caused by:")
+                    || lower.contains("exception")
+                    || lower.contains("error:")
+                    || lower.contains("fatal")
+                    || lower.contains("exit code")) {
+                return s.length() > 220 ? s.substring(0, 220) + "…" : s;
+            }
+        }
+        return lines.length > 0 ? lines[0].trim() : "Crash log loaded.";
+    }
+
+    private void copyCurrentLog() {
+        String log = logView != null ? logView.getText().toString() : readLatestLog();
+        android.content.ClipboardManager manager =
+                (android.content.ClipboardManager) requireContext().getSystemService(android.content.Context.CLIPBOARD_SERVICE);
+        if (manager != null) {
+            manager.setPrimaryClip(android.content.ClipData.newPlainText("Cryonix crash log", log));
+            android.widget.Toast.makeText(requireContext(), "Crash log copied", android.widget.Toast.LENGTH_SHORT).show();
+        }
     }
 
     private String readLatestLog() {
