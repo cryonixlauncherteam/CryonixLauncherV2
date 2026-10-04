@@ -797,8 +797,8 @@ public final class Tools {
         //TODO handle custom animations
         fragmentActivity.getSupportFragmentManager().beginTransaction()
                 .setReorderingAllowed(true)
-                .setCustomAnimations(R.anim.motion_jelly_in, R.anim.motion_jelly_out,
-                        R.anim.motion_jelly_in, R.anim.motion_jelly_out)
+                .setCustomAnimations(R.animator.cryonix_bounce, R.animator.cryonix_bounce,
+                        R.animator.cryonix_bounce, R.animator.cryonix_bounce)
                 .addToBackStack(fragmentClass.getName())
                 .replace(R.id.container_fragment, fragmentClass, bundle, fragmentTag).commit();
     }
@@ -807,7 +807,7 @@ public final class Tools {
     public static void jellyClick(View v) {
         if (v == null) return;
         try {
-            android.animation.Animator animator = android.animation.AnimatorInflater.loadAnimator(v.getContext(), R.animator.cryonix_jelly_wobble);
+            android.animation.Animator animator = android.animation.AnimatorInflater.loadAnimator(v.getContext(), R.animator.cryonix_bounce);
             animator.setTarget(v);
             animator.start();
         } catch (Throwable ignored) {
