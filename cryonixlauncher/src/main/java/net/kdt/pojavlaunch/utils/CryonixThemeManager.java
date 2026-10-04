@@ -142,11 +142,11 @@ public final class CryonixThemeManager {
         }
 
         if (view instanceof ImageButton) {
-            ((ImageButton) view).setColorFilter(theme.accent);
+            ((ImageButton) view).setColorFilter(theme.primary);
         } else if (view instanceof android.widget.ImageView) {
             android.widget.ImageView imageView = (android.widget.ImageView) view;
             if (!(imageView.getDrawable() instanceof BitmapDrawable)) {
-                imageView.setImageTintList(ColorStateList.valueOf(theme.accent));
+                imageView.setImageTintList(ColorStateList.valueOf(theme.primary));
             }
         }
 
