@@ -32,7 +32,7 @@
             android:layout_marginStart="10dp"
             android:fontFamily="sans-serif-black"
             android:letterSpacing="0.03"
-            android:text="CRYONIX LAUNCHER ONLY"
+            android:text="CRYONIX LAUNCHER V3"
             android:textColor="@android:color/white"
             android:textSize="20sp" />
     </LinearLayout>
