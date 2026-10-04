@@ -26,6 +26,8 @@ public class SelectAuthFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         JellyAnimations.animateScreen(view);
+        JellyAnimations.stagger((android.view.ViewGroup) view.findViewById(R.id.auth_options), 80L, 260L);
+        JellyAnimations.stagger((android.view.ViewGroup) view.findViewById(R.id.auth_header), 55L, 220L);
 
         Button mMicrosoftButton = view.findViewById(R.id.button_microsoft_authentication);
         Button mLocalButton = view.findViewById(R.id.button_local_authentication);
