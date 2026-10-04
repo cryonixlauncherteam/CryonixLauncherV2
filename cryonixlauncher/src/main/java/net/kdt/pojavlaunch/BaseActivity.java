@@ -47,6 +47,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onPostResume();
         Tools.setInsetsMode(this, setFullscreen(), shouldIgnoreNotch());
         Tools.getDisplayMetrics(this);
+        CryonixThemeManager.apply(this);
     }
 
 
