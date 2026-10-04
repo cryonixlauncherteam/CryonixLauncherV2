@@ -32,6 +32,9 @@ public class LocalLoginFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         JellyAnimations.animateScreen(view);
+        JellyAnimations.stagger((android.view.ViewGroup) view.findViewById(R.id.login_menu), 70L, 260L);
+        JellyAnimations.stagger((android.view.ViewGroup) view.findViewById(R.id.login_header), 55L, 220L);
+        JellyAnimations.stagger((android.view.ViewGroup) view.findViewById(R.id.login_form), 55L, 220L);
         mUsernameEditText = view.findViewById(R.id.login_edit_email);
         view.findViewById(R.id.login_button).setOnClickListener(v -> {
             if(!checkEditText()) {
