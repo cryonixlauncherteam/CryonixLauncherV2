@@ -165,7 +165,7 @@
         android:layout_marginEnd="14dp"
         android:layout_marginBottom="8dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@id/ai_assist_card"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/profile_panel"
         app:layout_constraintStart_toEndOf="@id/home_sidebar"
         app:layout_constraintTop_toBottomOf="@id/home_header">
@@ -268,7 +268,7 @@
         android:background="@drawable/launcher_card_flat"
         android:orientation="vertical"
         android:padding="12dp"
-        app:layout_constraintBottom_toTopOf="@id/ai_assist_card"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/profile_chip">
 
@@ -379,53 +379,6 @@
             android:contentDescription="Instance menu"
             android:src="@drawable/ic_launcher_more"
             android:padding="9dp" />
-    </LinearLayout>
-
-    <!-- Video-style bottom assistant card -->
-    <LinearLayout
-        android:id="@+id/ai_assist_card"
-        android:layout_width="0dp"
-        android:layout_height="62dp"
-        android:layout_marginStart="22dp"
-        android:layout_marginEnd="14dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/launcher_card_flat"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:paddingStart="12dp"
-        android:paddingEnd="12dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/profile_panel"
-        app:layout_constraintStart_toEndOf="@id/home_sidebar">
-
-        <ImageView
-            android:layout_width="42dp"
-            android:layout_height="42dp"
-            android:background="@drawable/launcher_btn_play_circle"
-            android:padding="10dp"
-            android:src="@drawable/ic_px_ai" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="AI Assistant"
-                android:textColor="@android:color/white"
-                android:textSize="15sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Follow AI Commands To setup Launcher properly!"
-                android:textColor="#6F829D"
-                android:textSize="11sp" />
-        </LinearLayout>
     </LinearLayout>
 
     <!-- Existing actions are retained as invisible compatibility hooks. -->
