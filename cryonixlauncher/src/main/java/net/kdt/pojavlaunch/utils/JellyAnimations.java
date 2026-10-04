@@ -173,8 +173,56 @@ public final class JellyAnimations {
 
     /** Staggered direct-child entrance for cards/rows. */
     public static void stagger(ViewGroup container) {
-        if (container == null) return;
-        animateCascade(container, 0L, 0);
+        stagger(container, 72L, 310L);
+    }
+
+    /**
+     * Reference-video style entrance: each direct element gets its own
+     * start time instead of every child popping together.
+     */
+    public static void stagger(ViewGroup container, long stepDelay, long duration) {
+        if (container == null || shouldSkip(container)) return;
+
+        long index = 0L;
+        for (int i = 0; i < container.getChildCount(); i++) {
+            View child = container.getChildAt(i);
+            if (child == null || child.getVisibility() != View.VISIBLE) continue;
+
+            popIn(child, index * Math.max(0L, stepDelay), duration);
+            index++;
+        }
+    }
+
+    /** Individual jelly pop used by RecyclerView cards and sidebar controls. */
+    public static void popIn(View view, long startDelay) {
+        popIn(view, startDelay, 300L);
+    }
+
+    public static void popIn(View view, long startDelay, long duration) {
+        if (view == null || view.getVisibility() != View.VISIBLE) return;
+
+        view.animate().cancel();
+        view.setAlpha(0f);
+        view.setScaleX(0.90f);
+        view.setScaleY(0.90f);
+        view.setTranslationY(10f);
+
+        view.animate()
+                .alpha(1f)
+                .translationX(0f)
+                .translationY(0f)
+                .scaleX(1.04f)
+                .scaleY(1.04f)
+                .setStartDelay(Math.max(0L, startDelay))
+                .setDuration(Math.max(120L, duration))
+                .setInterpolator(SOFT_JELLY)
+                .withEndAction(() -> view.animate()
+                        .scaleX(1f)
+                        .scaleY(1f)
+                        .setDuration(90L)
+                        .setInterpolator(new DecelerateInterpolator())
+                        .start())
+                .start();
     }
 
     /**
