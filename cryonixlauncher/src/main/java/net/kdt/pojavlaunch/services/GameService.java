@@ -50,7 +50,7 @@ public class GameService extends Service {
                 .setContentText(getString(R.string.notification_game_runs))
                 .setContentIntent(contentIntent)
                 .addAction(android.R.drawable.ic_menu_close_clear_cancel,  getString(R.string.notification_terminate), pendingKillIntent)
-                .setSmallIcon(R.drawable.notif_icon)
+                .setSmallIcon(R.drawable.ic_notification_cryonix)
                 .setNotificationSilent();
 
         Notification notification = notificationBuilder.build();
