@@ -57,6 +57,13 @@
             android:textColor="@color/background_app" android:textSize="16sp" android:textStyle="bold"/>
     </LinearLayout>
 
+    <!-- Hidden compatibility containers retained for MainMenuFragment animation/instance references. -->
+    <LinearLayout android:id="@+id/home_sidebar" android:layout_width="1dp" android:layout_height="1dp" android:visibility="gone"/>
+    <LinearLayout android:id="@+id/home_header" android:layout_width="1dp" android:layout_height="1dp" android:visibility="gone"/>
+    <LinearLayout android:id="@+id/instances_header" android:layout_width="1dp" android:layout_height="1dp" android:visibility="gone"/>
+    <TextView android:id="@+id/instance_counter" android:layout_width="1dp" android:layout_height="1dp" android:visibility="gone"/>
+    <TextView android:id="@+id/current_instance_label" android:layout_width="1dp" android:layout_height="1dp" android:visibility="gone"/>
+    <TextView android:id="@+id/current_instance_version" android:layout_width="1dp" android:layout_height="1dp" android:visibility="gone"/>
     <androidx.recyclerview.widget.RecyclerView android:id="@+id/instances_list" android:layout_width="1dp"
         android:layout_height="1dp" android:visibility="gone"/>
     <LinearLayout android:id="@+id/instances_panel" android:layout_width="1dp" android:layout_height="1dp" android:visibility="gone"/>
