@@ -105,7 +105,7 @@ public class MainMenuFragment extends Fragment {
             applyJellyTouch(mInstallJarButton);
             mInstallJarButton.setOnClickListener(v -> {
                 Tools.jellyClick(v);
-                runInstallerWithConfirmation();
+                Tools.swapFragment(requireActivity(), AboutCryonixFragment.class, AboutCryonixFragment.TAG, null);
             });
         }
 
@@ -151,17 +151,12 @@ public class MainMenuFragment extends Fragment {
             applyJellyTouch(profileChip);
             profileChip.setOnClickListener(v -> {
                 Tools.jellyClick(v);
-                if (mEditProfileButton != null && mVersionSpinner != null) {
-                    mVersionSpinner.openProfileEditor(requireActivity());
-                }
-            });
-        }
-
-        View accountChip = view.findViewById(R.id.profile_chip);
-        if (accountChip != null) {
-            accountChip.setOnClickListener(v -> {
-                Tools.jellyClick(v);
                 ExtraCore.setValue(ExtraConstants.SELECT_AUTH_METHOD, true);
+            });
+            profileChip.setOnLongClickListener(v -> {
+                Tools.jellyClick(v);
+                showAccountManager();
+                return true;
             });
         }
 
@@ -300,17 +295,111 @@ public class MainMenuFragment extends Fragment {
         net.kdt.pojavlaunch.utils.JellyAnimations.stagger(
                 (ViewGroup) view.findViewById(R.id.ai_assist_card), 65L, 260L);
 
-        View sidebarInfo = view.findViewById(R.id.sidebar_info);
-        if (sidebarInfo != null) {
-            applyJellyTouch(sidebarInfo);
-            sidebarInfo.setOnClickListener(v -> {
-                net.kdt.pojavlaunch.utils.JellyAnimations.popIn(v, 0L, 220L);
-                Toast.makeText(requireContext(),
-                        "Cryonix Launcher V3", Toast.LENGTH_SHORT).show();
-            });
-        }
+
     }
 
+
+    private void showAccountManager() {
+        final android.widget.LinearLayout list = new android.widget.LinearLayout(requireContext());
+        list.setOrientation(android.widget.LinearLayout.VERTICAL);
+        list.setPadding(20, 4, 20, 4);
+
+        final android.widget.ScrollView scroll = new android.widget.ScrollView(requireContext());
+        scroll.addView(list);
+
+        final AlertDialog dialog = new AlertDialog.Builder(requireContext())
+                .setTitle("Accounts")
+                .setMessage("Hold the account chip to manage saved accounts.")
+                .setView(scroll)
+                .setNegativeButton(R.string.global_no, null)
+                .create();
+
+        try {
+            Accounts loaded = Accounts.load();
+            if (loaded.accounts.isEmpty()) {
+                TextView empty = new TextView(requireContext());
+                empty.setText("No saved accounts");
+                empty.setTextColor(android.graphics.Color.LTGRAY);
+                empty.setTextSize(13);
+                empty.setPadding(8, 18, 8, 18);
+                list.addView(empty);
+            } else {
+                for (Account account : loaded.accounts) {
+                    android.widget.LinearLayout row = new android.widget.LinearLayout(requireContext());
+                    row.setOrientation(android.widget.LinearLayout.HORIZONTAL);
+                    row.setGravity(android.view.Gravity.CENTER_VERTICAL);
+                    row.setPadding(8, 8, 4, 8);
+                    row.setBackgroundResource(R.drawable.launcher_action_button);
+
+                    TextView name = new TextView(requireContext());
+                    name.setText(account.username == null ? "Unknown account" : account.username);
+                    name.setTextColor(android.graphics.Color.WHITE);
+                    name.setTextSize(14);
+                    name.setSingleLine(true);
+                    name.setEllipsize(android.text.TextUtils.TruncateAt.END);
+                    row.addView(name, new android.widget.LinearLayout.LayoutParams(0, android.widget.LinearLayout.LayoutParams.WRAP_CONTENT, 1f));
+
+                    Button delete = new Button(requireContext());
+                    delete.setText("Delete");
+                    delete.setTextSize(10);
+                    delete.setTextColor(android.graphics.Color.WHITE);
+                    delete.setAllCaps(false);
+                    delete.setOnClickListener(v -> {
+                        new AlertDialog.Builder(requireContext())
+                                .setTitle("Delete account?")
+                                .setMessage("Remove " + (account.username == null ? "this account" : account.username) + " from Cryonix Launcher?")
+                                .setPositiveButton(R.string.global_delete, (d, w) -> {
+                                    try {
+                                        Account current = Accounts.getCurrent();
+                                        if (current != null && current.mSaveLocation != null
+                                                && account.mSaveLocation != null
+                                                && current.mSaveLocation.equals(account.mSaveLocation)) {
+                                            Accounts loadedAfter = Accounts.load();
+                                            for (Account replacement : loadedAfter.accounts) {
+                                                if (replacement.mSaveLocation != null
+                                                        && !replacement.mSaveLocation.equals(account.mSaveLocation)) {
+                                                    Accounts.setCurrent(replacement);
+                                                    break;
+                                                }
+                                            }
+                                        }
+                                        Accounts.delete(account);
+                                        updateAccountChip(getView());
+                                        ExtraCore.setValue(ExtraConstants.REFRESH_ACCOUNT_SPINNER, true);
+                                        showAccountManager();
+                                        dialog.dismiss();
+                                    } catch (Exception e) {
+                                        Toast.makeText(requireContext(), "Failed to delete account", Toast.LENGTH_SHORT).show();
+                                    }
+                                })
+                                .setNegativeButton(R.string.global_no, null)
+                                .show();
+                    });
+                    net.kdt.pojavlaunch.utils.JellyAnimations.pressFeedback(delete);
+                    row.addView(delete, new android.widget.LinearLayout.LayoutParams(
+                            android.widget.LinearLayout.LayoutParams.WRAP_CONTENT,
+                            42));
+                    list.addView(row, new android.widget.LinearLayout.LayoutParams(
+                            android.widget.LinearLayout.LayoutParams.MATCH_PARENT, 52));
+                    android.view.ViewGroup.MarginLayoutParams lp = (android.view.ViewGroup.MarginLayoutParams) row.getLayoutParams();
+                    lp.bottomMargin = 6;
+                    row.setLayoutParams(lp);
+                }
+            }
+        } catch (Exception e) {
+            TextView error = new TextView(requireContext());
+            error.setText("Unable to load saved accounts");
+            error.setTextColor(android.graphics.Color.LTGRAY);
+            error.setPadding(8, 18, 8, 18);
+            list.addView(error);
+        }
+
+        dialog.setOnShowListener(d -> {
+            View root = dialog.getWindow() == null ? null : dialog.getWindow().getDecorView();
+            if (root != null) net.kdt.pojavlaunch.utils.JellyAnimations.animateDialog(root);
+        });
+        dialog.show();
+    }
 
     private void applyJellyTouch(View view) {
         // Use the shared CS-style motion language: quick press-in + soft jelly settle.
