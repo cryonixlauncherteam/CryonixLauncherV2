@@ -137,7 +137,7 @@
             android:layout_weight="1"
             android:ellipsize="end"
             android:maxLines="1"
-            android:text="Account"
+            android:text=""
             android:textColor="@android:color/white"
             android:textSize="14sp" />
     </LinearLayout>
