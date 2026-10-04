@@ -3,7 +3,7 @@
     android:id="@+id/auth_screen_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/cryonix_screen_bg"
+    android:background="@drawable/launcher_home_blue"
     android:orientation="vertical"
     android:paddingHorizontal="@dimen/_18sdp"
     android:paddingVertical="@dimen/_12sdp">
@@ -40,7 +40,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:text="Choose an account type for Cryonix Launcher" />
+                android:text="Choose how you want to add your Minecraft account" />
         </LinearLayout>
     </LinearLayout>
 
