@@ -3,7 +3,7 @@
     android:id="@+id/create_profile_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/cryonix_screen_bg"
+    android:background="@drawable/launcher_home_blue"
     android:clipToPadding="false"
     android:paddingHorizontal="@dimen/_16sdp"
     android:paddingVertical="@dimen/_10sdp">
@@ -39,13 +39,13 @@
                     style="@style/CryonixScreenTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Create instance" />
+                    android:text="Create new instance" />
 
                 <TextView
                     style="@style/CryonixFieldLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Choose a base before configuring the instance" />
+                    android:text="Pick a simple base, then configure your Minecraft instance" />
             </LinearLayout>
         </LinearLayout>
 
