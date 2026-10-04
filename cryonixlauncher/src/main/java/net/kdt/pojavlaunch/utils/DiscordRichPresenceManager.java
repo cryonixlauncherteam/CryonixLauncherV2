@@ -13,6 +13,8 @@ import android.content.SharedPreferences;
  */
 public final class DiscordRichPresenceManager {
     private static final String PREFS = "cryonix_discord";
+    // Cryonix Launcher Discord application/client ID supplied by the project owner.
+    public static final String APPLICATION_ID = "1556190507640692796";
     private static final String KEY_ENABLED = "rich_presence_enabled";
     private static final String KEY_CONNECTED = "account_connected";
     private static final String KEY_USERNAME = "discord_username";
@@ -58,6 +60,10 @@ public final class DiscordRichPresenceManager {
      * traffic here. Live Android Rich Presence must use Discord's official
      * Social SDK / RPC integration.
      */
+    public static String getApplicationId() {
+        return APPLICATION_ID;
+    }
+
     public static void updatePresence(Context context, String details, String state) {
         if (!isEnabled(context)) return;
         // Wired when the official Discord Social SDK AAR is supplied.
