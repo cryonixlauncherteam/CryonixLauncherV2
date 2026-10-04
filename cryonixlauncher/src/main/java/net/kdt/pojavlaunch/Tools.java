@@ -367,6 +367,14 @@ public final class Tools {
             return;
         }
 
+        // Game-side failures go straight to the dedicated Crash AI screen.
+        // This keeps normal launcher errors as dialogs while giving game crashes
+        // the full stack trace + log + actionable diagnostic flow.
+        if (ctx instanceof GameActivity) {
+            openCrashAi(ctx, e);
+            return;
+        }
+
         Runnable runnable = () -> {
             final String errMsg = showMore ? printToString(e) : rolledMessage != null ? rolledMessage : e.getMessage();
             AlertDialog.Builder builder = new AlertDialog.Builder(ctx)
@@ -427,6 +435,24 @@ public final class Tools {
     public static void showErrorRemote(Context context, int rolledMessage, Throwable e) {
         showErrorRemote(context.getString(rolledMessage), e);
     }
+    private static void openCrashAi(Context ctx, Throwable throwable) {
+        try {
+            Intent intent = new Intent(ctx, LauncherActivity.class);
+            intent.putExtra("open_ai_assist", true);
+            intent.putExtra("ai_error_text", printToString(throwable));
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+            ctx.getApplicationContext().startActivity(intent);
+            fullyExit();
+        } catch (Throwable launchError) {
+            Log.e(APP_NAME, "Unable to open Crash AI after game failure", launchError);
+            if (ctx instanceof Activity) {
+                ((Activity) ctx).runOnUiThread(() ->
+                        dialog(ctx, R.string.global_error, "Game crashed. Crash AI could not be opened: "
+                                + launchError.getMessage()));
+            }
+        }
+    }
+
     public static void showErrorRemote(String rolledMessage, Throwable e) {
         // I WILL embrace layer violations because Android's concept of layers is STUPID
         // We live in the same process anyway, why make it any more harder with this needless
