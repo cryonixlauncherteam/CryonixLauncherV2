@@ -2,6 +2,7 @@ package net.kdt.pojavlaunch.fragments;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.widget.Toast;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
@@ -28,6 +29,19 @@ public class DiscordIntegrationFragment extends Fragment {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        View view = getView();
+        if (view != null) {
+            refreshStatus(view.findViewById(R.id.discord_status),
+                    view.findViewById(R.id.discord_account),
+                    view.findViewById(R.id.discord_connect),
+                    view.findViewById(R.id.discord_disconnect),
+                    view.findViewById(R.id.discord_presence));
+        }
+    }
+
+    @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         TextView status = view.findViewById(R.id.discord_status);
         TextView account = view.findViewById(R.id.discord_account);
@@ -47,7 +61,12 @@ public class DiscordIntegrationFragment extends Fragment {
             JellyAnimations.pressFeedback(connect);
             connect.setOnClickListener(v -> {
                 JellyAnimations.popIn(v, 0L, 180L);
-                showSetupMessage();
+                try {
+                    DiscordRichPresenceManager.startAuthorization(requireContext());
+                } catch (Exception e) {
+                    Toast.makeText(requireContext(),
+                            "Unable to open Discord authorization", Toast.LENGTH_LONG).show();
+                }
             });
         }
 
@@ -105,14 +124,4 @@ public class DiscordIntegrationFragment extends Fragment {
         }
     }
 
-    private void showSetupMessage() {
-        new AlertDialog.Builder(requireContext())
-                .setTitle("Connect Discord")
-                .setMessage(
-                        "Cryonix will use Discord's official mobile account-linking and Rich Presence integration. " +
-                        "The Cryonix Discord Application ID is configured. The project still needs the official Discord Social SDK AAR for the live Android connection. " +
-                        "No Discord password or user token should ever be entered into the launcher.")
-                .setPositiveButton("OK", null)
-                .show();
-    }
 }
