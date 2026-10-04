@@ -1,59 +1,158 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Cryonix auth method select: option cards -->
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/auth_screen_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/cryonix_screen_bg">
+    android:background="@drawable/cryonix_screen_bg"
+    android:orientation="vertical"
+    android:paddingHorizontal="@dimen/_18sdp"
+    android:paddingVertical="@dimen/_12sdp">
 
     <LinearLayout
+        android:id="@+id/auth_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginHorizontal="@dimen/_24sdp"
-        android:background="@drawable/cryonix_card"
-        android:orientation="vertical"
-        android:paddingVertical="@dimen/_16sdp">
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
-        <com.kdt.mcgui.MineButton
-            android:id="@+id/button_microsoft_authentication"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_52sdp"
-            android:layout_marginHorizontal="@dimen/_14sdp"
-            android:layout_marginBottom="@dimen/_10sdp"
-            android:drawableStart="@drawable/ic_auth_ms"
-            android:drawablePadding="@dimen/_14sdp"
-            android:gravity="center_vertical"
-            android:paddingHorizontal="@dimen/_14sdp"
-            android:text="@string/auth_select_microsoft"
-            android:textColor="@android:color/white"
-            android:textSize="@dimen/_14ssp" />
+        <ImageView
+            android:layout_width="@dimen/_42sdp"
+            android:layout_height="@dimen/_42sdp"
+            android:background="@drawable/launcher_icon_tile"
+            android:padding="@dimen/_7sdp"
+            android:src="@drawable/cryonixlauncher" />
 
-        <com.kdt.mcgui.MineButton
-            android:id="@+id/button_elyby_authentication"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_52sdp"
-            android:layout_marginHorizontal="@dimen/_14sdp"
-            android:layout_marginBottom="@dimen/_10sdp"
-            android:drawableStart="@drawable/ic_auth_elyby"
-            android:drawablePadding="@dimen/_14sdp"
-            android:gravity="center_vertical"
-            android:paddingHorizontal="@dimen/_14sdp"
-            android:text="@string/auth_select_elyby"
-            android:textColor="@android:color/white"
-            android:textSize="@dimen/_14ssp" />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_weight="1"
+            android:orientation="vertical">
 
-        <com.kdt.mcgui.MineButton
-            android:id="@+id/button_local_authentication"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_52sdp"
-            android:layout_marginHorizontal="@dimen/_14sdp"
-            android:drawableStart="@drawable/ic_px_home"
-            android:drawablePadding="@dimen/_14sdp"
-            android:gravity="center_vertical"
-            android:paddingHorizontal="@dimen/_14sdp"
-            android:text="@string/auth_select_local"
-            android:textColor="@android:color/white"
-            android:textSize="@dimen/_14ssp" />
+            <TextView
+                style="@style/CryonixScreenTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add account" />
+
+            <TextView
+                style="@style/CryonixFieldLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="Choose an account type for Cryonix Launcher" />
+        </LinearLayout>
     </LinearLayout>
-</FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/auth_options"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/_14sdp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/auth_microsoft_card"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="@dimen/_6sdp"
+            android:layout_weight="1"
+            android:background="@drawable/cryonix_card"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/_12sdp">
+
+            <ImageView
+                android:layout_width="@dimen/_42sdp"
+                android:layout_height="@dimen/_42sdp"
+                android:src="@drawable/ic_auth_ms" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:text="@string/auth_select_microsoft"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/_14ssp"
+                android:textStyle="bold" />
+
+            <com.kdt.mcgui.MineButton
+                android:id="@+id/button_microsoft_authentication"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:text="Continue"
+                android:textAllCaps="false" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/auth_elyby_card"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="@dimen/_6sdp"
+            android:layout_weight="1"
+            android:background="@drawable/cryonix_card"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/_12sdp">
+
+            <ImageView
+                android:layout_width="@dimen/_42sdp"
+                android:layout_height="@dimen/_42sdp"
+                android:src="@drawable/ic_auth_elyby" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:text="@string/auth_select_elyby"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/_14ssp"
+                android:textStyle="bold" />
+
+            <com.kdt.mcgui.MineButton
+                android:id="@+id/button_elyby_authentication"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:text="Continue"
+                android:textAllCaps="false" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/auth_local_card"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/_6sdp"
+            android:layout_weight="1"
+            android:background="@drawable/cryonix_card"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/_12sdp">
+
+            <ImageView
+                android:layout_width="@dimen/_42sdp"
+                android:layout_height="@dimen/_42sdp"
+                android:src="@drawable/ic_px_home" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:text="@string/auth_select_local"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/_14ssp"
+                android:textStyle="bold" />
+
+            <com.kdt.mcgui.MineButton
+                android:id="@+id/button_local_authentication"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:text="Continue"
+                android:textAllCaps="false" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
