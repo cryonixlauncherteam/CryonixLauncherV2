@@ -31,7 +31,7 @@ public final class CryonixThemeManager {
     public static final int VIOLET = 3;
 
     private static final Theme[] THEMES = {
-        new Theme("Cryonix Blue", "#0D1013", "#151A1D", "#1B2226", "#70C6E8", "#F1F5F7", "#9DAAB2", "#354047"),
+        new Theme("Cryonix Blue", "#0B1118", "#121C25", "#16212C", "#456B8C", "#F1F5F7", "#91A2B2", "#2E4357"),
         new Theme("Graphite", "#0A0C0F", "#171A1F", "#24282E", "#A9B1BC", "#F4F5F6", "#AEB5BE", "#3A414A"),
         new Theme("Emerald", "#06100D", "#0C201A", "#12352B", "#35C78A", "#F4FFFA", "#9AC7B5", "#285847"),
         new Theme("Violet", "#0C0814", "#1A1128", "#291A3D", "#9B70FF", "#FBF9FF", "#B9A9D8", "#49346C")
