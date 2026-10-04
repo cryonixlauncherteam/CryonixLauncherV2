@@ -153,7 +153,7 @@ public class MainMenuFragment extends Fragment {
 
         // Show the persisted account in the home chip. If no account is selected,
         // keep the chip empty instead of displaying a fake/default username.
-        updateAccountChip(view);
+        updateAccountChip(view);\n\n        View addAccount = view.findViewById(R.id.launch_add_account);\n        if (addAccount != null) {\n            applyJellyTouch(addAccount);\n            addAccount.setOnClickListener(v -> {\n                Tools.jellyClick(v);\n                ExtraCore.setValue(ExtraConstants.SELECT_AUTH_METHOD, true);\n            });\n        }
 
         if (mEditProfileButton != null && mVersionSpinner != null) {
             mEditProfileButton.setOnClickListener(v -> mVersionSpinner.openProfileEditor(requireActivity()));
@@ -533,7 +533,7 @@ public class MainMenuFragment extends Fragment {
         try {
             Account current = Accounts.getCurrent();
             if (current != null && current.username != null && !current.username.trim().isEmpty()) {
-                profileName.setText(current.username.trim());
+                profileName.setText(current.username.trim());\n                if (launchAvatar != null) launchAvatar.setVisibility(View.VISIBLE);\n                if (launchAdd != null) launchAdd.setVisibility(View.GONE);
             } else {
                 profileName.setText("");
             }
