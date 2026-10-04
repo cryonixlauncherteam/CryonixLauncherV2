@@ -280,8 +280,7 @@ public class MainMenuFragment extends Fragment {
                 (ViewGroup) view.findViewById(R.id.home_sidebar), 70L, 300L);
         net.kdt.pojavlaunch.utils.JellyAnimations.stagger(
                 (ViewGroup) view.findViewById(R.id.home_header), 55L, 260L);
-        net.kdt.pojavlaunch.utils.JellyAnimations.stagger(
-                (ViewGroup) view.findViewById(R.id.instances_header), 55L, 260L);
+        // instances_header is a TextView, not a ViewGroup; do not cast it for stagger animation.
         net.kdt.pojavlaunch.utils.JellyAnimations.stagger(
                 (ViewGroup) view.findViewById(R.id.profile_panel), 55L, 250L);
 
