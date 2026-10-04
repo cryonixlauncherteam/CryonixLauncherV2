@@ -33,7 +33,8 @@
             android:background="@drawable/launcher_card_border_bg"
             android:contentDescription="Home"
             android:padding="9dp"
-            android:src="@drawable/ic_px_home" />
+            android:src="@drawable/ic_px_home" 
+            app:tint="@android:color/white"/>
 
         <ImageButton
             android:id="@+id/sidebar_ai_assist"
@@ -43,7 +44,8 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="Cursor"
             android:padding="12dp"
-            android:src="@drawable/ic_px_mouse" />
+            android:src="@drawable/ic_px_mouse" 
+            app:tint="@android:color/white"/>
 
         <Button
             android:id="@+id/custom_control_button"
@@ -56,7 +58,8 @@
             android:minWidth="0dp"
             android:minHeight="0dp"
             android:drawableStart="@drawable/ic_px_gamepad"
-            android:text="" />
+            android:text="" 
+            app:tint="@android:color/white"/>
 
         <ImageButton
             android:id="@+id/sidebar_info"
@@ -66,7 +69,8 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="About"
             android:padding="12dp"
-            android:src="@drawable/ic_px_letters" />
+            android:src="@drawable/ic_px_letters" 
+            app:tint="@android:color/white"/>
 
         <ImageButton
             android:id="@+id/sidebar_settings"
@@ -75,7 +79,8 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="Settings"
             android:padding="12dp"
-            android:src="@drawable/ic_px_sliders" />
+            android:src="@drawable/ic_px_sliders" 
+            app:tint="@android:color/white"/>
     </LinearLayout>
 
     <!-- Brand/header -->
@@ -224,7 +229,8 @@
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:src="@drawable/ic_px_arrow_left"
                 android:contentDescription="Previous instance"
-                android:padding="9dp" />
+                android:padding="9dp" 
+            app:tint="@android:color/white"/>
 
             <ImageButton
                 android:id="@+id/btn_next_instance"
@@ -233,7 +239,8 @@
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:src="@drawable/ic_px_chevron_right"
                 android:contentDescription="Next instance"
-                android:padding="9dp" />
+                android:padding="9dp" 
+            app:tint="@android:color/white"/>
 
             <ImageButton
                 android:id="@+id/btn_add_instance_panel"
@@ -243,7 +250,8 @@
                 android:background="@drawable/launcher_btn_play_circle"
                 android:contentDescription="Add instance"
                 android:padding="11dp"
-                android:src="@drawable/ic_px_dynamic" />
+                android:src="@drawable/ic_px_dynamic" 
+            app:tint="@android:color/white"/>
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
@@ -378,7 +386,8 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="Instance menu"
             android:src="@drawable/ic_launcher_more"
-            android:padding="9dp" />
+            android:padding="9dp" 
+            app:tint="@android:color/white"/>
     </LinearLayout>
 
     <!-- Existing actions are retained as invisible compatibility hooks. -->
