@@ -63,6 +63,13 @@ public final class CryonixThemeManager {
         return names;
     }
 
+    public static void applyDialog(android.app.Dialog dialog) {
+        if (dialog == null || dialog.getWindow() == null) return;
+        Theme theme = current(dialog.getContext());
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(theme.card));
+        applyView(dialog.getWindow().getDecorView(), theme, true);
+    }
+
     public static void apply(Activity activity) {
         if (activity == null) return;
         Theme theme = current(activity);
