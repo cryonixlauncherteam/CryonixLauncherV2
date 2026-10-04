@@ -115,11 +115,12 @@ public final class CryonixThemeManager {
             text.setTextColor(theme.primary);
             if (view instanceof Button) {
                 Button button = (Button) view;
-                button.setTextColor(theme.accent);
-                boolean primaryButton = button.getClass().getSimpleName().contains("MineButton");
+                // Non-home/non-settings screens use the same soft-blue action treatment
+                // as the reference UI: blue buttons, dark text, no glow.
+                button.setTextColor(theme.background);
                 if (button.getBackground() != null) {
                     ViewCompat.setBackgroundTintList(button,
-                            ColorStateList.valueOf(primaryButton ? theme.accent : theme.card));
+                            ColorStateList.valueOf(theme.accent));
                 }
             } else if (view instanceof EditText) {
                 text.setTextColor(theme.primary);
