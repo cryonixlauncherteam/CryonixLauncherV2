@@ -6,7 +6,5 @@
         <item name="android:windowNoTitle">true</item>
         <item name="android:colorAccent">#7EA7D8</item>
         <item name="android:windowActionModeOverlay">true</item>
-        <item name="android:windowFixedWidthMajor">72%</item>
-        <item name="android:windowFixedWidthMinor">82%</item>
     </style>
 </resources>
