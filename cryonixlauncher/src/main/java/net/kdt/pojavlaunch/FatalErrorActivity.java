@@ -6,60 +6,57 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import git.artdeell.mojo.R;
-import net.kdt.pojavlaunch.utils.JellyAnimations;
 
+/**
+ * Crash hand-off activity.
+ *
+ * The old crash dialog is intentionally gone. A real fatal crash now opens the
+ * dedicated Crash AI screen with the exact stack trace, so the user sees the
+ * cause, log and actionable diagnostic steps in one place.
+ */
 public class FatalErrorActivity extends AppCompatActivity {
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-		Bundle extras = getIntent().getExtras();
-		if(extras == null) {
-			finish();
-			return;
-		}
-		boolean storageAllow = extras.getBoolean("storageAllow", false);
-		Throwable throwable = (Throwable) extras.getSerializable("throwable");
-		final String stackTrace = throwable != null ? Tools.printToString(throwable) : "<null>";
-		String strSavePath = extras.getString("savePath");
-		String errHeader = storageAllow ?
-			"Crash stack trace saved to " + strSavePath + "." :
-			"Storage permission is required to save crash stack trace!";
+        Bundle extras = getIntent().getExtras();
+        if (extras == null) {
+            finish();
+            return;
+        }
 
-		AlertDialog dialog = new AlertDialog.Builder(this)
-			.setTitle(R.string.error_fatal)
-			.setMessage(errHeader + "\n\n" + stackTrace)
-			.setPositiveButton("Ask AI", (p1, p2) -> {
-                    Intent intent = new Intent(FatalErrorActivity.this, LauncherActivity.class);
-                    intent.putExtra("open_ai_assist", true);
-                    intent.putExtra("ai_error_text", stackTrace);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                    startActivity(intent);
-                })
-			.setNegativeButton(R.string.global_restart, (p1, p2) -> startActivity(new Intent(FatalErrorActivity.this, LauncherActivity.class)))
-			.setNeutralButton(android.R.string.copy, (p1, p2) -> {
-				ClipboardManager mgr = (ClipboardManager) FatalErrorActivity.this.getSystemService(CLIPBOARD_SERVICE);
-				mgr.setPrimaryClip(ClipData.newPlainText("error", stackTrace));
-				finish();
-			})
-			.setCancelable(false)
-			.create();
-		dialog.show();
-		if (dialog.getWindow() != null) JellyAnimations.animateDialog(dialog.getWindow().getDecorView());
-	}
+        Throwable throwable = (Throwable) extras.getSerializable("throwable");
+        final String stackTrace = throwable != null ? Tools.printToString(throwable) : "<null crash throwable>";
+        final String savePath = extras.getString("savePath");
 
-	public static void showError(Context ctx, String savePath, boolean storageAllow, Throwable th) {
-		Intent fatalErrorIntent = new Intent(ctx, FatalErrorActivity.class);
-		fatalErrorIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-		fatalErrorIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-		fatalErrorIntent.putExtra("throwable", th);
-		fatalErrorIntent.putExtra("savePath", savePath);
-		fatalErrorIntent.putExtra("storageAllow", storageAllow);
-		ctx.startActivity(fatalErrorIntent);
-	}
+        Intent intent = new Intent(this, LauncherActivity.class);
+        intent.putExtra("open_ai_assist", true);
+        intent.putExtra("ai_error_text", stackTrace);
+        if (savePath != null) {
+            intent.putExtra("ai_log_path", savePath);
+        }
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+
+        try {
+            startActivity(intent);
+        } finally {
+            finish();
+        }
+    }
+
+    /**
+     * Kept as the crash-handler entry point used by PojavApplication.
+     */
+    public static void showError(Context ctx, String savePath, boolean storageAllow, Throwable th) {
+        Intent fatalErrorIntent = new Intent(ctx, FatalErrorActivity.class);
+        fatalErrorIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        fatalErrorIntent.putExtra("throwable", th);
+        fatalErrorIntent.putExtra("savePath", savePath);
+        fatalErrorIntent.putExtra("storageAllow", storageAllow);
+        ctx.startActivity(fatalErrorIntent);
+    }
 }
