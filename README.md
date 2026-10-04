@@ -1,537 +1,194 @@
-<p align="center">
-  <img src="./cryonixlauncher/src/main/assets/cryonixlauncher.png" width="150" height="150" alt="CryonixLauncher V2 Logo">
-</p>
+# Cryonix Launcher V3
 
-<h1 align="center">CryonixLauncher</h1>
+A clean, performance-focused Minecraft: Java Edition launcher for Android.
 
-<p align="center">
-  <strong>A powerful Minecraft: Java Edition launcher for Android.</strong>
-</p>
+Cryonix Launcher V3 is the next generation of the Cryonix Launcher project, focused on a simple mobile-first interface, flexible Minecraft management, and a fast launcher experience.
 
-<p align="center">
-  Built with features and ideas from the Android Minecraft launcher community and redesigned for the CryonixLauncher V2 experience.
-</p>
+## Features
 
-<p align="center">
+- Minecraft: Java Edition launcher for Android
+- Cryonix Launcher V3 interface and branding
+- Instance-based Minecraft management
+- Minecraft version selection
+- Vanilla and modded setups
+- Fabric and Forge support where compatible
+- Mod and modpack management
+- Java runtime selection and management
+- RAM and JVM argument configuration
+- Renderer and graphics configuration
+- Touch, keyboard, mouse, and controller support
+- Account management
+- File and instance management
+- Custom launcher settings
+- Bounce-based UI interaction animations
+- Performance-focused configuration
 
-[![GitHub Downloads](https://img.shields.io/github/downloads/cryonixlauncherteam/CryonixLauncherV2/total?label=Downloads&logo=github&color=blue)](https://github.com/cryonixlauncherteam/CryonixLauncherV2/releases)
+## Minecraft Versions
 
-[![GitHub Release](https://img.shields.io/github/v/release/cryonixlauncherteam/CryonixLauncherV2?logo=github)](https://github.com/cryonixlauncherteam/CryonixLauncherV2/releases/tag/Beta_v2)
+Cryonix Launcher V3 is designed to support a broad range of Minecraft Java Edition versions.
 
-[![License](https://img.shields.io/badge/license-CryonixLauncherV2-blue.svg)](LICENSE)
+Compatibility depends on the Minecraft version, Java runtime, renderer, device hardware, Android version, and installed mods.
 
-</p>
+## Instance Management
 
----
+Each Minecraft instance can keep its own configuration, including:
 
-## ✨ About CryonixLauncher V2
+- Minecraft version
+- Java runtime
+- Mods and mod loader
+- Resource packs
+- Shader packs
+- Worlds
+- JVM arguments
+- RAM allocation
+- Renderer configuration
+- Game files and settings
 
-**CryonixLauncher V2** is a modern Minecraft: Java Edition launcher designed for Android devices.
+This keeps different Minecraft setups separated and easier to manage.
 
-The project focuses on providing a clean, powerful, customizable, and easy-to-use Minecraft Java Edition experience on mobile.
+## Modding
 
-CryonixLauncher V2 brings together useful features from the Android Minecraft launcher ecosystem while providing its own interface, branding, improvements, and custom experience.
+Cryonix Launcher V3 supports compatible modded Minecraft installations.
 
-The launcher is designed for players who want to run Minecraft Java Edition on Android while having control over versions, instances, Java runtimes, mods, controls, renderers, memory, and other settings.
+Supported ecosystems may include:
 
----
+- Fabric
+- Forge
+- Compatible modpacks
+- `.jar` mods
+- `.mrpack` modpacks
+- Other supported Minecraft content
 
-## 🚀 Features
+Mod compatibility varies by Minecraft version and device.
 
-* 🎮 Minecraft: Java Edition on Android
-* ❄️ Custom CryonixLauncher V2 interface
-* 🔵 Modern blue-themed design
-* 📦 Instance-based game management
-* 🧩 Mod and mod-loader support
-* 🔧 Forge support
-* 🧵 Fabric support
-* 📁 `.jar` installer support
-* 📦 `.mrpack` modpack support
-* 📦 Modpack import support
-* ☕ Multiple Java runtime support
-* ⚡ Performance-focused configuration
-* 🖥️ Custom renderer support
-* 🎮 Touch control support
-* 🖱️ Mouse support
-* ⌨️ Keyboard support
-* 🎮 Controller support
-* 🧠 Custom RAM allocation
-* ⚙️ JVM argument configuration
-* 🎨 Custom launcher settings
-* 🔐 Account management
-* 🌐 Wide Minecraft version compatibility
+## Java Runtime
 
----
+Different Minecraft versions can require different Java versions.
 
-# 📱 Minecraft Version Support
+Cryonix Launcher V3 provides configuration for supported Java runtimes so users can select an appropriate runtime for an instance.
 
-CryonixLauncher V2 is designed to support a wide range of Minecraft Java Edition versions.
+Java configuration can affect compatibility, memory usage, startup time, performance, and stability.
 
-Depending on the Minecraft version, Java runtime, renderer, mods, and Android device, users may be able to run:
+## Performance
 
-* Classic Minecraft versions
-* Alpha versions
-* Beta versions
-* Release versions
-* Modern Minecraft versions
-* Snapshot versions
-* Combat Test versions
-* Modded Minecraft versions
+Cryonix Launcher V3 is designed with Android performance in mind.
 
-> ⚠️ Compatibility and performance may vary depending on your Android device, GPU, CPU, RAM, Java runtime, renderer, Minecraft version, and installed modifications.
+Available configuration may include:
 
----
+- RAM allocation
+- JVM arguments
+- Java runtime selection
+- Renderer selection
+- Resolution
+- Graphics settings
+- Instance configuration
 
-# 📦 Instance System
+Actual performance depends on the Android device, Minecraft version, Java runtime, renderer, and configuration.
 
-CryonixLauncher V2 provides an instance-based system for keeping Minecraft installations organized.
+## Controls
 
-Each instance can have its own:
+Cryonix Launcher V3 is designed for mobile Minecraft Java Edition use.
 
-* Minecraft version
-* Java runtime
-* Mod loader
-* Mods
-* Resource packs
-* Shader packs
-* Worlds
-* Game settings
-* JVM arguments
-* RAM allocation
-* Renderer configuration
-* Instance-specific files
+Depending on the device and configuration, controls can include:
 
-This makes it possible to maintain multiple Minecraft configurations without mixing their files.
+- Touch controls
+- Keyboard
+- Mouse
+- Game controller
+- Custom control configuration
 
-For example:
+## UI & Animation
 
-```text
-Vanilla 1.21
-Fabric 1.21
-Forge 1.20.1
-PvP 1.8.9
-Performance Setup
-Modded Survival
-Custom Modpack
-```
+V3 uses a clean Cryonix-focused interface instead of relying on the previous animation system.
 
----
+The current interaction animation system uses a lightweight bounce effect for supported launcher interactions.
 
-# 🧩 Modding Support
+Old jelly, spring, wobble, and bubble animation resources have been removed from the current V3 implementation.
 
-CryonixLauncher V2 supports Minecraft Java Edition modding for compatible versions.
+## Compatibility
 
-Mods can be used with supported mod loaders such as Forge and Fabric.
+Compatibility can vary based on:
 
-Common Minecraft mod files include:
+- Android version
+- CPU architecture
+- CPU and GPU
+- Available RAM
+- Minecraft version
+- Java runtime
+- Renderer
+- Mod loader
+- Mods and modpacks
+- Device-specific native libraries
 
-```text
-.jar
-```
+A setup that works on one Android device may not work identically on another.
 
-Mods can be managed separately for individual instances.
+## Known Limitations
 
-This allows users to create different modded environments without affecting their other installations.
+Some Minecraft Java Edition configurations may have issues on specific Android devices.
 
----
+Examples include:
 
-# 🔧 Forge Support
+- Incompatible mods
+- Renderer-specific problems
+- Unsupported Java versions
+- Large modpacks requiring more memory
+- Device-specific native library issues
+- Controller or mouse compatibility differences
+- Minecraft version-specific problems
 
-CryonixLauncher V2 supports compatible **Forge** Minecraft installations.
+Check launcher and Minecraft logs when troubleshooting crashes or startup problems.
 
-Forge allows users to run a large variety of Minecraft modifications and modpacks.
+## Project Technology
 
-Supported Forge setups can include:
+Cryonix Launcher is developed primarily with:
 
-* Forge mods
-* Forge modpacks
-* Performance mods
-* Client-side mods
-* Custom configurations
-* Resource packs
-* Shader packs
+- Kotlin
+- Java
+- C/C++
+- Android SDK
+- AndroidX
+- Open-source Minecraft launcher technologies and libraries
 
-> ⚠️ Individual mods may have additional requirements and may not be compatible with Android or specific Minecraft versions.
+## Credits
 
----
+Cryonix Launcher builds on ideas, technologies, libraries, and open-source work from the wider Android Minecraft community.
 
-# 🧵 Fabric Support
+Special thanks to the developers and contributors of projects including:
 
-CryonixLauncher V2 also supports compatible **Fabric** installations.
+- PojavLauncher
+- Zalith Launcher
+- OpenJDK
+- LWJGL
+- GLFW
+- Mesa
+- GL4ES
+- AndroidX
+- OpenAL
+- Oboe
+- Other open-source libraries and projects
 
-Fabric provides a lightweight modding environment commonly used for performance improvements and modern Minecraft modifications.
+Third-party code remains subject to its original copyright and license.
 
-Fabric setups can include:
+## Licensing
 
-* Fabric Loader
-* Fabric API
-* Fabric mods
-* Optimization mods
-* Client-side mods
-* Performance mods
-* Fabric modpacks
+Cryonix Launcher V3 contains or depends on software from multiple projects. Different components may therefore be distributed under different licenses.
 
----
+Third-party components remain under their original licenses. Relevant license files and copyright notices must be preserved where required.
 
-# 📦 Modpack Support
+See the repository's `LICENSE` file for the applicable Cryonix Launcher project terms.
 
-CryonixLauncher V2 provides support for compatible Minecraft modpacks.
+## Disclaimer
 
-Supported formats can include:
+Cryonix Launcher is an independent community project.
 
-```text
-.mrpack
-.zip
-```
+Minecraft and Minecraft: Java Edition are trademarks and intellectual property of their respective rights holders. Cryonix Launcher is not affiliated with, sponsored by, or endorsed by Mojang Studios or Microsoft unless explicitly stated.
 
-Modpacks can be installed into separate instances so that their mods, configurations, and game files remain organized.
+PojavLauncher and Zalith Launcher are independent projects and are not claimed as Cryonix Launcher property.
 
-This makes it easier to maintain multiple modpacks without affecting other Minecraft installations.
+Minecraft is not included with Cryonix Launcher. Users are responsible for obtaining Minecraft through legitimate means.
 
----
+## Cryonix Launcher V3
 
-# ☕ Java Runtime Support
+V3 focuses on a cleaner launcher experience, practical Minecraft management, performance configuration, and a simple Android-first design.
 
-Minecraft Java Edition versions may require different Java runtimes.
-
-CryonixLauncher V2 provides Java runtime management and configuration for supported Minecraft versions.
-
-Users can configure the Java environment used by individual instances.
-
-Java configuration can affect:
-
-* Minecraft compatibility
-* Mod compatibility
-* Startup time
-* Performance
-* Memory usage
-* Stability
-
-Different Minecraft versions may require different Java versions.
-
----
-
-# ⚡ Performance
-
-CryonixLauncher V2 is designed with performance and flexibility in mind.
-
-The launcher provides configuration options that can help users optimize Minecraft for their Android device.
-
-Performance-related options can include:
-
-* RAM allocation
-* JVM arguments
-* Java runtime selection
-* Renderer selection
-* Resolution
-* Graphics configuration
-* Instance configuration
-* Performance settings
-
-Actual performance depends on the Android device and Minecraft configuration.
-
----
-
-# 🖥️ Graphics & Rendering
-
-CryonixLauncher V2 supports configurable rendering options for Minecraft Java Edition.
-
-Different renderers may provide different levels of:
-
-* Performance
-* Compatibility
-* Stability
-* OpenGL support
-* Mod compatibility
-* Graphical quality
-
-Renderer compatibility can vary between Android devices and Minecraft versions.
-
-Some shaders, mods, and graphical features may require specific renderer capabilities.
-
----
-
-# 🎮 Controls
-
-CryonixLauncher V2 is designed specifically for mobile devices and provides flexible Minecraft controls.
-
-Supported input methods can include:
-
-* Touch controls
-* Virtual buttons
-* Keyboard
-* Mouse
-* Game controllers
-* Custom control layouts
-
-Controls can be configured to provide a comfortable Minecraft Java Edition experience on Android.
-
----
-
-# 🖱️ Keyboard & Mouse
-
-External keyboards and mice can be used on compatible Android devices.
-
-This allows players to use a control setup closer to the traditional PC Minecraft Java Edition experience.
-
-Mouse and keyboard behavior can vary depending on the Android device and connected hardware.
-
----
-
-# 🎮 Controller Support
-
-CryonixLauncher V2 supports compatible external controllers.
-
-Controllers can provide a more comfortable experience for players who prefer gamepad-style controls.
-
-Compatibility depends on the controller, Android version, device, and Minecraft configuration.
-
----
-
-# 🎨 Customization
-
-CryonixLauncher V2 provides customization options throughout the launcher.
-
-Users can configure different parts of their Minecraft environment, including:
-
-* Launcher appearance
-* Cryonix theme
-* Controls
-* Minecraft instances
-* Java runtime
-* RAM allocation
-* JVM arguments
-* Renderer
-* Resolution
-* Game settings
-* Mod configurations
-
-The goal is to allow users to create a Minecraft setup that works best for their device and play style.
-
----
-
-# 📁 File Management
-
-CryonixLauncher V2 provides functionality for managing Minecraft-related files.
-
-Depending on the supported features, this can include:
-
-* Minecraft versions
-* Mods
-* Modpacks
-* Resource packs
-* Shader packs
-* Worlds
-* Configuration files
-* Instance files
-* Java runtimes
-
-Keeping these files organized by instance helps prevent configurations from interfering with each other.
-
----
-
-# 🔐 Account Support
-
-CryonixLauncher V2 supports compatible Minecraft account authentication functionality.
-
-Account-related features can include:
-
-* Account management
-* Profile selection
-* Authentication
-* Multiple account support where available
-
-Authentication functionality depends on the supported authentication implementation and services.
-
----
-
-# 🌐 Wide Compatibility
-
-CryonixLauncher V2 is designed to work across a wide variety of Android devices.
-
-Compatibility can depend on:
-
-* Android version
-* CPU architecture
-* CPU performance
-* GPU
-* Available RAM
-* Minecraft version
-* Java runtime
-* Renderer
-* Mod loader
-* Installed mods
-* Modpack requirements
-
-A configuration that works on one device may not perform the same way on another device.
-
----
-
-# ⚠️ Known Limitations
-
-Some Minecraft Java Edition features may not work perfectly on every Android device.
-
-Possible issues include:
-
-* Some mods may be incompatible
-* Some shaders may not work correctly
-* Certain graphical effects may have rendering issues
-* Large modpacks may require significant memory
-* Some Minecraft versions require specific Java runtimes
-* Certain physical mice may behave differently
-* Some controllers may require additional configuration
-* Native libraries may have device-specific limitations
-* Performance may vary between devices
-
-These issues can depend on Minecraft, Android, device hardware, third-party mods, Java, or rendering components.
-
----
-
-# 🛠️ Stability
-
-CryonixLauncher V2 aims to provide a stable Minecraft Java Edition experience.
-
-However, crashes can still occur due to:
-
-* Incompatible mods
-* Incorrect Java versions
-* Unsupported Minecraft versions
-* Insufficient RAM
-* Renderer problems
-* Broken mod configurations
-* Corrupted game files
-* Device-specific compatibility issues
-
-When troubleshooting, checking the crash log and launcher log can help identify the cause of a problem.
-
----
-
-# 🏆 Credits
-
-CryonixLauncher V2 is made possible by the work of many open-source developers and projects.
-
-We would like to give special credit to the projects that inspired, contributed to, or provided foundations and features used within the launcher.
-
-## PojavLauncher
-
-CryonixLauncher V2 is based on and builds upon the work of **PojavLauncher**.
-
-PojavLauncher is one of the major projects that made Minecraft: Java Edition playable on Android devices.
-
-CryonixLauncher V2 uses, adapts, or is inspired by various technologies, concepts, functionality, and features from the PojavLauncher ecosystem.
-
-We sincerely thank the PojavLauncher developers and contributors for their work.
-
-All PojavLauncher code and components remain subject to their respective copyrights and licenses.
-
-## Zalith Launcher
-
-CryonixLauncher V2 also gives credit to **Zalith Launcher** and its developers.
-
-Several ideas, features, interface concepts, and improvements in CryonixLauncher V2 were inspired by functionality available in Zalith Launcher.
-
-We appreciate the work done by the Zalith Launcher developers and contributors in improving the Minecraft Java Edition experience on Android.
-
-Zalith Launcher is an independent project and is not affiliated with or endorsed by CryonixLauncher V2 unless explicitly stated.
-
-All Zalith Launcher code and components remain subject to their respective copyrights and licenses.
-
-## Other Projects
-
-CryonixLauncher V2 may also use or depend on technologies and libraries developed by other open-source projects, including:
-
-* OpenJDK
-* LWJGL
-* GLFW
-* Mesa
-* GL4ES
-* AndroidX
-* OpenAL
-* Oboe
-* Other open-source libraries and native components
-
-We thank all developers and contributors who have made these projects available to the community.
-
----
-
-# 📜 Licensing
-
-CryonixLauncher V2 contains and is based on software from multiple projects.
-
-Different parts of the launcher may therefore be covered by different licenses.
-
-Third-party components remain under their original licenses.
-
-These licenses may include:
-
-* GNU LGPL
-* GNU GPL
-* Apache License 2.0
-* MIT License
-* BSD Licenses
-* zlib License
-* Other applicable open-source licenses
-
-Original copyright notices and license requirements must be preserved where required.
-
-The licenses included with third-party components take precedence over any CryonixLauncher V2 license for those components.
-
----
-
-# ❄️ CryonixLauncher V2 License
-
-Copyright © 2026 CryonixLauncher V2
-
-CryonixLauncher V2 is distributed under the CryonixLauncher V2 License included in the `LICENSE` file.
-
-The CryonixLauncher V2 license allows personal and non-commercial use and modification according to its terms.
-
-Redistribution, resale, or publication of modified or unmodified versions of CryonixLauncher V2 is not permitted without permission from the CryonixLauncher V2 developers, except where such rights are granted by an applicable third-party license.
-
-Original copyright notices and required third-party credits must remain intact.
-
-Third-party software is not relicensed by the CryonixLauncher V2 license and remains under its original license.
-
----
-
-# ⚖️ Disclaimer
-
-CryonixLauncher V2 is an independent community project.
-
-Minecraft and Minecraft: Java Edition are trademarks and intellectual property of their respective rights holders.
-
-CryonixLauncher V2 is not affiliated with, sponsored by, or endorsed by Mojang Studios or Microsoft unless explicitly stated.
-
-PojavLauncher and Zalith Launcher are independent projects. Their names, trademarks, code, and other intellectual property belong to their respective owners.
-
-CryonixLauncher V2 does not claim ownership of third-party projects or their intellectual property.
-
-Minecraft itself is not included with CryonixLauncher V2.
-
-Users are responsible for obtaining Minecraft through legitimate means.
-
----
-
-# ❤️ Open Source Community
-
-CryonixLauncher V2 would not be possible without the work of the open-source community.
-
-Special thanks to:
-
-* PojavLauncher developers
-* Zalith Launcher developers
-* OpenJDK developers
-* LWJGL developers
-* GLFW developers
-* Mesa developers
-* GL4ES developers
-* Android developers
-* Minecraft mod developers
-* Open-source contributors
-* Testers
-* Translators
-* Minecraft community members
-
-Every contribution to the Android Minecraft ecosystem helps make projects like CryonixLauncher V2 possible.
-
----
+**Cryonix Launcher V3 — built for Minecraft Java Edition on Android.**
