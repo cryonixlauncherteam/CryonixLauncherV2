@@ -192,3 +192,4 @@ Minecraft is not included with Cryonix Launcher. Users are responsible for obtai
 V3 focuses on a cleaner launcher experience, practical Minecraft management, performance configuration, and a simple Android-first design.
 
 **Cryonix Launcher V3 — built for Minecraft Java Edition on Android.**
+
