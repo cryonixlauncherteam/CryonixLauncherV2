@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.view.ViewGroup;
@@ -98,10 +99,11 @@ public final class CryonixThemeManager {
             text.setTextColor(theme.primary);
             if (view instanceof Button) {
                 Button button = (Button) view;
-                boolean secondary = button.getBackground() != null && !(button instanceof CheckBox);
                 button.setTextColor(theme.accent);
-                if (secondary) {
-                    ViewCompat.setBackgroundTintList(button, ColorStateList.valueOf(theme.card));
+                boolean primaryButton = button.getClass().getSimpleName().contains("MineButton");
+                if (button.getBackground() != null) {
+                    ViewCompat.setBackgroundTintList(button,
+                            ColorStateList.valueOf(primaryButton ? theme.accent : theme.card));
                 }
             } else if (view instanceof EditText) {
                 text.setTextColor(theme.primary);
@@ -124,6 +126,11 @@ public final class CryonixThemeManager {
 
         if (view instanceof ImageButton) {
             ((ImageButton) view).setColorFilter(theme.accent);
+        } else if (view instanceof android.widget.ImageView) {
+            android.widget.ImageView imageView = (android.widget.ImageView) view;
+            if (!(imageView.getDrawable() instanceof BitmapDrawable)) {
+                imageView.setImageTintList(ColorStateList.valueOf(theme.accent));
+            }
         }
 
         if (view instanceof ProgressBar) {
