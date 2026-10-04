@@ -1,10 +1,12 @@
 <resources>
     <style name="CryonixDialogTheme" parent="android:style/Theme.Material.Dialog">
         <item name="android:windowBackground">@drawable/cryonix_dialog_bg</item>
-        <item name="android:windowMinWidthMajor">82%</item>
-        <item name="android:windowMinWidthMinor">88%</item>
+        <item name="android:windowMinWidthMajor">72%</item>
+        <item name="android:windowMinWidthMinor">82%</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:colorAccent">#7EA7D8</item>
         <item name="android:windowActionModeOverlay">true</item>
+        <item name="android:windowFixedWidthMajor">72%</item>
+        <item name="android:windowFixedWidthMinor">82%</item>
     </style>
 </resources>
