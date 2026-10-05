@@ -1,27 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="control_button_color">#4CFFFFFF</color>
+    <color name="control_button_color">#7DB3EA</color>
     <color name="control_button_pressed_color">#33000000</color>
 
-    <color name="minebutton_color">#456B8C</color>
-    <color name="accent_blue">#456B8C</color>
-    <color name="accent_purple">#456B8C</color>
-    <color name="background_app">#0B1118</color>
-    <color name="divider">#2E4357</color>
-    <color name="background_overlay">#16212C</color>
-    <color name="background_status_bar">#070C12</color>
-    <color name="background_bottom_bar">#0D151D</color>
-    <color name="icon_outline_color">#FFFFFF</color>
+    <color name="minebutton_color">#7DB3EA</color>
+    <color name="accent_blue">#8DB9E8</color>
+    <color name="accent_purple">#8DB9E8</color>
+    <color name="background_app">#0D0D0F</color>
+    <color name="divider">#6F9CC9</color>
+    <color name="background_overlay">#3A5F87</color>
+    <color name="background_status_bar">#080809</color>
+    <color name="background_bottom_bar">#121214</color>
+    <color name="icon_outline_color">#DCEBFA</color>
 
-    <color name="primary_text">#F1F5F7</color>
-    <color name="secondary_text">#91A2B2</color>
+    <color name="primary_text">#FFFFFF</color>
+    <color name="secondary_text">#C9DDF2</color>
     <color name="cryonix_error">#FF7474</color>
-    <color name="cryonix_field_stroke">#2E4357</color>
-    <color name="cryonix_row_fill">#121C25</color>
-    <color name="launcher_accent">#456B8C</color>
-    <color name="launcher_surface">#121C25</color>
-    <color name="launcher_surface_alt">#16212C</color>
-    <color name="launcher_divider">#2E4357</color>
-    <color name="launcher_muted">#91A2B2</color>
-    <color name="launcher_icon">#FFFFFF</color>
+    <color name="cryonix_field_stroke">#8DB9E8</color>
+    <color name="cryonix_row_fill">#2F4F73</color>
+    <color name="launcher_accent">#8DB9E8</color>
+    <color name="launcher_surface">#2F4F73</color>
+    <color name="launcher_surface_alt">#3A5F87</color>
+    <color name="launcher_divider">#6F9CC9</color>
+    <color name="launcher_muted">#C9DDF2</color>
+    <color name="launcher_icon">#DCEBFA</color>
+    <color name="cryonix_ready">#00D6A0</color>
+    <color name="launcher_on_light">#07101E</color>
 </resources>

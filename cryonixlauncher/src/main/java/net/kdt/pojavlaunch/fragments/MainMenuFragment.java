@@ -159,9 +159,29 @@ public class MainMenuFragment extends Fragment {
             });
         }
 
-        if (mPlayButton != null) mPlayButton.setOnClickListener(v -> ExtraCore.setValue(ExtraConstants.LAUNCH_GAME, true));
-        if (mShareLogsButton != null) mShareLogsButton.setOnClickListener((v) -> Tools.shareLog(requireContext()));
-        if (mOpenDirectoryButton != null) mOpenDirectoryButton.setOnClickListener((v) -> openGameDirectory(v.getContext()));
+        if (mPlayButton != null) {
+            applyJellyTouch(mPlayButton);
+            mPlayButton.setOnClickListener(v -> {
+                Tools.jellyClick(v);
+                ExtraCore.setValue(ExtraConstants.LAUNCH_GAME, true);
+            });
+        }
+
+        if (mShareLogsButton != null) {
+            applyJellyTouch(mShareLogsButton);
+            mShareLogsButton.setOnClickListener((v) -> {
+                Tools.jellyClick(v);
+                Tools.shareLog(requireContext());
+            });
+        }
+
+        if (mOpenDirectoryButton != null) {
+            applyJellyTouch(mOpenDirectoryButton);
+            mOpenDirectoryButton.setOnClickListener((v) -> {
+                Tools.jellyClick(v);
+                openGameDirectory(v.getContext());
+            });
+        }
 
         mInstancesList = view.findViewById(R.id.instances_list);
         if (mInstancesList != null) {
@@ -274,15 +294,20 @@ public class MainMenuFragment extends Fragment {
             return false;
         });
 
-        // Reference-video entrance choreography: sidebar, header, cards and panel
-        // enter independently instead of the whole home screen popping together.
-        net.kdt.pojavlaunch.utils.JellyAnimations.stagger(
-                (ViewGroup) view.findViewById(R.id.home_sidebar), 70L, 300L);
-        net.kdt.pojavlaunch.utils.JellyAnimations.stagger(
-                (ViewGroup) view.findViewById(R.id.home_header), 55L, 260L);
-        // instances_header is a TextView, not a ViewGroup; do not cast it for stagger animation.
-        net.kdt.pojavlaunch.utils.JellyAnimations.stagger(
-                (ViewGroup) view.findViewById(R.id.profile_panel), 55L, 250L);
+        View sidebarView = view.findViewById(R.id.home_sidebar);
+        if (sidebarView instanceof ViewGroup) {
+            net.kdt.pojavlaunch.utils.JellyAnimations.stagger((ViewGroup) sidebarView, 70L, 300L);
+        }
+
+        View headerView = view.findViewById(R.id.home_header);
+        if (headerView instanceof ViewGroup) {
+            net.kdt.pojavlaunch.utils.JellyAnimations.stagger((ViewGroup) headerView, 55L, 260L);
+        }
+
+        View panelView = view.findViewById(R.id.profile_panel);
+        if (panelView instanceof ViewGroup) {
+            net.kdt.pojavlaunch.utils.JellyAnimations.stagger((ViewGroup) panelView, 55L, 250L);
+        }
 
     }
 
