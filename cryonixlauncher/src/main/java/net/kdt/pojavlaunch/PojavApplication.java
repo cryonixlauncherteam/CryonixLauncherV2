@@ -12,6 +12,7 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
+import androidx.preference.PreferenceManager;
 
 import net.kdt.pojavlaunch.lifecycle.ContextExecutor;
 import net.kdt.pojavlaunch.prefs.LauncherPreferences;
@@ -77,6 +78,10 @@ public class PojavApplication extends Application {
 		
 		try {
 			super.onCreate();
+			// Initialize the default preferences before LauncherPreferences reads them.
+			// Without this, a fresh install can crash during Application startup because
+			// LauncherPreferences.DEFAULT_PREF is still null.
+			LauncherPreferences.DEFAULT_PREF = PreferenceManager.getDefaultSharedPreferences(this);
 			if(Tools.checkStorageRoot(this)){
 				// Implicitly initializes early constants and storage constants.
 				// Required to run the main activity properly.
