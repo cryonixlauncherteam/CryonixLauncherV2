@@ -132,7 +132,7 @@ public class LauncherActivity extends BaseActivity {
     };
 
     private final ExtraListener<Boolean> mLaunchGameListener = (key, value) -> {
-        if(mProgressLayout.hasProcesses()){
+        if(mProgressLayout != null && mProgressLayout.hasProcesses()){
             Toast.makeText(this, R.string.tasks_ongoing, Toast.LENGTH_LONG).show();
             return false;
         }
@@ -222,7 +222,9 @@ public class LauncherActivity extends BaseActivity {
         ProgressKeeper.addTaskCountListener((mProgressServiceKeeper = new ProgressServiceKeeper(this)));
 
         if (mSettingsButton != null) mSettingsButton.setOnClickListener(mSettingButtonListener);
-        ProgressKeeper.addTaskCountListener(mProgressLayout);
+        if (mProgressLayout != null) {
+            ProgressKeeper.addTaskCountListener(mProgressLayout);
+        }
         ExtraCore.addExtraListener(ExtraConstants.BACK_PREFERENCE, mBackPreferenceListener);
         ExtraCore.addExtraListener(ExtraConstants.SELECT_AUTH_METHOD, mSelectAuthMethod);
 
@@ -249,13 +251,15 @@ public class LauncherActivity extends BaseActivity {
 
         new AsyncVersionList().getVersionList(versions -> ExtraCore.setValue(ExtraConstants.RELEASE_TABLE, versions));
 
-        mProgressLayout.observe(ProgressLayout.DOWNLOAD_GAME);
-        mProgressLayout.observe(ProgressLayout.UNPACK_RUNTIME);
-        mProgressLayout.observe(ProgressLayout.INSTALL_MODPACK);
-        mProgressLayout.observe(ProgressLayout.AUTHENTICATE);
-        mProgressLayout.observe(ProgressLayout.DOWNLOAD_VERSION_LIST);
-        mProgressLayout.observe(ProgressLayout.INSTANCE_INSTALL);
-        mProgressLayout.observe(ProgressLayout.DATA_MIGRATION);
+        if (mProgressLayout != null) {
+            mProgressLayout.observe(ProgressLayout.DOWNLOAD_GAME);
+            mProgressLayout.observe(ProgressLayout.UNPACK_RUNTIME);
+            mProgressLayout.observe(ProgressLayout.INSTALL_MODPACK);
+            mProgressLayout.observe(ProgressLayout.AUTHENTICATE);
+            mProgressLayout.observe(ProgressLayout.DOWNLOAD_VERSION_LIST);
+            mProgressLayout.observe(ProgressLayout.INSTANCE_INSTALL);
+            mProgressLayout.observe(ProgressLayout.DATA_MIGRATION);
+        }
     }
 
     @Override
@@ -280,8 +284,10 @@ public class LauncherActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        mProgressLayout.cleanUpObservers();
-        ProgressKeeper.removeTaskCountListener(mProgressLayout);
+        if (mProgressLayout != null) {
+            mProgressLayout.cleanUpObservers();
+            ProgressKeeper.removeTaskCountListener(mProgressLayout);
+        }
         ProgressKeeper.removeTaskCountListener(mProgressServiceKeeper);
         ExtraCore.removeExtraListenerFromValue(ExtraConstants.BACK_PREFERENCE, mBackPreferenceListener);
         ExtraCore.removeExtraListenerFromValue(ExtraConstants.SELECT_AUTH_METHOD, mSelectAuthMethod);
