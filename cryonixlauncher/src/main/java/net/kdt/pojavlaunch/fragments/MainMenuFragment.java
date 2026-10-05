@@ -533,7 +533,7 @@ public class MainMenuFragment extends Fragment {
         try {
             Account current = Accounts.getCurrent();
             if (current != null && current.username != null && !current.username.trim().isEmpty()) {
-                profileName.setText(current.username.trim());\n                if (launchAvatar != null) launchAvatar.setVisibility(View.VISIBLE);\n                if (launchAdd != null) launchAdd.setVisibility(View.GONE);
+                profileName.setText(current.username.trim());
             } else {
                 profileName.setText("");
             }
