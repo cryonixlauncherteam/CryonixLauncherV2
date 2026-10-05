@@ -165,7 +165,7 @@ public class MainMenuFragment extends Fragment {
 
         mInstancesList = view.findViewById(R.id.instances_list);
         if (mInstancesList != null) {
-            mInstancesList.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
+            mInstancesList.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false));
             mInstancesList.setHasFixedSize(true);
             reloadInstances();
         }
