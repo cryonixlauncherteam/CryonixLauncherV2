@@ -6,6 +6,15 @@
     android:layout_height="match_parent"
     android:background="@android:color/transparent">
 
+    <View
+        android:id="@+id/launcher_topbar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_52sdp"
+        android:background="#0B1B33"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
     <com.kdt.mcgui.AccountSpinner
         android:id="@+id/account_spinner"
         android:layout_width="match_parent"
