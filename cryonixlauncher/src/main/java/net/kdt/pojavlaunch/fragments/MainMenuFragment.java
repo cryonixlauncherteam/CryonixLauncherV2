@@ -26,8 +26,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.transition.Slide;
 import androidx.transition.TransitionManager;
 
-import com.kdt.mcgui.mcVersionSpinner;
-
 import git.artdeell.mojo.R;
 import net.kdt.pojavlaunch.CustomControlsActivity;
 import net.kdt.pojavlaunch.LauncherActivity;
@@ -51,7 +49,6 @@ import java.util.List;
 public class MainMenuFragment extends Fragment {
     public static final String TAG = "MainMenuFragment";
 
-    private mcVersionSpinner mVersionSpinner;
     private RecyclerView mInstancesList;
     private InstanceAdapter mAdapter;
 
@@ -73,9 +70,7 @@ public class MainMenuFragment extends Fragment {
         View mShareLogsButton = view.findViewById(R.id.share_logs_button);
         View mOpenDirectoryButton = view.findViewById(R.id.open_files_button);
 
-        ImageButton mEditProfileButton = view.findViewById(R.id.edit_profile_button);
         Button mPlayButton = view.findViewById(R.id.play_button);
-        mVersionSpinner = view.findViewById(R.id.mc_version_spinner);
 
         // Click listeners with jelly motion
         if (mNewsButton != null) {
@@ -153,10 +148,15 @@ public class MainMenuFragment extends Fragment {
 
         // Show the persisted account in the home chip. If no account is selected,
         // keep the chip empty instead of displaying a fake/default username.
-        updateAccountChip(view);\n\n        View addAccount = view.findViewById(R.id.launch_add_account);\n        if (addAccount != null) {\n            applyJellyTouch(addAccount);\n            addAccount.setOnClickListener(v -> {\n                Tools.jellyClick(v);\n                ExtraCore.setValue(ExtraConstants.SELECT_AUTH_METHOD, true);\n            });\n        }
+        updateAccountChip(view);
 
-        if (mEditProfileButton != null && mVersionSpinner != null) {
-            mEditProfileButton.setOnClickListener(v -> mVersionSpinner.openProfileEditor(requireActivity()));
+        View addAccount = view.findViewById(R.id.launch_add_account);
+        if (addAccount != null) {
+            applyJellyTouch(addAccount);
+            addAccount.setOnClickListener(v -> {
+                Tools.jellyClick(v);
+                ExtraCore.setValue(ExtraConstants.SELECT_AUTH_METHOD, true);
+            });
         }
 
         if (mPlayButton != null) mPlayButton.setOnClickListener(v -> ExtraCore.setValue(ExtraConstants.LAUNCH_GAME, true));
