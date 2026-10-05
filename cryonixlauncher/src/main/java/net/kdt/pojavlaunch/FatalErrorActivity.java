@@ -1,21 +1,18 @@
 package net.kdt.pojavlaunch;
 
-import android.content.ClipData;
-import android.content.ClipboardManager;
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import git.artdeell.mojo.R;
 
 /**
- * Crash hand-off activity.
+ * Non-recursive fatal crash screen.
  *
- * The old crash dialog is intentionally gone. A real fatal crash now opens the
- * dedicated Crash AI screen with the exact stack trace, so the user sees the
- * cause, log and actionable diagnostic steps in one place.
+ * A previous implementation relaunched LauncherActivity after a crash. If the
+ * same startup problem happened again, that created an endless open -> crash ->
+ * relaunch loop. This screen now stays isolated from LauncherActivity.
  */
 public class FatalErrorActivity extends AppCompatActivity {
 
@@ -23,40 +20,32 @@ public class FatalErrorActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        TextView view = new TextView(this);
+        view.setTextIsSelectable(true);
+        view.setTextSize(14);
+        view.setPadding(32, 32, 32, 32);
+
         Bundle extras = getIntent().getExtras();
-        if (extras == null) {
-            finish();
-            return;
-        }
+        Throwable throwable = extras == null ? null : (Throwable) extras.getSerializable("throwable");
+        String stackTrace = throwable != null
+                ? Tools.printToString(throwable)
+                : "<unknown launcher crash>";
 
-        Throwable throwable = (Throwable) extras.getSerializable("throwable");
-        final String stackTrace = throwable != null ? Tools.printToString(throwable) : "<null crash throwable>";
-        final String savePath = extras.getString("savePath");
-
-        Intent intent = new Intent(this, LauncherActivity.class);
-        intent.putExtra("open_ai_assist", true);
-        intent.putExtra("ai_error_text", stackTrace);
-        if (savePath != null) {
-            intent.putExtra("ai_log_path", savePath);
-        }
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-
-        try {
-            startActivity(intent);
-        } finally {
-            finish();
-        }
+        view.setText("Cryonix Launcher crashed during startup.\n\n" + stackTrace);
+        setContentView(view);
     }
 
     /**
      * Kept as the crash-handler entry point used by PojavApplication.
      */
-    public static void showError(Context ctx, String savePath, boolean storageAllow, Throwable th) {
-        Intent fatalErrorIntent = new Intent(ctx, FatalErrorActivity.class);
-        fatalErrorIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-        fatalErrorIntent.putExtra("throwable", th);
-        fatalErrorIntent.putExtra("savePath", savePath);
-        fatalErrorIntent.putExtra("storageAllow", storageAllow);
-        ctx.startActivity(fatalErrorIntent);
+    public static void showError(android.content.Context ctx, String savePath,
+                                 boolean storageAllow, Throwable th) {
+        android.content.Intent intent = new android.content.Intent(ctx, FatalErrorActivity.class);
+        intent.addFlags(android.content.Intent.FLAG_ACTIVITY_CLEAR_TASK
+                | android.content.Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra("throwable", th);
+        intent.putExtra("savePath", savePath);
+        intent.putExtra("storageAllow", storageAllow);
+        ctx.startActivity(intent);
     }
 }
