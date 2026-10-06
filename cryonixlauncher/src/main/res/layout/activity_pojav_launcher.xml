@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/transparent">
+    android:background="@drawable/launcher_home_blue">
 
     <View
         android:id="@+id/launcher_topbar"
@@ -46,6 +46,7 @@
         android:name="net.kdt.pojavlaunch.fragments.MainMenuFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:background="@drawable/launcher_home_blue"
         app:layout_constraintBottom_toTopOf="@+id/progress_layout"
         app:layout_constraintTop_toBottomOf="@+id/account_spinner" />
 
