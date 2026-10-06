@@ -5,7 +5,6 @@ import android.animation.ObjectAnimator;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import java.util.concurrent.atomic.AtomicInteger;
 import android.view.animation.OvershootInterpolator;
 
 public final class BounceAnimation {
@@ -25,7 +24,7 @@ public final class BounceAnimation {
 
     private static void apply(View view) {
         if (!view.isClickable() || view.getTag(TAG_KEY) != null) return;
-        view.setTag(R.id.cryonix_bounce_tag, Boolean.TRUE);
+        view.setTag(TAG_KEY, Boolean.TRUE);
         view.setOnTouchListener((v, event) -> {
             if (event.getActionMasked() == MotionEvent.ACTION_DOWN) {
                 v.animate().scaleX(0.94f).scaleY(0.94f).setDuration(70L).start();
