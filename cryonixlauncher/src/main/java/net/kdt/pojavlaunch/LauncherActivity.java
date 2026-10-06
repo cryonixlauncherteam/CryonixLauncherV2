@@ -96,6 +96,9 @@ public class LauncherActivity extends BaseActivity {
             if (!isMain && !isSettings && f.getView() != null) {
                 net.kdt.pojavlaunch.utils.CryonixThemeManager.applyToView(f.getView());
             }
+            if (f.getView() != null) {
+                BounceAnimation.applyToViewTree(f.getView());
+            }
         }
     };
 
@@ -414,9 +417,13 @@ public class LauncherActivity extends BaseActivity {
         if (mSidebarInfo != null) mSidebarInfo.setOnClickListener(infoListener);
 
         if (mSidebarMouse != null) mSidebarMouse.setOnClickListener(v -> {
-             // Toggle mouse or something? For now just home
              Tools.backToMainMenu(this);
         });
+
+        View cursorButton = findViewById(R.id.sidebar_cursor_customization);
+        if (cursorButton != null) {
+            cursorButton.setOnClickListener(v -> CursorCustomizationDialog.show(this));
+        }
     }
 
     private void runInstallerWithConfirmation() {
