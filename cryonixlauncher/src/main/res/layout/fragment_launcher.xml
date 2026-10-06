@@ -1,66 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/fragment_menu_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/launcher_home_blue"
-    android:padding="18dp">
+    android:padding="12dp">
 
-    <!-- Top header: logo + Cryonix Launcher V3 -->
+    <!-- Compact product top bar -->
     <LinearLayout
         android:id="@+id/home_header"
-        android:layout_width="wrap_content"
-        android:layout_height="54dp"
+        android:layout_width="0dp"
+        android:layout_height="58dp"
+        android:background="@drawable/launcher_card_flat"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:layout_width="54dp"
-            android:layout_height="54dp"
-            android:background="@drawable/launcher_icon_tile"
-            android:padding="10dp"
-            android:src="@drawable/cryonixlauncher"
-            android:contentDescription="Cryonix Launcher logo" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="CRYONIX LAUNCHER 3.1"
-                android:textColor="@color/launcher_icon"
-                android:textSize="23sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="1dp"
-                android:text="Instances"
-                android:textColor="@color/launcher_muted"
-                android:textSize="11sp"
-                android:visibility="gone" />
-        </LinearLayout>
-    </LinearLayout>
-
-    <!-- Account -->
-    <LinearLayout
-        android:id="@+id/profile_chip"
-        android:layout_width="265dp"
-        android:layout_height="52dp"
-        android:background="@drawable/launcher_profile_badge_bg"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:paddingStart="14dp"
-        android:paddingEnd="14dp"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
@@ -69,93 +28,159 @@
             android:background="@drawable/launcher_icon_tile"
             android:padding="7dp"
             android:src="@drawable/cryonixlauncher"
-            android:contentDescription="Account" />
+            android:contentDescription="Cryonix Launcher" />
 
-        <TextView
-            android:id="@+id/profile_name"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_weight="1"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:text="Account"
-            android:textColor="@color/launcher_icon"
-            android:textSize="14sp" />
-
-        <TextView
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="▾"
+            android:layout_marginStart="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cryonix"
+                android:textColor="@android:color/white"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Launcher 3.1"
+                android:textColor="@color/launcher_muted"
+                android:textSize="9sp" />
+        </LinearLayout>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/instance_counter"
+            android:layout_width="56dp"
+            android:layout_height="32dp"
+            android:gravity="center"
+            android:text="1/1"
             android:textColor="@color/launcher_muted"
-            android:textSize="16sp" />
+            android:textSize="11sp" />
+
+        <ImageButton
+            android:id="@+id/btn_prev_instance"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Previous instance"
+            android:padding="8dp"
+            android:src="@drawable/ic_px_arrow_left"
+            app:tint="@color/launcher_muted" />
+
+        <ImageButton
+            android:id="@+id/btn_next_instance"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Next instance"
+            android:padding="8dp"
+            android:src="@drawable/ic_launcher_chevron_right"
+            app:tint="@color/launcher_muted" />
+
+        <LinearLayout
+            android:id="@+id/profile_chip"
+            android:layout_width="190dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/launcher_profile_badge_bg"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="9dp"
+            android:paddingEnd="9dp">
+
+            <ImageView
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:background="@drawable/launcher_icon_tile"
+                android:padding="5dp"
+                android:src="@drawable/cryonixlauncher"
+                android:contentDescription="Account" />
+
+            <TextView
+                android:id="@+id/profile_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="Account"
+                android:textColor="@android:color/white"
+                android:textSize="11sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="›"
+                android:textColor="@color/launcher_muted"
+                android:textSize="18sp" />
+        </LinearLayout>
     </LinearLayout>
 
-    <!-- Left navigation -->
+    <!-- Compact navigation rail -->
     <LinearLayout
         android:id="@+id/launcher_sidebar"
-        android:layout_width="76dp"
+        android:layout_width="58dp"
         android:layout_height="0dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginBottom="6dp"
-        android:background="@drawable/cryonix_sidebar_pill"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/launcher_card_flat"
         android:gravity="center_horizontal"
         android:orientation="vertical"
-        android:paddingTop="12dp"
-        android:paddingBottom="12dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/home_header">
 
         <ImageButton
             android:id="@+id/sidebar_home"
-            android:layout_width="54dp"
-            android:layout_height="54dp"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
             android:background="@drawable/launcher_sidebar_home_bg"
             android:contentDescription="Home"
-            android:padding="12dp"
+            android:padding="11dp"
             android:src="@drawable/ic_px_home"
             app:tint="@color/launcher_icon" />
 
-        <Space
-            android:layout_width="1dp"
-            android:layout_height="14dp" />
+        <Space android:layout_width="1dp" android:layout_height="8dp" />
 
         <ImageButton
             android:id="@+id/custom_control_button"
-            android:layout_width="54dp"
-            android:layout_height="54dp"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="Controls"
-            android:padding="13dp"
+            android:contentDescription="Control Studio"
+            android:padding="11dp"
             android:src="@drawable/ic_px_gamepad"
             app:tint="@color/launcher_icon" />
 
-        <Space
-            android:layout_width="1dp"
-            android:layout_height="14dp" />
-
         <ImageButton
             android:id="@+id/sidebar_cursor_customization"
-            android:layout_width="54dp"
-            android:layout_height="54dp"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="Cursor customization"
-            android:padding="13dp"
+            android:contentDescription="Cursor Studio"
+            android:padding="11dp"
             android:src="@drawable/ic_sidebar_cursor"
             app:tint="@color/launcher_icon" />
 
-        <Space
-            android:layout_width="1dp"
-            android:layout_height="14dp" />
-
         <ImageButton
             android:id="@+id/install_jar_button"
-            android:layout_width="54dp"
-            android:layout_height="54dp"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="About"
-            android:padding="13dp"
+            android:padding="11dp"
             android:src="@drawable/ic_px_letters"
             app:tint="@color/launcher_icon" />
 
@@ -166,22 +191,21 @@
 
         <ImageButton
             android:id="@+id/sidebar_settings"
-            android:layout_width="54dp"
-            android:layout_height="54dp"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="Settings"
-            android:padding="13dp"
+            android:padding="11dp"
             android:src="@drawable/ic_px_sliders"
             app:tint="@color/launcher_icon" />
     </LinearLayout>
 
-    <!-- Main instances area -->
+    <!-- Library -->
     <LinearLayout
         android:id="@+id/main_content"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginEnd="18dp"
+        android:layout_marginEnd="10dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/right_launch_card"
@@ -190,131 +214,87 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="78dp"
+            android:layout_height="58dp"
             android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Instances"
-                    android:textColor="@color/launcher_icon"
-                    android:textSize="23sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Manage Minecraft installations, loaders and profiles"
-                    android:textColor="@color/launcher_muted"
-                    android:textSize="11sp" />
-            </LinearLayout>
+            android:orientation="vertical">
 
             <TextView
-                android:id="@+id/instance_counter"
-                android:layout_width="46dp"
-                android:layout_height="32dp"
-                android:gravity="center"
-                android:text="1/1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="My Minecraft"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Instances • versions • loaders"
                 android:textColor="@color/launcher_muted"
-                android:textSize="13sp" />
-
-            <ImageButton
-                android:id="@+id/btn_prev_instance"
-                android:layout_width="38dp"
-                android:layout_height="38dp"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:contentDescription="Previous instance"
-                android:src="@drawable/ic_px_arrow_left"
-                app:tint="@color/launcher_muted" />
-
-            <ImageButton
-                android:id="@+id/btn_next_instance"
-                android:layout_width="38dp"
-                android:layout_height="38dp"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:contentDescription="Next instance"
-                android:src="@drawable/ic_launcher_chevron_right"
-                app:tint="@color/launcher_muted" />
-
-            <ImageButton
-                android:id="@+id/btn_add_instance_panel"
-                android:layout_width="44dp"
-                android:layout_height="44dp"
-                android:background="@drawable/launcher_btn_play_circle"
-                android:contentDescription="Create instance"
-                android:padding="10dp"
-                android:src="@android:drawable/ic_input_add"
-                app:tint="@android:color/white" />
+                android:textSize="10sp" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/quick_actions_row"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginBottom="10dp"
+            android:layout_height="44dp"
+            android:layout_marginBottom="8dp"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/btn_create_version"
                 android:layout_width="0dp"
-                android:layout_height="42dp"
-                android:layout_marginEnd="6dp"
+                android:layout_height="38dp"
+                android:layout_marginEnd="5dp"
                 android:layout_weight="1"
                 android:background="@drawable/launcher_card_border_bg"
                 android:stateListAnimator="@null"
-                android:text="+  Create Version"
+                android:text="+ Create"
                 android:textAllCaps="false"
-                android:textColor="@color/launcher_icon"
-                android:textSize="12sp" />
+                android:textColor="@android:color/white"
+                android:textSize="11sp" />
 
             <Button
                 android:id="@+id/btn_install_content"
                 android:layout_width="0dp"
-                android:layout_height="42dp"
-                android:layout_marginStart="6dp"
-                android:layout_marginEnd="6dp"
+                android:layout_height="38dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
                 android:layout_weight="1"
                 android:background="@drawable/launcher_card_flat"
                 android:stateListAnimator="@null"
-                android:text="Install .jar"
+                android:text="Import"
                 android:textAllCaps="false"
                 android:textColor="@color/launcher_icon"
-                android:textSize="12sp" />
+                android:textSize="11sp" />
 
             <Button
                 android:id="@+id/btn_control_studio"
                 android:layout_width="0dp"
-                android:layout_height="42dp"
-                android:layout_marginStart="6dp"
-                android:layout_marginEnd="6dp"
+                android:layout_height="38dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
                 android:layout_weight="1"
                 android:background="@drawable/launcher_card_flat"
                 android:stateListAnimator="@null"
-                android:text="Control Studio"
+                android:text="Controls"
                 android:textAllCaps="false"
                 android:textColor="@color/launcher_icon"
-                android:textSize="12sp" />
+                android:textSize="11sp" />
 
             <Button
                 android:id="@+id/btn_task_center"
                 android:layout_width="0dp"
-                android:layout_height="42dp"
-                android:layout_marginStart="6dp"
+                android:layout_height="38dp"
+                android:layout_marginStart="5dp"
                 android:layout_weight="1"
                 android:background="@drawable/launcher_card_flat"
                 android:stateListAnimator="@null"
                 android:text="Tasks"
                 android:textAllCaps="false"
                 android:textColor="@color/launcher_icon"
-                android:textSize="12sp" />
+                android:textSize="11sp" />
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
@@ -324,169 +304,186 @@
             android:layout_weight="1"
             android:clipToPadding="false"
             android:overScrollMode="never"
-            android:paddingTop="4dp"
-            android:paddingBottom="8dp" />
-
-        <TextView
-            android:id="@+id/instances_header"
-            android:layout_width="1dp"
-            android:layout_height="1dp"
-            android:visibility="gone" />
+            android:paddingTop="2dp"
+            android:paddingBottom="4dp" />
     </LinearLayout>
 
-    <!-- Selected instance / launch panel -->
+    <!-- Large selected-instance product card -->
     <LinearLayout
         android:id="@+id/right_launch_card"
-        android:layout_width="300dp"
+        android:layout_width="310dp"
         android:layout_height="0dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="0dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/launcher_card_flat"
-        android:gravity="top"
         android:orientation="vertical"
-        android:padding="18dp"
+        android:padding="14dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/profile_chip">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="SELECTED INSTANCE"
-            android:textColor="@color/launcher_muted"
-            android:textSize="10sp"
-            android:textStyle="bold" />
+        app:layout_constraintTop_toBottomOf="@id/home_header">
 
         <FrameLayout
+            android:id="@+id/profile_panel"
             android:layout_width="match_parent"
-            android:layout_height="128dp"
-            android:background="@drawable/launcher_icon_tile">
+            android:layout_height="154dp"
+            android:background="@drawable/launcher_home_blue">
 
             <ImageView
                 android:id="@+id/launch_account_avatar"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop"
+                android:layout_width="76dp"
+                android:layout_height="76dp"
+                android:layout_gravity="center"
+                android:background="@drawable/launcher_icon_tile"
+                android:padding="13dp"
+                android:scaleType="centerInside"
                 android:src="@drawable/cryonixlauncher"
-                android:visibility="gone"
-                android:contentDescription="Instance preview" />
+                android:contentDescription="Selected instance" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="24dp"
+                android:layout_gravity="top|start"
+                android:layout_margin="10dp"
+                android:background="@drawable/launcher_card_border_bg"
+                android:gravity="center"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:text="SELECTED"
+                android:textColor="@android:color/white"
+                android:textSize="8sp"
+                android:textStyle="bold" />
         </FrameLayout>
 
         <TextView
             android:id="@+id/current_instance_label"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Fabric"
-            android:textColor="@color/launcher_icon"
-            android:textSize="20sp"
+            android:layout_marginTop="12dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="Select an instance"
+            android:textColor="@android:color/white"
+            android:textSize="19sp"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/current_instance_version"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="4dp"
             android:ellipsize="end"
             android:maxLines="1"
-            android:text="fabric-loader-0.19.5-26.3"
+            android:text="Minecraft version"
             android:textColor="@color/launcher_muted"
-            android:textSize="12sp" />
+            android:textSize="11sp" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="7dp"
-            android:gravity="center_vertical">
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:layout_marginTop="8dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
             <View
-                android:layout_width="8dp"
-                android:layout_height="8dp"
+                android:layout_width="7dp"
+                android:layout_height="7dp"
                 android:background="@drawable/launcher_status_ready" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="7dp"
-                android:text="Ready"
+                android:layout_marginStart="6dp"
+                android:text="Ready to play"
                 android:textColor="#00D6A0"
-                android:textSize="12sp" />
+                android:textSize="10sp" />
+
+            <Space android:layout_width="0dp" android:layout_height="1dp" android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Minecraft"
+                android:textColor="@color/launcher_muted"
+                android:textSize="9sp" />
         </LinearLayout>
 
         <Button
             android:id="@+id/right_launch_button"
             android:layout_width="match_parent"
-            android:layout_height="54dp"
-            android:layout_marginTop="16dp"
+            android:layout_height="52dp"
+            android:layout_marginTop="6dp"
             android:background="@drawable/launcher_btn_white"
             android:stateListAnimator="@null"
-            android:text="▶  Launch Minecraft"
+            android:text="PLAY MINECRAFT"
             android:textColor="#14283B"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_height="42dp"
+            android:layout_marginTop="8dp"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/side_edit_profile"
                 android:layout_width="0dp"
-                android:layout_height="50dp"
+                android:layout_height="42dp"
                 android:layout_weight="1"
                 android:background="@drawable/launcher_card_border_bg"
-                android:text="✎  Edit Instance"
+                android:text="Edit"
+                android:textAllCaps="false"
                 android:textColor="@color/launcher_icon"
-                android:textSize="13sp" />
+                android:textSize="11sp" />
 
             <Button
                 android:id="@+id/side_duplicate"
                 android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="8dp"
+                android:layout_height="42dp"
+                android:layout_marginStart="6dp"
                 android:layout_weight="1"
-                android:background="@drawable/launcher_card_border_bg"
-                android:text="□  Duplicate"
+                android:background="@drawable/launcher_card_flat"
+                android:text="Duplicate"
+                android:textAllCaps="false"
                 android:textColor="@color/launcher_icon"
-                android:textSize="13sp" />
+                android:textSize="11sp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_height="42dp"
+            android:layout_marginTop="6dp"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/side_delete"
                 android:layout_width="0dp"
-                android:layout_height="50dp"
+                android:layout_height="42dp"
                 android:layout_weight="1"
-                android:background="@drawable/launcher_card_border_bg"
-                android:text="▣  Delete"
+                android:background="@drawable/launcher_card_flat"
+                android:text="Delete"
+                android:textAllCaps="false"
                 android:textColor="@color/launcher_icon"
-                android:textSize="13sp" />
+                android:textSize="11sp" />
 
             <Button
                 android:id="@+id/side_open_folder"
                 android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="8dp"
+                android:layout_height="42dp"
+                android:layout_marginStart="6dp"
                 android:layout_weight="1"
-                android:background="@drawable/launcher_card_border_bg"
-                android:text="□  Open Folder"
+                android:background="@drawable/launcher_card_flat"
+                android:text="Folder"
+                android:textAllCaps="false"
                 android:textColor="@color/launcher_icon"
-                android:textSize="13sp" />
+                android:textSize="11sp" />
         </LinearLayout>
 
+        <!-- Compatibility IDs used by existing launcher logic -->
         <ImageButton
             android:id="@+id/side_menu_button"
             android:layout_width="1dp"
             android:layout_height="1dp"
             android:visibility="gone" />
-
         <ImageButton
             android:id="@+id/launch_add_account"
             android:layout_width="1dp"
@@ -494,26 +491,15 @@
             android:visibility="gone" />
     </LinearLayout>
 
-    <!-- Bottom strip keeps the reference layout clean; no AI assistant button. -->
-    <View
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@id/main_content"
-        app:layout_constraintEnd_toStartOf="@id/right_launch_card" />
-
-    <View android:id="@+id/instances_panel" android:layout_width="1dp" android:layout_height="1dp" android:visibility="gone" />
-
-    <!-- Legacy IDs kept hidden so existing Java/Kotlin code continues to compile. -->
+    <!-- Compatibility-only controls kept hidden; existing backend code still uses them. -->
     <LinearLayout android:id="@+id/home_sidebar" android:layout_width="1dp" android:layout_height="1dp" android:visibility="gone" />
-    <LinearLayout android:id="@+id/profile_panel" android:layout_width="1dp" android:layout_height="1dp" android:visibility="gone" />
-    <ImageButton android:id="@+id/edit_profile_button" android:layout_width="1dp" android:layout_height="1dp" android:visibility="gone" />
-    <Button android:id="@+id/play_button" android:layout_width="1dp" android:layout_height="1dp" android:visibility="gone" />
+    <LinearLayout android:id="@+id/instances_panel" android:layout_width="1dp" android:layout_height="1dp" android:visibility="gone" />
     <ImageButton android:id="@+id/btn_toggle_instances" android:layout_width="1dp" android:layout_height="1dp" android:visibility="gone" />
     <Button android:id="@+id/news_button" android:layout_width="1dp" android:layout_height="1dp" android:visibility="gone" />
     <Button android:id="@+id/social_media_button" android:layout_width="1dp" android:layout_height="1dp" android:visibility="gone" />
-    <Button android:id="@+id/install_jar_button2" android:layout_width="1dp" android:layout_height="1dp" android:visibility="gone" />
     <Button android:id="@+id/share_logs_button" android:layout_width="1dp" android:layout_height="1dp" android:visibility="gone" />
     <Button android:id="@+id/open_files_button" android:layout_width="1dp" android:layout_height="1dp" android:visibility="gone" />
+    <Button android:id="@+id/play_button" android:layout_width="1dp" android:layout_height="1dp" android:visibility="gone" />
+    <TextView android:id="@+id/instances_header" android:layout_width="1dp" android:layout_height="1dp" android:visibility="gone" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
