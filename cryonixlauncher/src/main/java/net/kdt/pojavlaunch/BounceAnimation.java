@@ -5,9 +5,11 @@ import android.animation.ObjectAnimator;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import java.util.concurrent.atomic.AtomicInteger;
 import android.view.animation.OvershootInterpolator;
 
 public final class BounceAnimation {
+    private static final int TAG_KEY = 0x7f0b0c01;
     private BounceAnimation() {}
 
     public static void applyToViewTree(View root) {
@@ -22,7 +24,7 @@ public final class BounceAnimation {
     }
 
     private static void apply(View view) {
-        if (!view.isClickable() || view.getTag(R.id.cryonix_bounce_tag) != null) return;
+        if (!view.isClickable() || view.getTag(TAG_KEY) != null) return;
         view.setTag(R.id.cryonix_bounce_tag, Boolean.TRUE);
         view.setOnTouchListener((v, event) -> {
             if (event.getActionMasked() == MotionEvent.ACTION_DOWN) {
