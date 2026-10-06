@@ -1,77 +1,104 @@
-<!-- ========== TOP BAR ========== -->
-<androidx.constraintlayout.widget.ConstraintLayout android:id="@+id/cryonix_top_bar"
-    android:layout_width="0dp"
-    android:layout_height="56dp"
-    android:background="@color/background_status_bar"
-    android:paddingStart="16dp"
-    android:paddingTop="7dp"
-    android:paddingEnd="16dp"
-    android:paddingBottom="7dp"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:id="@+id/launcher_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/launcher_home_blue">
 
-    <LinearLayout
-        android:id="@+id/brand_block"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cryonix_top_bar"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:background="@color/background_status_bar"
+        android:paddingStart="16dp"
+        android:paddingTop="7dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="7dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:contentDescription="Logo"
-            android:padding="4dp"
-            android:src="@drawable/cryonixlauncher" />
-
-        <TextView
+        <LinearLayout
+            android:id="@+id/brand_block"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:fontFamily="sans-serif-black"
-            android:letterSpacing="0.04"
-            android:text="CRYONIX LAUNCHER"
-            android:textColor="@color/primary_text"
-            android:textSize="20sp" />
-    </LinearLayout>
+            android:layout_height="0dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-    <LinearLayout
-        android:id="@+id/profile_chip"
-        android:layout_width="wrap_content"
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:contentDescription="Logo"
+                android:padding="4dp"
+                android:src="@drawable/cryonixlauncher" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:fontFamily="sans-serif-black"
+                android:letterSpacing="0.04"
+                android:text="CRYONIX LAUNCHER"
+                android:textColor="@color/primary_text"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/profile_chip"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:background="@drawable/launcher_profile_badge_bg"
+            android:gravity="center_vertical"
+            android:paddingStart="6dp"
+            android:paddingEnd="14dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/launcher_icon_tile"
+                android:contentDescription="Profile"
+                android:padding="4dp"
+                android:src="@drawable/cryonixlauncher" />
+
+            <TextView
+                android:id="@+id/profile_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:ellipsize="end"
+                android:fontFamily="sans-serif-medium"
+                android:maxWidth="140dp"
+                android:singleLine="true"
+                android:text="Account"
+                android:textColor="@color/primary_text"
+                android:textSize="13sp" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/container_fragment"
+        android:name="net.kdt.pojavlaunch.fragments.MainMenuFragment"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@drawable/launcher_profile_badge_bg"
-        android:gravity="center_vertical"
-        android:paddingStart="6dp"
-        android:paddingEnd="14dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@drawable/launcher_home_blue"
+        app:layout_constraintBottom_toTopOf="@+id/progress_layout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cryonix_top_bar" />
 
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:background="@drawable/launcher_icon_tile"
-            android:contentDescription="Profile"
-            android:padding="4dp"
-            android:src="@drawable/cryonixlauncher" />
+    <com.kdt.mcgui.ProgressLayout
+        android:id="@+id/progress_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
-        <TextView
-            android:id="@+id/profile_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:ellipsize="end"
-            android:fontFamily="sans-serif-medium"
-            android:maxWidth="140dp"
-            android:singleLine="true"
-            android:text="nemosteikwzh"
-            android:textColor="@color/primary_text"
-            android:textSize="13sp" />
-    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
