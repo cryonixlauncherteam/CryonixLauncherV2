@@ -195,12 +195,6 @@ public class LauncherActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pojav_launcher);
 
-        if (getSupportFragmentManager().findFragmentById(R.id.container_fragment) == null) {
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.container_fragment, new MainMenuFragment(), MainMenuFragment.TAG)
-                    .commitNow();
-        }
-
         try {
             Os.setenv("TMPDIR", Tools.DIR_CACHE.getAbsolutePath(), true);
         }
