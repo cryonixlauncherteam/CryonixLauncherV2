@@ -251,6 +251,42 @@ public class MainMenuFragment extends Fragment {
             });
         }
 
+        View createVersionButton = view.findViewById(R.id.btn_create_version);
+        if (createVersionButton != null) {
+            applyJellyTouch(createVersionButton);
+            createVersionButton.setOnClickListener(v -> {
+                Tools.jellyClick(v);
+                Tools.swapFragment(requireActivity(), ProfileTypeSelectFragment.class, ProfileTypeSelectFragment.TAG, null);
+            });
+        }
+
+        View installContentButton = view.findViewById(R.id.btn_install_content);
+        if (installContentButton != null) {
+            applyJellyTouch(installContentButton);
+            installContentButton.setOnClickListener(v -> {
+                Tools.jellyClick(v);
+                runInstallerWithConfirmation();
+            });
+        }
+
+        View controlStudioButton = view.findViewById(R.id.btn_control_studio);
+        if (controlStudioButton != null) {
+            applyJellyTouch(controlStudioButton);
+            controlStudioButton.setOnClickListener(v -> {
+                Tools.jellyClick(v);
+                startActivity(new Intent(requireContext(), CustomControlsActivity.class));
+            });
+        }
+
+        View taskCenterButton = view.findViewById(R.id.btn_task_center);
+        if (taskCenterButton != null) {
+            applyJellyTouch(taskCenterButton);
+            taskCenterButton.setOnClickListener(v -> {
+                Tools.jellyClick(v);
+                showTaskCenter();
+            });
+        }
+
         // Chevron navigation for instances
         ImageButton btnPrev = view.findViewById(R.id.btn_prev_instance);
         ImageButton btnNext = view.findViewById(R.id.btn_next_instance);
@@ -487,6 +523,19 @@ public class MainMenuFragment extends Fragment {
         }
 
         dialog.show();
+    }
+
+    private void showTaskCenter() {
+        int taskCount = ProgressKeeper.getTaskCount();
+        String message = taskCount == 0
+                ? "Everything is up to date. No background tasks are running."
+                : taskCount + " background task" + (taskCount == 1 ? "" : "s") + " are currently running. Downloads and installs will continue through the launcher task system.";
+
+        new AlertDialog.Builder(requireContext())
+                .setTitle("Task Center")
+                .setMessage(message)
+                .setPositiveButton(android.R.string.ok, null)
+                .show();
     }
 
     private void applyJellyTouch(View view) {
