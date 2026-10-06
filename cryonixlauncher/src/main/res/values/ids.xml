@@ -6,4 +6,5 @@
     <item name="sidebar_mouse" type="id" />
     <item name="profile_avatar_top" type="id" />
     <item name="profile_name_top" type="id" />
+    <item name="cryonix_bounce_tag" type="id" />
 </resources>
