@@ -34,7 +34,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="CRYONIX LAUNCHER V3"
+                android:text="CRYONIX LAUNCHER 3.1"
                 android:textColor="@color/launcher_icon"
                 android:textSize="23sp"
                 android:textStyle="bold" />
@@ -190,7 +190,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="64dp"
+            android:layout_height="78dp"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -211,7 +211,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="instances"
+                    android:text="Manage Minecraft installations, loaders and profiles"
                     android:textColor="@color/launcher_muted"
                     android:textSize="11sp" />
             </LinearLayout>
@@ -248,10 +248,73 @@
                 android:layout_width="44dp"
                 android:layout_height="44dp"
                 android:background="@drawable/launcher_btn_play_circle"
-                android:contentDescription="Add instance"
+                android:contentDescription="Create instance"
                 android:padding="10dp"
                 android:src="@android:drawable/ic_input_add"
                 app:tint="@android:color/white" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/quick_actions_row"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_create_version"
+                android:layout_width="0dp"
+                android:layout_height="42dp"
+                android:layout_marginEnd="6dp"
+                android:layout_weight="1"
+                android:background="@drawable/launcher_card_border_bg"
+                android:stateListAnimator="@null"
+                android:text="+  Create Version"
+                android:textAllCaps="false"
+                android:textColor="@color/launcher_icon"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btn_install_content"
+                android:layout_width="0dp"
+                android:layout_height="42dp"
+                android:layout_marginStart="6dp"
+                android:layout_marginEnd="6dp"
+                android:layout_weight="1"
+                android:background="@drawable/launcher_card_flat"
+                android:stateListAnimator="@null"
+                android:text="Install .jar"
+                android:textAllCaps="false"
+                android:textColor="@color/launcher_icon"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btn_control_studio"
+                android:layout_width="0dp"
+                android:layout_height="42dp"
+                android:layout_marginStart="6dp"
+                android:layout_marginEnd="6dp"
+                android:layout_weight="1"
+                android:background="@drawable/launcher_card_flat"
+                android:stateListAnimator="@null"
+                android:text="Control Studio"
+                android:textAllCaps="false"
+                android:textColor="@color/launcher_icon"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btn_task_center"
+                android:layout_width="0dp"
+                android:layout_height="42dp"
+                android:layout_marginStart="6dp"
+                android:layout_weight="1"
+                android:background="@drawable/launcher_card_flat"
+                android:stateListAnimator="@null"
+                android:text="Tasks"
+                android:textAllCaps="false"
+                android:textColor="@color/launcher_icon"
+                android:textSize="12sp" />
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
@@ -286,9 +349,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/profile_chip">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SELECTED INSTANCE"
+            android:textColor="@color/launcher_muted"
+            android:textSize="10sp"
+            android:textStyle="bold" />
+
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="118dp"
+            android:layout_height="128dp"
             android:background="@drawable/launcher_icon_tile">
 
             <ImageView
@@ -349,7 +420,7 @@
             android:layout_marginTop="16dp"
             android:background="@drawable/launcher_btn_white"
             android:stateListAnimator="@null"
-            android:text="▶  Launch"
+            android:text="▶  Launch Minecraft"
             android:textColor="#14283B"
             android:textSize="16sp"
             android:textStyle="bold" />
@@ -366,7 +437,7 @@
                 android:layout_height="50dp"
                 android:layout_weight="1"
                 android:background="@drawable/launcher_card_border_bg"
-                android:text="✎  Edit"
+                android:text="✎  Edit Instance"
                 android:textColor="@color/launcher_icon"
                 android:textSize="13sp" />
 
