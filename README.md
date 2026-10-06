@@ -1,15 +1,15 @@
 <p align="center">
-  <img src="./app_pojavlauncher/src/main/assets/cryonixlauncher.png" width="150" height="150" alt="Cryonix Launcher V3 Logo">
+  <img src="./app_pojavlauncher/src/main/assets/cryonixlauncher.png" width="150" height="150" alt="Cryonix Launcher 3.1 Logo">
 </p>
 
-<h1 align="center">Cryonix Launcher V3</h1>
+<h1 align="center">Cryonix Launcher 3.1</h1>
 
 <p align="center">
   <strong>A modern Minecraft: Java Edition launcher for Android.</strong>
 </p>
 
 <p align="center">
-  Cryonix Launcher V3 is the next major evolution of the Cryonix Launcher project, focused on a clean mobile experience, performance, customization, and flexible Minecraft instance management.
+  Cryonix Launcher 3.1 is the next major evolution of the Cryonix Launcher project, focused on a clean mobile experience, performance, customization, and flexible Minecraft instance management.
 </p>
 
 <p align="center">
@@ -24,13 +24,15 @@
 
 ## About
 
-**Cryonix Launcher V3** is a community-focused Minecraft: Java Edition launcher for Android.
+**Cryonix Launcher 3.1** is a community-focused Minecraft: Java Edition launcher for Android.
 
-V3 builds on the V2 project with a stronger focus on a clean launcher interface, reliable instance management, performance configuration, Android input, rendering options, Java runtime management, and a maintainable Kotlin/Java/C++ codebase.
+3.1 builds on the V2 project with a stronger focus on a clean launcher interface, reliable instance management, performance configuration, Android input, rendering options, Java runtime management, and a maintainable Kotlin/Java/C++ codebase.
 
 The project is designed for Android users who want a flexible way to manage Minecraft Java Edition installations, versions, mod loaders, mods, Java runtimes, controls, and per-instance settings.
 
-## V3 Highlights
+## 3.1 Highlights
+
+Cryonix Launcher 3.1 is focused on making the launcher feel like a complete product instead of a collection of screens. The home experience now surfaces the important workflows directly while keeping the underlying Pojav/Mojo launcher functionality available.
 
 - Minecraft: Java Edition launcher for Android
 - Clean Cryonix Launcher interface
@@ -53,7 +55,7 @@ The project is designed for Android users who want a flexible way to manage Mine
 
 ## Minecraft Versions
 
-V3 is intended to support a broad range of Minecraft Java Edition versions where the required runtime, renderer and native components are compatible.
+3.1 is intended to support a broad range of Minecraft Java Edition versions where the required runtime, renderer and native components are compatible.
 
 Compatibility can vary by:
 
@@ -96,7 +98,7 @@ Instance configuration may include:
 
 ## Modding
 
-Cryonix Launcher V3 is designed for compatible Minecraft modding workflows.
+Cryonix Launcher 3.1 is designed for compatible Minecraft modding workflows.
 
 Supported ecosystems may include:
 
@@ -112,13 +114,13 @@ Compatibility depends on the Minecraft version, loader, mod and device.
 
 ## Java Runtime
 
-Different Minecraft versions require different Java environments. V3 provides runtime configuration so an instance can use an appropriate Java version when available.
+Different Minecraft versions require different Java environments. 3.1 provides runtime configuration so an instance can use an appropriate Java version when available.
 
 Java configuration can affect compatibility, startup, memory usage, stability and performance.
 
 ## Performance
 
-V3 focuses on giving users useful control over their Android Minecraft setup.
+3.1 focuses on giving users useful control over their Android Minecraft setup.
 
 Performance-related configuration can include:
 
@@ -135,13 +137,13 @@ Actual performance depends on the Android device and Minecraft configuration.
 
 ## Rendering
 
-Cryonix Launcher V3 is designed to work with compatible rendering backends and Android graphics implementations.
+Cryonix Launcher 3.1 is designed to work with compatible rendering backends and Android graphics implementations.
 
 Renderer availability and compatibility may differ between devices and Minecraft versions. Advanced rendering features, shaders and mods may require specific graphics support.
 
 ## Controls
 
-V3 is designed around Android while supporting multiple input methods:
+3.1 is designed around Android while supporting multiple input methods:
 
 - Touch controls
 - Custom virtual controls
@@ -153,7 +155,7 @@ External input compatibility depends on Android, the device and the connected ha
 
 ## Task & Download Management
 
-V3 includes a launcher workflow for managing background downloads and installation tasks.
+3.1 includes a launcher workflow for managing background downloads and installation tasks.
 
 The task system is intended to provide:
 
@@ -166,7 +168,7 @@ The task system is intended to provide:
 
 ## Account Management
 
-V3 supports account-management workflows for supported authentication implementations.
+3.1 supports account-management workflows for supported authentication implementations.
 
 Available account functionality depends on the authentication system and services integrated into the project.
 
@@ -182,7 +184,7 @@ The project also incorporates open-source technologies and components where thei
 
 ## Credits
 
-Cryonix Launcher V3 builds on the work of the Android Minecraft launcher and open-source communities.
+Cryonix Launcher 3.1 builds on the work of the Android Minecraft launcher and open-source communities.
 
 Special thanks to projects and technologies that have influenced or supported the project, including:
 
@@ -218,8 +220,8 @@ Minecraft is not included with Cryonix Launcher. Users are responsible for obtai
 
 ---
 
-## Cryonix Launcher V3
+## Cryonix Launcher 3.1
 
-V3 is the next stage of the Cryonix Launcher project, combining a cleaner Android launcher experience with configurable Minecraft instances, Java/runtime management, rendering options, input support, downloads, and native components.
+3.1 is the next stage of the Cryonix Launcher project, combining a cleaner Android launcher experience with configurable Minecraft instances, Java/runtime management, rendering options, input support, downloads, and native components.
 
-**Project status:** Active development.
+**Project status:** Active development — 3.1 product milestone.
