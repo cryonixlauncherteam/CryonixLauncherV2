@@ -28,6 +28,7 @@ import androidx.transition.TransitionManager;
 
 import git.artdeell.mojo.R;
 import net.kdt.pojavlaunch.CustomControlsActivity;
+import net.kdt.pojavlaunch.discord.DiscordRichPresence;
 import net.kdt.pojavlaunch.LauncherActivity;
 import net.kdt.pojavlaunch.Tools;
 import net.kdt.pojavlaunch.authenticator.accounts.Account;
@@ -149,6 +150,7 @@ public class MainMenuFragment extends Fragment {
         // Show the persisted account in the home chip. If no account is selected,
         // keep the chip empty instead of displaying a fake/default username.
         updateAccountChip(view);
+        updateDiscordPresence();
 
         View addAccount = view.findViewById(R.id.launch_add_account);
         if (addAccount != null) {
@@ -597,6 +599,7 @@ public class MainMenuFragment extends Fragment {
         ExtraCore.setValue(ExtraConstants.REFRESH_ACCOUNT_SPINNER, true);
         updateAccountChip(getView());
         reloadInstances();
+        updateDiscordPresence();
     }
 
     private void updateAccountChip(View root) {
@@ -628,8 +631,25 @@ public class MainMenuFragment extends Fragment {
                 counter.setText((instances.selectedIndex + 1) + "/" + instances.list.size());
             }
             updateSelectedPanel();
+            updateDiscordPresence();
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    private void updateDiscordPresence() {
+        try {
+            Instance selected = Instances.loadSelectedInstance();
+            if (selected == null) {
+                DiscordRichPresence.update("Browsing Minecraft", "Cryonix Launcher", "");
+                return;
+            }
+            String name = selected.name == null || selected.name.trim().isEmpty()
+                    ? "Minecraft instance" : selected.name.trim();
+            String version = selected.versionId == null ? "" : selected.versionId;
+            DiscordRichPresence.update("Browsing Minecraft", name, version);
+        } catch (Throwable ignored) {
+            // Rich Presence is optional and must never affect launcher operation.
         }
     }
 
