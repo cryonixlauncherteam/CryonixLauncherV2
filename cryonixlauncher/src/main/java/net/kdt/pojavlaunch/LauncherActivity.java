@@ -152,6 +152,11 @@ public class LauncherActivity extends BaseActivity {
             return false;
         }
 
+        net.kdt.pojavlaunch.discord.DiscordRichPresence.update(
+                "Launching Minecraft",
+                selectedInstance.name == null ? "Cryonix Launcher" : selectedInstance.name,
+                selectedInstance.versionId == null ? "" : selectedInstance.versionId);
+
         if (!Tools.isValidString(selectedInstance.versionId)){
             Toast.makeText(this, R.string.error_no_version, Toast.LENGTH_LONG).show();
             return false;
@@ -197,6 +202,7 @@ public class LauncherActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pojav_launcher);
+        net.kdt.pojavlaunch.discord.DiscordRichPresence.initialize(this);
 
         try {
             Os.setenv("TMPDIR", Tools.DIR_CACHE.getAbsolutePath(), true);
@@ -295,6 +301,7 @@ public class LauncherActivity extends BaseActivity {
         ExtraCore.removeExtraListenerFromValue(ExtraConstants.BACK_PREFERENCE, mBackPreferenceListener);
         ExtraCore.removeExtraListenerFromValue(ExtraConstants.SELECT_AUTH_METHOD, mSelectAuthMethod);
         ExtraCore.removeExtraListenerFromValue(ExtraConstants.LAUNCH_GAME, mLaunchGameListener);
+        net.kdt.pojavlaunch.discord.DiscordRichPresence.shutdown();
 
         getSupportFragmentManager().unregisterFragmentLifecycleCallbacks(mFragmentCallbackListener);
     }
