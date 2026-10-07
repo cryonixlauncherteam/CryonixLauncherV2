@@ -78,3 +78,11 @@ add_library(awt_xawt SHARED
         awt_xawt/xawt_fake.c
 )
 target_link_libraries(awt_xawt PRIVATE awt_headless)
+# ------ Discord Social SDK (optional) ------
+# The partner AAR is supplied privately at build time through DISCORD_SDK_DIR.
+set(DISCORD_SDK_DIR "$ENV{DISCORD_SDK_DIR}")
+if (DISCORD_SDK_DIR)
+    find_package(discord_partner_sdk REQUIRED CONFIG)
+    add_library(cryonix_discord SHARED discord_presence.cpp)
+    target_link_libraries(cryonix_discord PRIVATE discord_partner_sdk::discord_partner_sdk log)
+endif()
