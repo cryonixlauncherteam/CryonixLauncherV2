@@ -3,7 +3,7 @@ package net.kdt.pojavlaunch.fragments;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;\nimport android.widget.TextView;\n\nimport net.kdt.pojavlaunch.discord.DiscordRichPresence;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,13 +14,13 @@ import com.kdt.mcgui.ProgressLayout;
 import git.artdeell.mojo.R;
 import net.kdt.pojavlaunch.Tools;
 import net.kdt.pojavlaunch.discord.DiscordRichPresence;
-import net.kdt.pojavlaunch.utils.JellyAnimations;
 import net.kdt.pojavlaunch.progresskeeper.ProgressKeeper;
+import net.kdt.pojavlaunch.utils.JellyAnimations;
 
 public class SelectAuthFragment extends Fragment {
     public static final String TAG = "AUTH_SELECT_FRAGMENT";
 
-    public SelectAuthFragment(){
+    public SelectAuthFragment() {
         super(R.layout.fragment_select_auth_method);
     }
 
@@ -33,24 +33,32 @@ public class SelectAuthFragment extends Fragment {
         Button mMicrosoftButton = view.findViewById(R.id.button_microsoft_authentication);
         Button mLocalButton = view.findViewById(R.id.button_local_authentication);
         Button mElyByButton = view.findViewById(R.id.button_elyby_authentication);
-        Button mDiscordButton = view.findViewById(R.id.button_discord_authentication);\n        Button mDiscordButton = view.findViewById(R.id.button_discord_authentication);
+        Button mDiscordButton = view.findViewById(R.id.button_discord_authentication);
 
-        mMicrosoftButton.setOnClickListener(v -> launchAuthFragment(MicrosoftLoginFragment.class, MicrosoftLoginFragment.TAG));
-        mLocalButton.setOnClickListener(v -> launchAuthFragment(LocalLoginFragment.class, LocalLoginFragment.TAG));
-        mElyByButton.setOnClickListener(v -> launchAuthFragment(ElyByLoginFragment.class, ElyByLoginFragment.TAG));
+        mMicrosoftButton.setOnClickListener(v ->
+                launchAuthFragment(MicrosoftLoginFragment.class, MicrosoftLoginFragment.TAG));
+        mLocalButton.setOnClickListener(v ->
+                launchAuthFragment(LocalLoginFragment.class, LocalLoginFragment.TAG));
+        mElyByButton.setOnClickListener(v ->
+                launchAuthFragment(ElyByLoginFragment.class, ElyByLoginFragment.TAG));
+
         mDiscordButton.setOnClickListener(v -> {
             boolean connected = DiscordRichPresence.connect(requireActivity());
             if (connected) {
-                Toast.makeText(requireContext(), "Discord connected. Rich Presence is enabled.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(requireContext(),
+                        "Discord connected. Rich Presence is enabled.",
+                        Toast.LENGTH_SHORT).show();
                 Tools.backToMainMenu(requireActivity());
             } else {
-                Toast.makeText(requireContext(), "Discord SDK is not available in this build.", Toast.LENGTH_LONG).show();
+                Toast.makeText(requireContext(),
+                        "Discord SDK is not available in this build.",
+                        Toast.LENGTH_LONG).show();
             }
-        });\n        mDiscordButton.setOnClickListener(v -> {\n            boolean connected = DiscordRichPresence.connect(requireActivity());\n            Toast.makeText(requireContext(), connected ? "Discord connected. Rich Presence enabled." : "Discord SDK is not available in this build.", Toast.LENGTH_LONG).show();\n        });
+        });
     }
 
-    private void launchAuthFragment(Class<? extends  Fragment> fragmentClass, String fragmentTag) {
-        if(ProgressKeeper.hasProgressKey(ProgressLayout.AUTHENTICATE)) {
+    private void launchAuthFragment(Class<? extends Fragment> fragmentClass, String fragmentTag) {
+        if (ProgressKeeper.hasProgressKey(ProgressLayout.AUTHENTICATE)) {
             Toast.makeText(requireContext(), R.string.tasks_ongoing, Toast.LENGTH_SHORT).show();
             return;
         }
