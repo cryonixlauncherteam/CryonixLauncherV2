@@ -3,7 +3,7 @@ package net.kdt.pojavlaunch.fragments;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
+import android.widget.Toast;\nimport android.widget.TextView;\n\nimport net.kdt.pojavlaunch.discord.DiscordRichPresence;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -31,11 +31,11 @@ public class SelectAuthFragment extends Fragment {
 
         Button mMicrosoftButton = view.findViewById(R.id.button_microsoft_authentication);
         Button mLocalButton = view.findViewById(R.id.button_local_authentication);
-        Button mElyByButton = view.findViewById(R.id.button_elyby_authentication);
+        Button mElyByButton = view.findViewById(R.id.button_elyby_authentication);\n        Button mDiscordButton = view.findViewById(R.id.button_discord_authentication);
 
         mMicrosoftButton.setOnClickListener(v -> launchAuthFragment(MicrosoftLoginFragment.class, MicrosoftLoginFragment.TAG));
         mLocalButton.setOnClickListener(v -> launchAuthFragment(LocalLoginFragment.class, LocalLoginFragment.TAG));
-        mElyByButton.setOnClickListener(v -> launchAuthFragment(ElyByLoginFragment.class, ElyByLoginFragment.TAG));
+        mElyByButton.setOnClickListener(v -> launchAuthFragment(ElyByLoginFragment.class, ElyByLoginFragment.TAG));\n        mDiscordButton.setOnClickListener(v -> {\n            boolean connected = DiscordRichPresence.connect(requireActivity());\n            Toast.makeText(requireContext(), connected ? "Discord connected. Rich Presence enabled." : "Discord SDK is not available in this build.", Toast.LENGTH_LONG).show();\n        });
     }
 
     private void launchAuthFragment(Class<? extends  Fragment> fragmentClass, String fragmentTag) {
