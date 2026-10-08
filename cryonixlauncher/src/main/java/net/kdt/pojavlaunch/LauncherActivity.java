@@ -152,9 +152,8 @@ public class LauncherActivity extends BaseActivity {
             return false;
         }
 
-        net.kdt.pojavlaunch.discord.DiscordRichPresence.update(
-                "Launching Minecraft",
-                selectedInstance.name == null ? "Cryonix Launcher" : selectedInstance.name,
+        net.kdt.pojavlaunch.discord.DiscordRichPresence.startGame(
+                selectedInstance.name == null ? "Minecraft" : selectedInstance.name,
                 selectedInstance.versionId == null ? "" : selectedInstance.versionId);
 
         if (!Tools.isValidString(selectedInstance.versionId)){
