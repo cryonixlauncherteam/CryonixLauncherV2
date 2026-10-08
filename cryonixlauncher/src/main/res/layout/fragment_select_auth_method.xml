@@ -154,5 +154,47 @@
                 android:text="Continue"
                 android:textAllCaps="false" />
         </LinearLayout>
+        <LinearLayout
+            android:id="@+id/auth_discord_card"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/_6sdp"
+            android:layout_weight="1"
+            android:background="@drawable/cryonix_card"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/_12sdp">
+
+            <ImageView
+                android:layout_width="@dimen/_42sdp"
+                android:layout_height="@dimen/_42sdp"
+                android:src="@drawable/ic_discord" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:text="Discord"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/_14ssp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:text="Rich Presence"
+                android:textColor="@color/launcher_muted"
+                android:textSize="@dimen/_10ssp" />
+
+            <com.kdt.mcgui.MineButton
+                android:id="@+id/button_discord_authentication"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:text="Connect"
+                android:textAllCaps="false" />
+        </LinearLayout>
+
     </LinearLayout>
 </LinearLayout>
